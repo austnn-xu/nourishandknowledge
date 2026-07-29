@@ -22,13 +22,18 @@
 
   <main>
     <section class="hero">
-      <span class="eyebrow">Welcome, friend</span>
-      <h1>Good food and big ideas, shared with everyone.</h1>
-      <p>We're a community nonprofit bringing nourishing meals and joyful learning
-         to neighbors of every age. Pull up a chair &mdash; there's always room at our table.</p>
-      <div class="hero-actions">
-        <a class="btn btn-primary" href="events.html">See what's happening</a>
-        <a class="btn btn-secondary" href="about.html">Get to know us</a>
+      <div class="hero-content">
+        <span class="eyebrow">Welcome, friend</span>
+        <h1>You can make an impact.</h1>
+        <p>We're a community nonprofit bringing nourishing meals and joyful learning
+           to neighbors near and far. Pull up a chair &mdash; there's always room at our table.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="events.html">See what's happening</a>
+          <a class="btn btn-secondary" href="about.html">Get to know us</a>
+        </div>
+      </div>
+      <div class="hero-globe">
+        <canvas id="globe" aria-hidden="true"></canvas>
       </div>
     </section>
 
@@ -94,5 +99,79 @@
   </footer>
 
   <script src="js/nav.js"></script>
+  <script type="module">
+    import createGlobe from "./js/cobe.js";
+
+    const canvas = document.getElementById("globe");
+    if (canvas) {
+      let phi = 0;
+      let width = 0;
+      let pointerInteracting = null;
+      let pointerInteractionMovement = 0;
+      let r = 0;
+
+      const onResize = () => {
+        width = canvas.offsetWidth;
+      };
+      window.addEventListener("resize", onResize);
+      onResize();
+
+      const globe = createGlobe(canvas, {
+        devicePixelRatio: 2,
+        width: width * 2,
+        height: width * 2,
+        phi: 0,
+        theta: 0.28,
+        dark: 0,
+        diffuse: 0.45,
+        mapSamples: 16000,
+        mapBrightness: 1.15,
+        baseColor: [0.29, 0.306, 0.412],      /* mauve  #4A4E69 */
+        markerColor: [0.133, 0.133, 0.231],   /* indigo #22223B */
+        glowColor: [0.788, 0.678, 0.655],     /* blush  #C9ADA7 */
+        markers: [
+          { location: [14.5995, 120.9842], size: 0.03 },
+          { location: [19.076, 72.8777], size: 0.1 },
+          { location: [23.8103, 90.4125], size: 0.05 },
+          { location: [30.0444, 31.2357], size: 0.07 },
+          { location: [39.9042, 116.4074], size: 0.08 },
+          { location: [-23.5505, -46.6333], size: 0.1 },
+          { location: [40.7128, -74.006], size: 0.1 },
+          { location: [34.6937, 135.5022], size: 0.05 },
+          { location: [41.0082, 28.9784], size: 0.06 },
+        ],
+        onRender: (state) => {
+          if (!pointerInteracting) phi += 0.005;
+          state.phi = phi + r;
+          state.width = width * 2;
+          state.height = width * 2;
+        },
+      });
+
+      const updateInteraction = (value) => {
+        pointerInteracting = value;
+        canvas.style.cursor = value !== null ? "grabbing" : "grab";
+      };
+      const updateMovement = (clientX) => {
+        if (pointerInteracting !== null) {
+          const delta = clientX - pointerInteracting;
+          pointerInteractionMovement = delta;
+          r = delta / 200;
+        }
+      };
+
+      canvas.addEventListener("pointerdown", (e) =>
+        updateInteraction(e.clientX - pointerInteractionMovement)
+      );
+      window.addEventListener("pointerup", () => updateInteraction(null));
+      window.addEventListener("pointerout", () => updateInteraction(null));
+      window.addEventListener("pointermove", (e) => updateMovement(e.clientX));
+      canvas.addEventListener("touchmove", (e) => {
+        if (e.touches[0]) updateMovement(e.touches[0].clientX);
+      });
+
+      setTimeout(() => (canvas.style.opacity = "1"), 0);
+    }
+  </script>
 </body>
 </html>
