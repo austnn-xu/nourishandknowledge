@@ -115,6 +115,8 @@
       let pointerInteracting = null;
       let pointerInteractionMovement = 0;
       let r = 0;
+      let lastTime = performance.now();
+      const SPIN_PER_MS = 0.00008; /* ~0.08 rad/sec, frame-rate independent */
 
       const onResize = () => {
         width = canvas.offsetWidth;
@@ -139,7 +141,10 @@
           { location: [40.7128, -74.006], size: 0.05 }, /* New York only */
         ],
         onRender: (state) => {
-          if (!pointerInteracting) phi += 0.0014;
+          const now = performance.now();
+          const dt = now - lastTime;
+          lastTime = now;
+          if (!pointerInteracting) phi += SPIN_PER_MS * dt;
           state.phi = phi + r;
           state.width = width * 2;
           state.height = width * 2;
