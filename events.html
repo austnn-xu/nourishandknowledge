@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Community suppers, story hours, and cooking workshops — everyone is invited to a Nourish &amp; Knowledge gathering.">
+  <meta name="description" content="Community suppers, story hours, and cooking workshops. Everyone is invited to a Nourish and Knowledge gathering.">
   <meta name="theme-color" content="#1d1411">
-  <title>Events &mdash; Nourish &amp; Knowledge</title>
+  <title>Events | Nourish &amp; Knowledge</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,6 +14,7 @@
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%23d95f33'/%3E%3Cg fill='none' stroke='%23fff8ef' stroke-width='2.2' stroke-linecap='round'%3E%3Cpath d='M7 16h18'/%3E%3Cpath d='M8 16a8 8 0 0 0 16 0'/%3E%3Cpath d='M16 12c0-3 2-5 5-5 0 3-2 5-5 5Z'/%3E%3C/g%3E%3C/svg%3E">
 
   <script>
+    // Set before first paint so the page does not flash the wrong theme.
     try {
       var t = localStorage.getItem('nk-theme');
       if (t === 'dark' || (!t && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
@@ -67,10 +68,8 @@
 
     <header class="page-header">
       <div class="container">
-        <span class="eyebrow eyebrow--center">Events</span>
-        <h1>There's always a chair free</h1>
-        <p>Something warm and welcoming is always on the calendar. Bring a friend,
-           bring your appetite, bring your curiosity.</p>
+        <h1>Events</h1>
+        <p>There's always something warm and welcoming on the calendar. Come join us.</p>
         <div class="header-links">
           <a href="#regular">Regular gatherings</a>
           <a href="#expect">What to expect</a>
@@ -79,14 +78,13 @@
       </div>
     </header>
 
-    <!-- ── Regular gatherings ───────────────────────────────── -->
     <section class="strip" id="regular">
       <div class="container">
         <div class="section-head center" data-reveal>
           <span class="eyebrow eyebrow--center">On the calendar</span>
-          <h2>Our regular gatherings</h2>
-          <p class="lead">Everyone's invited &mdash; these run on a rhythm, so you can
-             drop in whenever it suits you.</p>
+          <h2>What's coming up</h2>
+          <p class="lead">Everyone's invited. Bring a friend, bring your appetite, bring
+             your curiosity.</p>
         </div>
 
         <div class="grid grid-3" data-stagger="0.1">
@@ -98,8 +96,7 @@
               <span class="chip">Weekly</span>
             </div>
             <h3>Community Supper</h3>
-            <p>A free, home-cooked meal and good conversation. Come hungry, leave full,
-               stay as long as you like.</p>
+            <p>A free, home-cooked meal and good conversation.</p>
             <div class="card-foot">
               <span class="card-meta">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5.2l3.2 1.9"/></svg>
@@ -117,14 +114,12 @@
               <span class="chip">Weekly</span>
             </div>
             <h3>Story &amp; Snack Hour</h3>
-            <p>Read-alouds, crafts, and treats for little ones and their grown-ups.
-               Wonderfully noisy, in the best way.</p>
+            <p>Read-alouds, crafts, and treats for little ones and their grown-ups.</p>
             <div class="card-foot">
               <span class="card-meta">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5.2l3.2 1.9"/></svg>
                 Saturday mornings
               </span>
-              <span class="card-meta">Ages 3&ndash;10</span>
             </div>
           </article>
 
@@ -136,45 +131,40 @@
               <span class="chip">Monthly</span>
             </div>
             <h3>Cook &amp; Learn</h3>
-            <p>Hands-on cooking workshops where we make a meal together and everyone
-               takes the recipe home.</p>
+            <p>Hands-on cooking workshops where we make a meal and take the recipe home.</p>
             <div class="card-foot">
               <span class="card-meta">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5.2l3.2 1.9"/></svg>
                 Once a month
               </span>
-              <a class="link-arrow" href="contact.html">
-                Save a spot
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg>
-              </a>
+              <a class="link-arrow" href="contact.html">Ask about a spot</a>
             </div>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- ── What to expect ───────────────────────────────────── -->
     <section class="strip strip--alt" id="expect">
       <div class="container narrow">
         <div class="section-head" data-reveal>
           <span class="eyebrow">Before you come</span>
           <h2>What to expect</h2>
-          <p class="lead">First time? Here's everything you might be wondering about.</p>
+          <p class="lead">First time? Here's what we can tell you so far.</p>
         </div>
 
         <div class="accordion" data-exclusive data-reveal>
           <div class="acc-item">
             <button class="acc-trigger" type="button" aria-expanded="false" aria-controls="ev-1" id="ev-1-btn">
-              Do I need to sign up or bring anything?
+              Do I need to sign up?
               <span class="plus" aria-hidden="true">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
               </span>
             </button>
             <div class="acc-panel" id="ev-1" role="region" aria-labelledby="ev-1-btn">
               <div class="acc-panel-inner">
-                Not for our suppers or story hours &mdash; just show up. Cook &amp; Learn
-                workshops have limited space, so a quick note ahead of time helps us plan
-                ingredients. You never need to bring anything but yourself.
+                Not for Community Supper, which needs no RSVP at all. For Cook &amp;
+                Learn workshops, <a class="email-link" href="contact.html">send us a note</a>
+                and we'll let you know about the next one.
               </div>
             </div>
           </div>
@@ -188,9 +178,8 @@
             </button>
             <div class="acc-panel" id="ev-2" role="region" aria-labelledby="ev-2-btn">
               <div class="acc-panel-inner">
-                No. Everything we host is free, and there's no income check, no form, and
-                no questions asked. If you'd like to give something back later, wonderful
-                &mdash; but it's never expected.
+                No. Our meals and workshops are free, and there are no forms to fill in
+                and no questions asked.
               </div>
             </div>
           </div>
@@ -205,38 +194,22 @@
             <div class="acc-panel" id="ev-3" role="region" aria-labelledby="ev-3-btn">
               <div class="acc-panel-inner">
                 Please do. Our tables are built for families, and Story &amp; Snack Hour
-                exists precisely so younger neighbors have something of their own.
+                exists so younger neighbors have something of their own.
               </div>
             </div>
           </div>
 
           <div class="acc-item">
             <button class="acc-trigger" type="button" aria-expanded="false" aria-controls="ev-4" id="ev-4-btn">
-              What about dietary needs?
+              I'd rather help than eat. Can I volunteer?
               <span class="plus" aria-hidden="true">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
               </span>
             </button>
             <div class="acc-panel" id="ev-4" role="region" aria-labelledby="ev-4-btn">
               <div class="acc-panel-inner">
-                Tell us in advance and we'll do our best to accommodate allergies and
-                dietary restrictions. There's usually a vegetarian option on the table.
-              </div>
-            </div>
-          </div>
-
-          <div class="acc-item">
-            <button class="acc-trigger" type="button" aria-expanded="false" aria-controls="ev-5" id="ev-5-btn">
-              I'd rather help than eat &mdash; can I volunteer?
-              <span class="plus" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
-              </span>
-            </button>
-            <div class="acc-panel" id="ev-5" role="region" aria-labelledby="ev-5-btn">
-              <div class="acc-panel-inner">
-                Absolutely &mdash; we always need hands for prep, serving, reading, and
-                clean-up. <a class="email-link" href="contact.html">Send us a note</a> and
-                we'll find you a spot that fits your schedule.
+                Yes. <a class="email-link" href="contact.html">Send us a note</a> and
+                we'll find a way for you to pitch in.
               </div>
             </div>
           </div>
@@ -244,18 +217,17 @@
       </div>
     </section>
 
-    <!-- ── Updates ──────────────────────────────────────────── -->
     <section class="strip strip--tight" id="updates">
       <div class="container">
         <div class="band" data-reveal>
-          <h2>Never miss a gathering</h2>
-          <p>Dates and details for upcoming events land here first. Leave your email and
-             we'll make sure you hear about them.</p>
+          <h2>Want the latest?</h2>
+          <p>We'll be adding dates and details here soon. In the meantime, leave your
+             email and we'll make sure you never miss a gathering.</p>
 
           <form class="subscribe" data-mail-form
                 data-mail-to="catherineqqliu15@gmail.com"
                 data-mail-subject="Please keep me posted about events"
-                data-mail-body="I'd love to hear about upcoming Nourish &amp; Knowledge events.">
+                data-mail-body="I'd love to hear about upcoming Nourish and Knowledge events.">
             <label class="sr-only" for="sub-email">Your email address</label>
             <input id="sub-email" name="email" type="email" required placeholder="you@example.com" autocomplete="email">
             <button class="btn btn-gold" type="submit">Keep me posted</button>
@@ -263,7 +235,7 @@
 
           <p class="form-status">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
-            Thanks! Your email app should be opening &mdash; just hit send and you're on the list.
+            Your email app should be opening. Send the message and we'll add you to the list.
           </p>
         </div>
       </div>
@@ -281,8 +253,7 @@
             </span>
             Nourish <span class="brand-amp">&amp;</span> Knowledge
           </a>
-          <p>A community nonprofit nourishing bodies and minds &mdash; one neighbor,
-             one meal, one lesson at a time.</p>
+          <p>A community nonprofit nourishing bodies and minds, one neighbor at a time.</p>
         </div>
 
         <div class="footer-col">
@@ -307,12 +278,7 @@
       </div>
 
       <div class="footer-bottom">
-        <span>&copy; 2026 Nourish &amp; Knowledge. All rights reserved.</span>
-        <span class="heart">
-          Made with
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 20.5s-7-4.5-9-8.7C1.3 8.5 3 5.5 6.2 5.5c2 0 3.2 1.2 4 2.2.8-1 2-2.2 4-2.2 3.2 0 4.9 3 3.2 6.3-2 4.2-9 8.7-9 8.7Z"/></svg>
-          by neighbors, for neighbors.
-        </span>
+        &copy; 2026 Nourish &amp; Knowledge. All rights reserved.
       </div>
     </div>
   </footer>

@@ -1,16 +1,5 @@
-/* ═══════════════════════════════════════════════════════════════
-   Nourish & Knowledge — design system
-   A warm, sunlit palette: clay, saffron, sage and berry on cream.
-   Elegant serif display · minimal surfaces · smooth, quiet motion.
-   ═══════════════════════════════════════════════════════════════ */
-
-/* ── 1. Tokens ─────────────────────────────────────────────── */
-
 :root {
-  /* Brand ramps */
   --clay-50:  #fdf1ec;
-  --clay-100: #fadcd0;
-  --clay-200: #f4bda6;
   --clay-400: #e5794f;
   --clay-500: #d95f33;
   --clay-600: #bd4a22;
@@ -24,19 +13,15 @@
   --gold-600: #a56d0f;
 
   --sage-50:  #ecf5ef;
-  --sage-100: #cfe7d9;
-  --sage-200: #a8d2ba;
   --sage-400: #4d9270;
   --sage-500: #3a7a5a;
   --sage-600: #2c6047;
 
   --berry-50:  #f9edf3;
-  --berry-100: #f0d3e0;
   --berry-400: #a85a7f;
   --berry-500: #8c4665;
   --berry-600: #713651;
 
-  /* Semantic — light (default) */
   --bg:          #fffaf3;
   --bg-alt:      #fbf1e4;
   --surface:     #ffffff;
@@ -51,16 +36,11 @@
   --brand-strong: var(--clay-600);
   --brand-tint:   var(--clay-50);
   --accent:       var(--gold-400);
-  --accent-tint:  var(--gold-50);
   --support:      var(--sage-500);
-  --support-tint: var(--sage-50);
 
   --on-brand: #fffaf3;
-
-  /* Deep warm gradient used by every page header */
   --night: #1d1411;
 
-  /* Elevation — warm-tinted shadows, never grey */
   --sh-xs: 0 1px 2px rgba(58, 33, 20, 0.06);
   --sh-sm: 0 2px 6px rgba(58, 33, 20, 0.06), 0 1px 2px rgba(58, 33, 20, 0.04);
   --sh-md: 0 10px 24px -8px rgba(58, 33, 20, 0.16), 0 2px 6px rgba(58, 33, 20, 0.05);
@@ -68,14 +48,12 @@
   --sh-xl: 0 40px 80px -24px rgba(58, 33, 20, 0.28);
   --ring:  0 0 0 3px rgba(217, 95, 51, 0.32);
 
-  /* Geometry */
   --r-sm: 10px;
   --r-md: 16px;
   --r-lg: 24px;
   --r-xl: 32px;
   --r-pill: 999px;
 
-  /* Motion — one vocabulary, used everywhere */
   --ease:      cubic-bezier(0.22, 0.80, 0.32, 1);
   --ease-out:  cubic-bezier(0.16, 1, 0.30, 1);
   --ease-soft: cubic-bezier(0.40, 0, 0.20, 1);
@@ -104,9 +82,7 @@
   --brand-strong: #f59672;
   --brand-tint:   rgba(217, 95, 51, 0.14);
   --accent:       #f2b444;
-  --accent-tint:  rgba(234, 166, 47, 0.14);
   --support:      #6fb28c;
-  --support-tint: rgba(77, 146, 112, 0.14);
 
   --on-brand: #1a110d;
 
@@ -119,8 +95,6 @@
 
   color-scheme: dark;
 }
-
-/* ── 2. Reset & base ───────────────────────────────────────── */
 
 *,
 *::before,
@@ -192,7 +166,6 @@ a {
   border-radius: 4px;
 }
 
-/* Skip link — first stop for keyboard users */
 .skip-link {
   position: fixed;
   top: 0.75rem;
@@ -224,8 +197,6 @@ a {
   white-space: nowrap;
 }
 
-/* ── 3. Layout primitives ──────────────────────────────────── */
-
 main {
   flex: 1;
   width: 100%;
@@ -242,10 +213,6 @@ main {
   max-width: 780px;
 }
 
-.container.mid {
-  max-width: 940px;
-}
-
 .strip {
   padding-block: clamp(3.75rem, 8vw, 6.5rem);
   position: relative;
@@ -258,16 +225,6 @@ main {
 .strip--tight {
   padding-block: clamp(2.75rem, 5vw, 4rem);
 }
-
-/* Hairline divider that fades at both ends — quiet, elegant */
-.rule {
-  height: 1px;
-  border: 0;
-  background: linear-gradient(90deg, transparent, var(--line-strong) 22%, var(--line-strong) 78%, transparent);
-  margin-block: 0;
-}
-
-/* ── 4. Typography helpers ─────────────────────────────────── */
 
 .eyebrow {
   display: inline-flex;
@@ -286,7 +243,7 @@ main {
   width: 26px;
   height: 2px;
   border-radius: 2px;
-  background: linear-gradient(90deg, var(--accent), var(--brand));
+  background: var(--brand);
 }
 
 .eyebrow--center {
@@ -319,36 +276,6 @@ main {
   margin-inline: auto;
 }
 
-/* A word in the display face, tinted — used inside headings */
-.tint {
-  color: var(--brand);
-}
-
-.tint-gold {
-  color: var(--gold-500);
-}
-
-/* Hand-drawn style underline beneath a key word */
-.mark {
-  position: relative;
-  white-space: nowrap;
-}
-
-.mark::after {
-  content: "";
-  position: absolute;
-  left: -0.06em;
-  right: -0.06em;
-  bottom: 0.06em;
-  height: 0.34em;
-  background: linear-gradient(90deg, var(--gold-200), var(--clay-200));
-  border-radius: var(--r-pill);
-  z-index: -1;
-  opacity: 0.75;
-}
-
-/* ── 5. Navigation ─────────────────────────────────────────── */
-
 .site-nav {
   position: fixed;
   inset: 0 0 auto 0;
@@ -370,7 +297,7 @@ main {
   gap: 1rem;
 }
 
-/* Over the dark page header the bar is invisible; on scroll it condenses. */
+/* Transparent over the dark page header, opaque once scrolled past it. */
 .site-nav.is-solid {
   background: color-mix(in srgb, var(--bg) 82%, transparent);
   backdrop-filter: saturate(1.6) blur(14px);
@@ -491,7 +418,6 @@ main {
   gap: 0.5rem;
 }
 
-/* Icon button — theme toggle, menu, back-to-top all share it */
 .icon-btn {
   width: 40px;
   height: 40px;
@@ -505,17 +431,11 @@ main {
   cursor: pointer;
   transition: background var(--t-fast) var(--ease),
               border-color var(--t-fast) var(--ease),
-              color var(--t-fast) var(--ease),
-              transform var(--t-fast) var(--ease);
+              color var(--t-fast) var(--ease);
 }
 
 .icon-btn:hover {
   background: rgba(255, 252, 247, 0.2);
-  transform: translateY(-1px);
-}
-
-.icon-btn:active {
-  transform: translateY(0) scale(0.96);
 }
 
 .site-nav.is-solid .icon-btn {
@@ -535,29 +455,23 @@ main {
   height: 19px;
 }
 
-/* Theme toggle swaps its glyph with a soft rotation */
+/* Both glyphs share one grid cell; only opacity separates them. */
 .theme-toggle .moon,
 .theme-toggle .sun {
   grid-area: 1 / 1;
-  transition: opacity var(--t-med) var(--ease), rotate var(--t-med) var(--ease), scale var(--t-med) var(--ease);
+  transition: opacity var(--t-med) var(--ease);
 }
 
 .theme-toggle .sun {
   opacity: 0;
-  rotate: -70deg;
-  scale: 0.6;
 }
 
 [data-theme="dark"] .theme-toggle .moon {
   opacity: 0;
-  rotate: 70deg;
-  scale: 0.6;
 }
 
 [data-theme="dark"] .theme-toggle .sun {
   opacity: 1;
-  rotate: 0deg;
-  scale: 1;
 }
 
 .nav-cta {
@@ -596,7 +510,6 @@ main {
   rotate: -45deg;
 }
 
-/* Scroll progress — a thin warm thread across the top */
 .scroll-progress {
   position: fixed;
   top: 0;
@@ -605,17 +518,16 @@ main {
   width: 100%;
   transform-origin: 0 50%;
   scale: 0 1;
-  background: linear-gradient(90deg, var(--gold-400), var(--clay-500) 55%, var(--berry-400));
+  background: var(--brand);
   z-index: 1000;
   pointer-events: none;
 }
 
-/* Mobile drawer */
 @media (max-width: 900px) {
-  /* .btn / .icon-btn set display later in the sheet, so these need the
+  /* .btn and .icon-btn set display later in the sheet, so these need the
      extra specificity to win. Flex (not grid) keeps the three bars at a
-     known 6.2px pitch, which is what the X transform is built around —
-     stretched grid rows would spread them apart. */
+     known 6.2px pitch, which the X transform depends on; stretched grid
+     rows would spread them apart. */
   .site-nav .nav-toggle {
     display: flex;
     flex-direction: column;
@@ -695,8 +607,6 @@ main {
   }
 }
 
-/* ── 6. Page header (shared by every page) ─────────────────── */
-
 .page-header {
   position: relative;
   isolation: isolate;
@@ -712,20 +622,7 @@ main {
     linear-gradient(170deg, #2b1a14 0%, var(--night) 52%, #221726 100%);
 }
 
-/* Fine dot lattice — texture without noise */
-.page-header::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  background-image: radial-gradient(rgba(255, 245, 232, 0.16) 1px, transparent 1px);
-  background-size: 26px 26px;
-  mask-image: radial-gradient(80% 70% at 50% 30%, #000 0%, transparent 75%);
-  -webkit-mask-image: radial-gradient(80% 70% at 50% 30%, #000 0%, transparent 75%);
-  opacity: 0.55;
-}
-
-/* Soft cream curve so the header melts into the page */
+/* Curve that carries the dark header into the cream page below. */
 .page-header::after {
   content: "";
   position: absolute;
@@ -754,7 +651,7 @@ main {
 }
 
 .page-header .eyebrow::before {
-  background: linear-gradient(90deg, var(--gold-200), rgba(255, 250, 243, 0.3));
+  background: var(--gold-200);
 }
 
 .page-header p {
@@ -768,7 +665,6 @@ main {
   margin-inline: auto;
 }
 
-/* Breadcrumb-ish trail of quick links under a page title */
 .header-links {
   display: flex;
   flex-wrap: wrap;
@@ -786,16 +682,13 @@ main {
   border: 1px solid rgba(255, 248, 239, 0.24);
   border-radius: var(--r-pill);
   background: rgba(255, 248, 239, 0.07);
-  transition: background var(--t-fast) var(--ease), border-color var(--t-fast) var(--ease), transform var(--t-fast) var(--ease);
+  transition: background var(--t-fast) var(--ease), border-color var(--t-fast) var(--ease);
 }
 
 .header-links a:hover {
   background: rgba(255, 248, 239, 0.17);
   border-color: rgba(255, 248, 239, 0.45);
-  transform: translateY(-1px);
 }
-
-/* ── 7. Home hero ──────────────────────────────────────────── */
 
 .hero {
   position: relative;
@@ -863,29 +756,8 @@ main {
   margin-top: 2rem;
 }
 
-/* Small reassurance row beneath the CTAs */
-.hero-note {
-  display: inline-flex;
-  align-items: baseline;
-  gap: 0.5rem;
-  margin-top: 1.5rem;
-  font-size: 0.87rem;
-  line-height: 1.5;
-  color: rgba(255, 244, 232, 0.68);
-  text-align: left;
-}
-
-.hero-note svg {
-  width: 15px;
-  height: 15px;
-  flex: none;
-  translate: 0 2px;
-  color: var(--gold-200);
-}
-
-/* The globe reads as a world rising behind the horizon: anchored to the
-   bottom of the hero with most of the sphere below the fold, so its edge
-   never cuts across the headline. */
+/* Anchored to the bottom of the hero with most of the sphere below the
+   fold, so its edge never crosses the headline. */
 .hero-globe {
   position: absolute;
   left: 50%;
@@ -904,29 +776,6 @@ main {
   cursor: grab;
   contain: layout paint size;
   transition: opacity 1.1s var(--ease-out);
-}
-
-.stars {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity var(--t-slow) var(--ease);
-}
-
-.star {
-  position: absolute;
-  border-radius: 50%;
-  background: #fff6e8;
-  box-shadow: 0 0 6px rgba(255, 236, 209, 0.9);
-  animation: twinkle var(--tw, 3s) ease-in-out infinite;
-  animation-delay: var(--td, 0s);
-}
-
-@keyframes twinkle {
-  0%, 100% { opacity: 0.14; scale: 0.6; }
-  50%      { opacity: 1;    scale: 1.15; }
 }
 
 .scroll-cue {
@@ -959,7 +808,6 @@ main {
   place-items: center;
   border-radius: var(--r-pill);
   border: 1px solid rgba(255, 246, 235, 0.32);
-  animation: cue 2.4s var(--ease-soft) infinite;
 }
 
 .scroll-cue svg {
@@ -967,17 +815,7 @@ main {
   height: 15px;
 }
 
-@keyframes cue {
-  0%, 100% { translate: 0 0; }
-  50%      { translate: 0 5px; }
-}
-
-/* ── 8. Buttons ────────────────────────────────────────────── */
-
 .btn {
-  position: relative;
-  overflow: hidden;
-  isolation: isolate;
   display: inline-flex;
   align-items: center;
   gap: 0.55rem;
@@ -991,41 +829,16 @@ main {
   text-decoration: none;
   cursor: pointer;
   white-space: nowrap;
-  transition: transform var(--t-fast) var(--ease),
-              box-shadow var(--t-med) var(--ease),
+  transition: box-shadow var(--t-med) var(--ease),
               background var(--t-med) var(--ease),
               color var(--t-med) var(--ease),
               border-color var(--t-med) var(--ease);
-}
-
-/* A soft light sweeps across on hover */
-.btn::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  background: linear-gradient(110deg, transparent 20%, rgba(255, 255, 255, 0.32) 48%, transparent 74%);
-  translate: -130% 0;
-  transition: translate 0.75s var(--ease-out);
-}
-
-.btn:hover::before {
-  translate: 130% 0;
 }
 
 .btn svg {
   width: 17px;
   height: 17px;
   flex: none;
-  transition: translate var(--t-med) var(--ease);
-}
-
-.btn:hover svg:last-child {
-  translate: 3px 0;
-}
-
-.btn:active {
-  transform: translateY(0) scale(0.985);
 }
 
 .btn-primary {
@@ -1035,7 +848,6 @@ main {
 }
 
 .btn-primary:hover {
-  transform: translateY(-2px);
   box-shadow: 0 18px 34px -12px rgba(189, 74, 34, 0.7);
 }
 
@@ -1046,11 +858,9 @@ main {
 }
 
 .btn-gold:hover {
-  transform: translateY(-2px);
   box-shadow: 0 18px 34px -12px rgba(209, 141, 21, 0.65);
 }
 
-/* On dark headers */
 .btn-ghost {
   background: rgba(255, 250, 243, 0.1);
   border-color: rgba(255, 250, 243, 0.34);
@@ -1061,10 +871,8 @@ main {
 .btn-ghost:hover {
   background: rgba(255, 250, 243, 0.2);
   border-color: rgba(255, 250, 243, 0.6);
-  transform: translateY(-2px);
 }
 
-/* On light surfaces */
 .btn-outline {
   background: var(--surface);
   border-color: var(--line-strong);
@@ -1076,7 +884,6 @@ main {
   border-color: var(--brand);
   color: var(--brand-strong);
   background: var(--brand-tint);
-  transform: translateY(-2px);
 }
 
 .btn-block {
@@ -1084,7 +891,6 @@ main {
   justify-content: center;
 }
 
-/* Quiet inline "read more" link with a travelling arrow */
 .link-arrow {
   display: inline-flex;
   align-items: center;
@@ -1093,7 +899,7 @@ main {
   font-size: 0.93rem;
   color: var(--brand-strong);
   text-decoration: none;
-  transition: gap var(--t-med) var(--ease), color var(--t-fast) var(--ease);
+  transition: color var(--t-fast) var(--ease);
 }
 
 .link-arrow svg {
@@ -1102,11 +908,8 @@ main {
 }
 
 .link-arrow:hover {
-  gap: 0.7rem;
   color: var(--brand);
 }
-
-/* ── 9. Cards ──────────────────────────────────────────────── */
 
 .grid {
   display: grid;
@@ -1117,48 +920,18 @@ main {
   grid-template-columns: repeat(auto-fit, minmax(258px, 1fr));
 }
 
-.grid-2 {
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-}
-
-.grid-4 {
-  grid-template-columns: repeat(auto-fit, minmax(212px, 1fr));
-}
-
 .card {
-  position: relative;
-  isolation: isolate;
-  overflow: hidden;
   background: var(--surface);
   border: 1px solid var(--line);
   border-radius: var(--r-lg);
   padding: clamp(1.5rem, 2.6vw, 1.95rem);
   box-shadow: var(--sh-sm);
-  transition: transform var(--t-med) var(--ease-out),
-              box-shadow var(--t-med) var(--ease-out),
-              border-color var(--t-med) var(--ease);
-}
-
-/* A colour wash blooms from the top on hover */
-.card::before {
-  content: "";
-  position: absolute;
-  inset: 0 0 auto 0;
-  height: 3px;
-  background: linear-gradient(90deg, var(--accent-c, var(--brand)), transparent);
-  scale: 0 1;
-  transform-origin: 0 50%;
-  transition: scale var(--t-slow) var(--ease-out);
+  transition: box-shadow var(--t-med) var(--ease-out), border-color var(--t-med) var(--ease);
 }
 
 .card:hover {
-  transform: translateY(-6px);
-  box-shadow: var(--sh-lg);
+  box-shadow: var(--sh-md);
   border-color: color-mix(in srgb, var(--accent-c, var(--brand)) 34%, var(--line));
-}
-
-.card:hover::before {
-  scale: 1 1;
 }
 
 .card h3 {
@@ -1175,7 +948,7 @@ main {
   margin-top: 0.7rem;
 }
 
-/* Standalone so it also works outside a .card (contact detail rows) */
+/* Standalone so it also works outside a .card (contact detail rows). */
 .icon {
   width: 52px;
   height: 52px;
@@ -1185,13 +958,6 @@ main {
   margin-bottom: 1.15rem;
   background: var(--accent-bg, var(--brand-tint));
   color: var(--accent-ink, var(--brand-strong));
-  transition: background var(--t-med) var(--ease), color var(--t-med) var(--ease), transform var(--t-med) var(--ease-out);
-}
-
-.card:hover .icon {
-  background: var(--accent-ink, var(--brand-strong));
-  color: #fff;
-  transform: rotate(-4deg) scale(1.05);
 }
 
 .icon svg {
@@ -1199,9 +965,8 @@ main {
   height: 25px;
 }
 
-/* Accent variants — each card family gets its own hue.
-   --accent-c  paints shapes (icons, dots, rules)
-   --accent-ink paints text, and is darkened to clear contrast on cream */
+/* --accent-c paints shapes, --accent-ink paints text and is darkened to
+   clear 4.5:1 on cream. */
 [data-accent="clay"]  { --accent-c: var(--clay-500);  --accent-bg: var(--clay-50);  --accent-ink: var(--clay-700); }
 [data-accent="gold"]  { --accent-c: var(--gold-500);  --accent-bg: var(--gold-50);  --accent-ink: var(--gold-600); }
 [data-accent="sage"]  { --accent-c: var(--sage-500);  --accent-bg: var(--sage-50);  --accent-ink: var(--sage-600); }
@@ -1212,11 +977,6 @@ main {
 [data-theme="dark"] [data-accent="sage"]  { --accent-c: #6fb28c; --accent-bg: rgba(77, 146, 112, 0.18); --accent-ink: #8fc7a7; }
 [data-theme="dark"] [data-accent="berry"] { --accent-c: #cf7fa4; --accent-bg: rgba(168, 90, 127, 0.18); --accent-ink: #dd9ab9; }
 
-[data-theme="dark"] .card:hover .icon {
-  color: #1a110d;
-}
-
-/* Small tag / date chip */
 .chip {
   display: inline-flex;
   align-items: center;
@@ -1230,11 +990,6 @@ main {
   background: var(--accent-bg, var(--brand-tint));
   color: var(--accent-ink, var(--brand-strong));
   border: 1px solid color-mix(in srgb, var(--accent-c, var(--brand)) 22%, transparent);
-}
-
-.chip svg {
-  width: 13px;
-  height: 13px;
 }
 
 .card-head {
@@ -1271,8 +1026,6 @@ main {
   color: var(--accent-c, var(--brand));
 }
 
-/* ── 10. Stats ─────────────────────────────────────────────── */
-
 .stats {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -1286,12 +1039,6 @@ main {
   background: var(--surface);
   border: 1px solid var(--line);
   box-shadow: var(--sh-xs);
-  transition: transform var(--t-med) var(--ease-out), box-shadow var(--t-med) var(--ease-out);
-}
-
-.stat:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--sh-md);
 }
 
 .stat .num {
@@ -1314,7 +1061,6 @@ main {
   line-height: 1.5;
 }
 
-/* Fact list inside a card (mission page) */
 .facts {
   list-style: none;
   display: grid;
@@ -1339,7 +1085,6 @@ main {
   height: 8px;
   border-radius: 50%;
   background: var(--accent-c, var(--brand));
-  opacity: 0.85;
 }
 
 .facts strong {
@@ -1347,14 +1092,11 @@ main {
   font-weight: 800;
 }
 
-/* ── 11. Steps / process ───────────────────────────────────── */
-
 .steps {
   display: grid;
   gap: clamp(1.1rem, 2.4vw, 1.75rem);
   grid-template-columns: repeat(auto-fit, minmax(232px, 1fr));
   counter-reset: step;
-  position: relative;
 }
 
 .step {
@@ -1382,14 +1124,13 @@ main {
   box-shadow: var(--sh-xs);
 }
 
-/* Dotted connector between steps */
 .step::after {
   content: "";
   position: absolute;
   top: 23px;
   left: 58px;
   right: -1.75rem;
-  border-top: 2px dotted color-mix(in srgb, var(--brand) 32%, transparent);
+  border-top: 1px solid var(--line-strong);
 }
 
 .step:last-child::after {
@@ -1411,8 +1152,6 @@ main {
     display: none;
   }
 }
-
-/* ── 12. Split feature (image + text) ──────────────────────── */
 
 .split {
   display: grid;
@@ -1436,46 +1175,22 @@ main {
 }
 
 .art {
-  position: relative;
   aspect-ratio: 4 / 3.4;
   border-radius: var(--r-xl);
   display: grid;
   place-items: center;
   color: #fffaf3;
-  overflow: hidden;
   box-shadow: var(--sh-lg);
-  background:
-    radial-gradient(90% 90% at 26% 16%, rgba(255, 236, 205, 0.45), transparent 62%),
-    linear-gradient(150deg, var(--gold-400), var(--clay-500) 58%, var(--berry-500));
-}
-
-.art::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-image: radial-gradient(rgba(255, 255, 255, 0.22) 1px, transparent 1px);
-  background-size: 20px 20px;
-  mask-image: radial-gradient(70% 70% at 50% 50%, #000, transparent 78%);
-  -webkit-mask-image: radial-gradient(70% 70% at 50% 50%, #000, transparent 78%);
+  background: linear-gradient(150deg, var(--gold-400), var(--clay-500) 58%, var(--berry-500));
 }
 
 .art svg {
-  position: relative;
   width: 42%;
   height: auto;
-  filter: drop-shadow(0 6px 18px rgba(60, 25, 10, 0.35));
 }
 
 .art--sage {
-  background:
-    radial-gradient(90% 90% at 26% 16%, rgba(226, 246, 233, 0.5), transparent 62%),
-    linear-gradient(150deg, var(--sage-400), var(--sage-600) 60%, #1f4a4f);
-}
-
-.art--berry {
-  background:
-    radial-gradient(90% 90% at 26% 16%, rgba(255, 231, 242, 0.42), transparent 62%),
-    linear-gradient(150deg, var(--berry-400), var(--berry-600) 58%, #3d2540);
+  background: linear-gradient(150deg, var(--sage-400), var(--sage-600) 60%, #1f4a4f);
 }
 
 @media (max-width: 800px) {
@@ -1494,54 +1209,7 @@ main {
   }
 }
 
-/* ── 13. Quote ─────────────────────────────────────────────── */
-
-.quote {
-  position: relative;
-  max-width: 46ch;
-  margin-inline: auto;
-  text-align: center;
-  padding-top: 2.6rem;
-}
-
-.quote::before {
-  content: "\201C";
-  position: absolute;
-  top: -0.35em;
-  left: 50%;
-  translate: -50% 0;
-  font-family: 'Fraunces', Georgia, serif;
-  font-size: 6.5rem;
-  line-height: 1;
-  color: var(--accent);
-  opacity: 0.42;
-}
-
-.quote blockquote {
-  font-family: 'Fraunces', Georgia, serif;
-  font-size: clamp(1.3rem, 2.9vw, 1.85rem);
-  font-style: italic;
-  font-weight: 400;
-  line-height: 1.42;
-  color: var(--ink);
-  letter-spacing: -0.01em;
-}
-
-.quote figcaption {
-  margin-top: 1.4rem;
-  font-size: 0.88rem;
-  font-weight: 700;
-  letter-spacing: 0.09em;
-  text-transform: uppercase;
-  color: var(--ink-muted);
-}
-
-/* ── 14. CTA band ──────────────────────────────────────────── */
-
 .band {
-  position: relative;
-  isolation: isolate;
-  overflow: hidden;
   border-radius: var(--r-xl);
   padding: clamp(2.5rem, 5vw, 4rem) clamp(1.5rem, 4vw, 3.25rem);
   text-align: center;
@@ -1551,17 +1219,6 @@ main {
     radial-gradient(100% 120% at 12% 0%, rgba(234, 166, 47, 0.5) 0%, transparent 55%),
     radial-gradient(90% 110% at 92% 100%, rgba(140, 70, 101, 0.55) 0%, transparent 55%),
     linear-gradient(140deg, var(--clay-500), var(--clay-700) 62%, #4a2038);
-}
-
-.band::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  background-image: radial-gradient(rgba(255, 255, 255, 0.16) 1px, transparent 1px);
-  background-size: 24px 24px;
-  mask-image: radial-gradient(75% 75% at 50% 40%, #000, transparent 80%);
-  -webkit-mask-image: radial-gradient(75% 75% at 50% 40%, #000, transparent 80%);
 }
 
 .band h2 {
@@ -1590,8 +1247,6 @@ main {
   color: var(--clay-700);
 }
 
-/* ── 15. Team ──────────────────────────────────────────────── */
-
 .team {
   display: grid;
   gap: clamp(2.5rem, 5vw, 4.5rem);
@@ -1616,37 +1271,17 @@ main {
   display: grid;
   place-items: center;
   color: #fffaf3;
-  overflow: hidden;
-  position: relative;
   box-shadow: var(--sh-lg);
   background: linear-gradient(150deg, var(--gold-400), var(--clay-500));
-  transition: transform var(--t-slow) var(--ease-out), box-shadow var(--t-slow) var(--ease-out);
-}
-
-.team-member:hover .team-art {
-  transform: translateY(-6px) rotate(-1.5deg);
-  box-shadow: var(--sh-xl);
 }
 
 .team-member:nth-child(2n) .team-art { background: linear-gradient(150deg, var(--sage-400), var(--sage-600)); }
 .team-member:nth-child(3n) .team-art { background: linear-gradient(150deg, var(--berry-400), var(--berry-600)); }
 .team-member:nth-child(4n) .team-art { background: linear-gradient(150deg, var(--clay-400), #6b2f3f); }
 
-.team-art::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-image: radial-gradient(rgba(255, 255, 255, 0.2) 1px, transparent 1px);
-  background-size: 18px 18px;
-  mask-image: radial-gradient(68% 68% at 50% 50%, #000, transparent 78%);
-  -webkit-mask-image: radial-gradient(68% 68% at 50% 50%, #000, transparent 78%);
-}
-
 .team-art svg {
-  position: relative;
   width: 38%;
   height: auto;
-  filter: drop-shadow(0 6px 16px rgba(50, 20, 8, 0.32));
 }
 
 .team-bio .role {
@@ -1683,8 +1318,6 @@ main {
     max-width: 260px;
   }
 }
-
-/* ── 16. Accordion ─────────────────────────────────────────── */
 
 .accordion {
   border: 1px solid var(--line);
@@ -1757,8 +1390,6 @@ main {
   max-width: 68ch;
 }
 
-/* ── 17. Forms ─────────────────────────────────────────────── */
-
 .form-card {
   background: var(--surface);
   border: 1px solid var(--line);
@@ -1783,7 +1414,6 @@ main {
   font-size: 0.86rem;
   font-weight: 700;
   color: var(--ink);
-  letter-spacing: 0.01em;
 }
 
 .field .req {
@@ -1835,7 +1465,6 @@ main {
   font-size: 0.82rem;
   font-weight: 600;
   color: var(--clay-600);
-  min-height: 0;
   opacity: 0;
   transition: opacity var(--t-fast) var(--ease);
 }
@@ -1877,7 +1506,6 @@ main {
 
 .form-status.show {
   display: flex;
-  animation: rise-in var(--t-med) var(--ease-out) both;
 }
 
 [data-theme="dark"] .form-status {
@@ -1885,12 +1513,6 @@ main {
   color: #8fc7a7;
 }
 
-@keyframes rise-in {
-  from { opacity: 0; translate: 0 8px; }
-  to   { opacity: 1; translate: 0 0; }
-}
-
-/* Inline newsletter */
 .subscribe {
   display: flex;
   gap: 0.6rem;
@@ -1922,7 +1544,6 @@ main {
   border-color: rgba(255, 250, 243, 0.7);
 }
 
-/* Confirmation shown inside a dark band needs its own colouring */
 .band .form-status,
 [data-theme="dark"] .band .form-status {
   justify-content: center;
@@ -1932,8 +1553,6 @@ main {
   border-color: rgba(255, 250, 243, 0.32);
   color: #fffaf3;
 }
-
-/* ── 18. Contact detail rows ───────────────────────────────── */
 
 .detail-list {
   list-style: none;
@@ -1971,19 +1590,7 @@ main {
   color: var(--ink-soft);
 }
 
-.detail a {
-  color: var(--brand-strong);
-  font-weight: 700;
-  text-decoration: none;
-  border-bottom: 1.5px solid color-mix(in srgb, var(--brand) 35%, transparent);
-  transition: border-color var(--t-fast) var(--ease), color var(--t-fast) var(--ease);
-}
-
-.detail a:hover {
-  color: var(--brand);
-  border-color: var(--brand);
-}
-
+.detail a,
 .email-link {
   color: var(--brand-strong);
   font-weight: 700;
@@ -1992,12 +1599,11 @@ main {
   transition: border-color var(--t-fast) var(--ease), color var(--t-fast) var(--ease);
 }
 
+.detail a:hover,
 .email-link:hover {
   color: var(--brand);
   border-color: var(--brand);
 }
-
-/* ── 19. Prose & references ────────────────────────────────── */
 
 .prose p {
   color: var(--ink-soft);
@@ -2016,17 +1622,6 @@ main {
 
 .prose h2:first-child {
   margin-top: 0;
-}
-
-/* Opening paragraph gets a serif drop-cap — a quiet editorial touch */
-.prose.lede > p:first-of-type::first-letter {
-  float: left;
-  font-family: 'Fraunces', Georgia, serif;
-  font-size: 3.4em;
-  line-height: 0.82;
-  font-weight: 600;
-  color: var(--brand);
-  padding: 0.06em 0.1em 0 0;
 }
 
 .references {
@@ -2070,10 +1665,7 @@ main {
   border-color: var(--brand);
 }
 
-/* ── 20. Footer ────────────────────────────────────────────── */
-
 footer.site-footer {
-  position: relative;
   margin-top: clamp(2rem, 5vw, 4rem);
   padding-top: clamp(3rem, 6vw, 4.5rem);
   padding-bottom: 2rem;
@@ -2128,38 +1720,20 @@ footer.site-footer {
   font-weight: 500;
   color: rgba(255, 246, 236, 0.74);
   text-decoration: none;
-  transition: color var(--t-fast) var(--ease), translate var(--t-fast) var(--ease);
-  display: inline-block;
+  transition: color var(--t-fast) var(--ease);
 }
 
 .footer-col a:hover {
   color: #fffaf3;
-  translate: 3px 0;
 }
 
 .footer-bottom {
   margin-top: clamp(2.25rem, 4vw, 3rem);
   padding-top: 1.5rem;
   border-top: 1px solid rgba(255, 246, 236, 0.14);
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.6rem 1.5rem;
-  justify-content: space-between;
-  align-items: center;
   font-size: 0.84rem;
   color: rgba(255, 246, 236, 0.55);
-}
-
-.footer-bottom .heart {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-}
-
-.footer-bottom svg {
-  width: 14px;
-  height: 14px;
-  color: var(--clay-400);
+  text-align: center;
 }
 
 @media (max-width: 780px) {
@@ -2171,8 +1745,6 @@ footer.site-footer {
     grid-column: 1 / -1;
   }
 }
-
-/* ── 21. Back to top ───────────────────────────────────────── */
 
 .to-top {
   position: fixed;
@@ -2190,15 +1762,12 @@ footer.site-footer {
   place-items: center;
   cursor: pointer;
   opacity: 0;
-  translate: 0 14px;
   pointer-events: none;
-  transition: opacity var(--t-med) var(--ease), translate var(--t-med) var(--ease-out),
-              background var(--t-fast) var(--ease), color var(--t-fast) var(--ease);
+  transition: opacity var(--t-med) var(--ease), background var(--t-fast) var(--ease), color var(--t-fast) var(--ease);
 }
 
 .to-top.show {
   opacity: 1;
-  translate: 0 0;
   pointer-events: auto;
 }
 
@@ -2213,8 +1782,6 @@ footer.site-footer {
   height: 19px;
 }
 
-/* ── 22. Reveal on scroll ──────────────────────────────────── */
-
 [data-reveal] {
   opacity: 0;
   translate: 0 22px;
@@ -2227,13 +1794,11 @@ footer.site-footer {
   translate: 0 0;
 }
 
-/* No-JS safety net: never hide content if the observer never runs */
+/* Without JS the observer never runs, so content must not stay hidden. */
 .no-js [data-reveal] {
   opacity: 1;
   translate: 0 0;
 }
-
-/* ── 23. Reduced motion ────────────────────────────────────── */
 
 @media (prefers-reduced-motion: reduce) {
   html {
@@ -2252,10 +1817,5 @@ footer.site-footer {
   [data-reveal] {
     opacity: 1;
     translate: 0 0;
-  }
-
-  .star {
-    animation: none;
-    opacity: 0.5;
   }
 }

@@ -1,9 +1,3 @@
-/* ═══════════════════════════════════════════════════════════════
-   Nourish & Knowledge — site behaviour
-   Progressive enhancement only: every feature degrades to plain
-   HTML if JS is unavailable.
-   ═══════════════════════════════════════════════════════════════ */
-
 (function () {
   'use strict';
 
@@ -11,9 +5,6 @@
 
   document.documentElement.classList.remove('no-js');
 
-  /* ── Theme ─────────────────────────────────────────────────
-     The initial theme is set by an inline snippet in <head> to
-     avoid a flash; here we only handle toggling and persistence. */
   function initTheme() {
     var toggles = document.querySelectorAll('[data-theme-toggle]');
     if (!toggles.length) return;
@@ -37,7 +28,9 @@
         document.documentElement.setAttribute('data-theme', next);
         try {
           localStorage.setItem('nk-theme', next);
-        } catch (e) { /* private mode — theme just won't persist */ }
+        } catch (e) {
+          // Private mode: the theme applies, it just will not persist.
+        }
         sync();
       });
     });
@@ -45,8 +38,6 @@
     sync();
   }
 
-  /* ── Navigation ────────────────────────────────────────────
-     Transparent over the dark page header, solid once scrolled. */
   function initNav() {
     var nav = document.querySelector('.site-nav');
     if (!nav) return;
@@ -55,7 +46,6 @@
     var panel = nav.querySelector('.nav-panel');
     var desktop = window.matchMedia('(min-width: 901px)');
 
-    /* Mark the current page for both styling and screen readers */
     var here = window.location.pathname.split('/').pop() || 'index.html';
     nav.querySelectorAll('.nav-menu a').forEach(function (link) {
       if (link.getAttribute('href') === here) {
@@ -85,7 +75,7 @@
         toggle.setAttribute('aria-expanded', String(!open));
         panel.classList.toggle('open', !open);
         document.body.classList.toggle('nav-open', !open);
-        /* An open drawer sits on an opaque panel, so keep the bar solid */
+        // The open drawer sits on an opaque panel, so keep the bar opaque too.
         if (!open) nav.classList.add('is-solid');
         else onScroll();
       });
@@ -98,7 +88,7 @@
         if (e.key === 'Escape') closeMenu();
       });
 
-      /* Resizing past the breakpoint should never strand a stuck drawer */
+      // Resizing past the breakpoint would otherwise strand an open drawer.
       desktop.addEventListener('change', function (e) {
         if (e.matches) closeMenu();
       });
@@ -108,7 +98,6 @@
     onScroll();
   }
 
-  /* ── Scroll progress thread ────────────────────────────────── */
   function initProgress() {
     var bar = document.querySelector('.scroll-progress');
     if (!bar) return;
@@ -133,7 +122,6 @@
     update();
   }
 
-  /* ── Back to top ───────────────────────────────────────────── */
   function initToTop() {
     var btn = document.querySelector('.to-top');
     if (!btn) return;
@@ -158,7 +146,6 @@
     update();
   }
 
-  /* ── Reveal on scroll ──────────────────────────────────────── */
   function initReveal() {
     var targets = document.querySelectorAll('[data-reveal]');
     if (!targets.length) return;
@@ -179,7 +166,6 @@
 
     targets.forEach(function (el) { io.observe(el); });
 
-    /* Children of a [data-stagger] container cascade in sequence */
     document.querySelectorAll('[data-stagger]').forEach(function (group) {
       var step = parseFloat(group.getAttribute('data-stagger')) || 0.08;
       Array.prototype.forEach.call(group.children, function (child, i) {
@@ -190,7 +176,6 @@
     });
   }
 
-  /* ── Counting statistics ───────────────────────────────────── */
   function initCounters() {
     var counters = document.querySelectorAll('[data-count]');
     if (!counters.length) return;
@@ -218,7 +203,6 @@
       function frame(now) {
         if (start === null) start = now;
         var t = Math.min((now - start) / duration, 1);
-        /* easeOutCubic — fast start, gentle landing */
         var eased = 1 - Math.pow(1 - t, 3);
         render(el, target * eased);
         if (t < 1) requestAnimationFrame(frame);
@@ -241,15 +225,13 @@
       });
     }, { threshold: 0.5 });
 
-    /* Deliberately not zeroing the text up front: the markup already holds
-       the real figure, so anything never scrolled into view still reads
-       correctly. The count simply starts when the element appears. */
+    // Not zeroing the text up front: the markup holds the real figure, so
+    // anything never scrolled into view still reads correctly.
     counters.forEach(function (el) {
       io.observe(el);
     });
   }
 
-  /* ── Accordions ────────────────────────────────────────────── */
   function initAccordions() {
     document.querySelectorAll('.accordion').forEach(function (acc) {
       var triggers = acc.querySelectorAll('.acc-trigger');
@@ -258,7 +240,7 @@
       function close(trigger) {
         var panel = document.getElementById(trigger.getAttribute('aria-controls'));
         if (!panel) return;
-        /* Fix the current height first so the transition has somewhere to go */
+        // Pin the measured height first so the transition has a start value.
         panel.style.height = panel.scrollHeight + 'px';
         requestAnimationFrame(function () {
           panel.style.height = '0px';
@@ -271,7 +253,7 @@
         if (!panel) return;
         panel.style.height = panel.scrollHeight + 'px';
         trigger.setAttribute('aria-expanded', 'true');
-        /* Release to auto once settled so reflowing text isn't clipped */
+        // Release to auto once settled, or reflowing text gets clipped.
         panel.addEventListener('transitionend', function done(e) {
           if (e.propertyName !== 'height') return;
           panel.removeEventListener('transitionend', done);
@@ -300,13 +282,12 @@
     });
   }
 
-  /* ── Contact form ──────────────────────────────────────────
-     No backend here, so a valid submission hands off to the
-     visitor's own mail client with everything pre-filled. */
   function initForms() {
     document.querySelectorAll('[data-mail-form]').forEach(initForm);
   }
 
+  // There is no backend, so a valid submission hands off to the visitor's
+  // own mail client with the fields pre-filled.
   function initForm(form) {
     var status = form.querySelector('.form-status');
     var to = form.getAttribute('data-mail-to') || '';
@@ -355,12 +336,12 @@
       var message = (data.get('message') || '').toString().trim();
 
       var subject = form.getAttribute('data-mail-subject') ||
-        (topic ? topic + ' — message from ' + name : 'Message from ' + name);
+        (topic ? topic + ', message from ' + name : 'Message from ' + name);
 
-      /* Forms differ (full enquiry vs. one-field sign-up), so assemble the
-         body from whichever fields are actually present. */
+      // The two forms carry different fields, so build the body from
+      // whichever ones are actually present.
       var lines = [message || form.getAttribute('data-mail-body') || ''];
-      lines.push('', '—');
+      lines.push('');
       if (name) lines.push(name);
       if (email) lines.push(email);
 
@@ -377,34 +358,13 @@
     });
   }
 
-  /* ── Home hero: starfield + scroll choreography ────────────── */
   function initHero() {
     var hero = document.querySelector('.hero');
-    if (!hero) return;
+    if (!hero || reduceMotion) return;
 
     var globe = hero.querySelector('.hero-globe');
     var content = hero.querySelector('.hero-content');
-    var stars = hero.querySelector('.stars');
     var cue = hero.querySelector('.scroll-cue');
-
-    if (reduceMotion) return;
-
-    if (stars) {
-      var frag = document.createDocumentFragment();
-      for (var i = 0; i < 80; i++) {
-        var s = document.createElement('span');
-        var size = Math.random() * 2 + 1;
-        s.className = 'star';
-        s.style.width = size + 'px';
-        s.style.height = size + 'px';
-        s.style.left = (Math.random() * 100) + '%';
-        s.style.top = (Math.random() * 88) + '%';
-        s.style.setProperty('--tw', (Math.random() * 3 + 2).toFixed(2) + 's');
-        s.style.setProperty('--td', (Math.random() * 4).toFixed(2) + 's');
-        frag.appendChild(s);
-      }
-      stars.appendChild(frag);
-    }
 
     var ticking = false;
     function apply() {
@@ -414,14 +374,10 @@
       var p = Math.min(Math.max(y / (h * 0.85), 0), 1);
 
       if (globe) {
-        /* Keep the CSS base offset (-50%, 62%) or the globe jumps on first scroll */
+        // Keep the CSS base offset or the globe jumps on first scroll.
         globe.style.transform =
           'translate(-50%, 62%) translateY(' + (-y * 0.3 - p * 70) + 'px) scale(' + (1 + p * 0.1) + ')';
         globe.style.opacity = String(Math.max(1 - p * 1.25, 0));
-      }
-      if (stars) {
-        stars.style.opacity = String(Math.min(p * 1.8, 1));
-        stars.style.transform = 'translateY(' + (-y * 0.22) + 'px)';
       }
       if (content) {
         content.style.transform = 'translateY(' + (-y * 0.14) + 'px)';
