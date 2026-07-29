@@ -24,16 +24,23 @@
     <section class="hero">
       <div class="hero-content">
         <span class="eyebrow">Welcome, friend</span>
-        <h1>You can make an impact.</h1>
-        <p>We're a community nonprofit bringing nourishing meals and joyful learning
-           to neighbors near and far. Pull up a chair &mdash; there's always room at our table.</p>
-        <div class="hero-actions">
-          <a class="btn btn-primary" href="events.html">See what's happening</a>
-          <a class="btn btn-secondary" href="about.html">Get to know us</a>
-        </div>
+        <h1>You can make<br>an impact.</h1>
       </div>
       <div class="hero-globe">
         <canvas id="globe" aria-hidden="true"></canvas>
+      </div>
+      <a class="scroll-cue" href="#welcome" aria-label="Scroll down">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 10l5 5 5-5"/></svg>
+      </a>
+    </section>
+
+    <section class="section narrow intro" id="welcome">
+      <p class="intro-lead">We're a community nonprofit bringing nourishing meals
+         and joyful learning to neighbors near and far. Pull up a chair &mdash;
+         there's always room at our table.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="events.html">See what's happening</a>
+        <a class="btn btn-secondary" href="about.html">Get to know us</a>
       </div>
     </section>
 
@@ -131,17 +138,17 @@
         glowColor: [0.788, 0.678, 0.655],     /* blush  #C9ADA7 */
         markers: [
           { location: [14.5995, 120.9842], size: 0.03 },
-          { location: [19.076, 72.8777], size: 0.1 },
-          { location: [23.8103, 90.4125], size: 0.05 },
-          { location: [30.0444, 31.2357], size: 0.07 },
-          { location: [39.9042, 116.4074], size: 0.08 },
-          { location: [-23.5505, -46.6333], size: 0.1 },
-          { location: [40.7128, -74.006], size: 0.1 },
-          { location: [34.6937, 135.5022], size: 0.05 },
-          { location: [41.0082, 28.9784], size: 0.06 },
+          { location: [19.076, 72.8777], size: 0.06 },
+          { location: [23.8103, 90.4125], size: 0.04 },
+          { location: [30.0444, 31.2357], size: 0.05 },
+          { location: [39.9042, 116.4074], size: 0.06 },
+          { location: [-23.5505, -46.6333], size: 0.06 },
+          { location: [34.6937, 135.5022], size: 0.04 },
+          { location: [41.0082, 28.9784], size: 0.04 },
+          { location: [40.7128, -74.006], size: 0.045 }, /* New York */
         ],
         onRender: (state) => {
-          if (!pointerInteracting) phi += 0.005;
+          if (!pointerInteracting) phi += 0.0025;
           state.phi = phi + r;
           state.width = width * 2;
           state.height = width * 2;
