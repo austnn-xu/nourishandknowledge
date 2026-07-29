@@ -174,6 +174,7 @@ nav ul li a.active {
   width: min(1500px, 205vw);
   aspect-ratio: 1 / 1;
   z-index: 1;
+  will-change: transform, opacity;
 }
 
 .hero-globe canvas {
@@ -691,4 +692,62 @@ footer {
     padding: 0.5rem 0.75rem;
     font-size: 0.9rem;
   }
+}
+
+/* ─────────────────────────────────────────────
+   Scroll animations
+   ───────────────────────────────────────────── */
+
+/* Hero entrance */
+.hero-content {
+  animation: hero-in 1.1s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+@keyframes hero-in {
+  from { opacity: 0; transform: translateY(26px); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* Reveal on scroll (class added by JS, so no-JS keeps content visible) */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s cubic-bezier(0.2, 0.7, 0.2, 1),
+              transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
+  will-change: opacity, transform;
+}
+
+.reveal.in {
+  opacity: 1;
+  transform: none;
+}
+
+/* Twinkling starfield behind the globe */
+.stars {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+
+.star {
+  position: absolute;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 0 6px rgba(255, 255, 255, 0.85);
+  animation: twinkle var(--tw, 3s) ease-in-out infinite;
+  animation-delay: var(--td, 0s);
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.12; transform: scale(0.6); }
+  50%      { opacity: 1;    transform: scale(1.15); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-content { animation: none; }
+  .reveal { opacity: 1; transform: none; transition: none; }
+  .star { animation: none; opacity: 0.5; }
 }
