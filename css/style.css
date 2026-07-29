@@ -169,9 +169,9 @@ nav ul li a.active {
 .hero-globe {
   position: absolute;
   left: 50%;
-  top: clamp(-3rem, 2vh, 2rem);
+  top: clamp(5rem, 13vh, 10rem);
   transform: translateX(-50%);
-  width: min(1500px, 205vw);
+  width: min(1020px, 112vw);
   aspect-ratio: 1 / 1;
   z-index: 1;
   will-change: transform, opacity;
@@ -239,8 +239,8 @@ nav ul li a.active {
 
 @media (max-width: 600px) {
   .hero-globe {
-    top: clamp(-3rem, 6vh, 3rem);
-    width: 190vw;
+    top: clamp(4rem, 11vh, 8rem);
+    width: 135vw;
   }
 }
 
