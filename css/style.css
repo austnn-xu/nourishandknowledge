@@ -284,6 +284,19 @@ main {
   font-size: 0.98rem;
 }
 
+.email-link {
+  color: var(--mauve);
+  font-weight: 700;
+  text-decoration: none;
+  border-bottom: 1.5px solid var(--blush);
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.email-link:hover {
+  color: var(--indigo);
+  border-color: var(--plum);
+}
+
 /* ── Soft feature band ── */
 .band {
   background: linear-gradient(160deg, var(--mauve) 0%, var(--indigo) 100%);
