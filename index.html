@@ -1,145 +1,349 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Nourish &amp; Knowledge</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Nourish &amp; Knowledge is a community nonprofit bringing nourishing meals and joyful learning to K–12 students and families on Long Island and beyond.">
+  <meta name="theme-color" content="#1d1411">
+  <title>Nourish &amp; Knowledge — Meals, learning, and a place to belong</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..600&family=Plus+Jakarta+Sans:wght@400..800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%23d95f33'/%3E%3Cg fill='none' stroke='%23fff8ef' stroke-width='2.2' stroke-linecap='round'%3E%3Cpath d='M7 16h18'/%3E%3Cpath d='M8 16a8 8 0 0 0 16 0'/%3E%3Cpath d='M16 12c0-3 2-5 5-5 0 3-2 5-5 5Z'/%3E%3C/g%3E%3C/svg%3E">
+
+  <script>
+    /* Set the theme before first paint so there is no flash */
+    try {
+      var t = localStorage.getItem('nk-theme');
+      if (t === 'dark' || (!t && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+    } catch (e) {}
+  </script>
 </head>
 <body>
 
-  <nav>
-    <a class="logo" href="index.html">Nourish <span>&amp;</span> Knowledge</a>
-    <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="mission.html">Mission</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="events.html">Events</a></li>
-      <li><a href="partnership.html">Partnership</a></li>
-      <li><a href="contact.html">Contact</a></li>
-    </ul>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="scroll-progress" aria-hidden="true"></div>
+
+  <nav class="site-nav" aria-label="Main">
+    <div class="container">
+      <a class="brand" href="index.html">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h18"/><path d="M4 12a8 8 0 0 0 16 0"/><path d="M12 8.5c0-3 2-5 5-5 0 3-2 5-5 5Z"/></svg>
+        </span>
+        Nourish <span class="brand-amp">&amp;</span> Knowledge
+      </a>
+
+      <div class="nav-panel" id="nav-panel">
+        <ul class="nav-menu">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="mission.html">Mission</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="events.html">Events</a></li>
+          <li><a href="partnership.html">Partnership</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <a class="btn btn-primary drawer-cta" href="contact.html">Get involved</a>
+      </div>
+
+      <div class="nav-actions">
+        <button class="icon-btn theme-toggle" type="button" data-theme-toggle aria-pressed="false" aria-label="Switch to dark theme">
+          <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8.2 8.2 0 0 1 9.5 4 8.5 8.5 0 1 0 20 14.5Z"/></svg>
+          <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2.2M12 19.3v2.2M4.2 4.2l1.6 1.6M18.2 18.2l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.2 19.8l1.6-1.6M18.2 5.8l1.6-1.6"/></svg>
+        </button>
+        <a class="btn btn-primary nav-cta" href="contact.html">Get involved</a>
+        <button class="icon-btn nav-toggle" type="button" aria-expanded="false" aria-controls="nav-panel" aria-label="Open menu">
+          <span class="bar" aria-hidden="true"></span>
+          <span class="bar" aria-hidden="true"></span>
+          <span class="bar" aria-hidden="true"></span>
+        </button>
+      </div>
+    </div>
   </nav>
 
-  <main>
+  <main id="main">
+
+    <!-- ── Hero ─────────────────────────────────────────────── -->
     <section class="hero">
       <div class="stars" aria-hidden="true"></div>
-      <div class="hero-content">
-        <h1>You can make<br>an impact.</h1>
-      </div>
       <div class="hero-globe">
         <canvas id="globe" aria-hidden="true"></canvas>
       </div>
-      <a class="scroll-cue" href="#welcome" aria-label="Scroll down">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 10l5 5 5-5"/></svg>
+
+      <div class="hero-content">
+        <h1>You can make<br>an <em>impact</em>.</h1>
+        <p class="hero-lead">We bring nourishing meals and joyful learning to neighbors
+           near and far. Pull up a chair &mdash; there's always room at our table.</p>
+        <div class="hero-actions">
+          <a class="btn btn-gold" href="events.html">
+            See what's happening
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg>
+          </a>
+          <a class="btn btn-ghost" href="about.html">Get to know us</a>
+        </div>
+        <p class="hero-note">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+          Everyone welcome. No forms, no fees, no questions asked.
+        </p>
+      </div>
+
+      <a class="scroll-cue" href="#welcome">
+        <span class="dot" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 10l5 5 5-5"/></svg>
+        </span>
+        Scroll
       </a>
     </section>
 
-    <section class="section narrow intro" id="welcome">
-      <p class="intro-lead">We're a community nonprofit bringing nourishing meals
-         and joyful learning to neighbors near and far. Pull up a chair &mdash;
-         there's always room at our table.</p>
-      <div class="hero-actions">
-        <a class="btn btn-primary" href="events.html">See what's happening</a>
-        <a class="btn btn-secondary" href="about.html">Get to know us</a>
+    <!-- ── What we do ───────────────────────────────────────── -->
+    <section class="strip" id="welcome">
+      <div class="container">
+        <div class="section-head center" data-reveal>
+          <span class="eyebrow eyebrow--center">What we do</span>
+          <h2>Three simple things, done with <span class="mark">care</span></h2>
+          <p class="lead">Everything we do grows from one belief: when people are fed
+             and inspired, whole communities flourish.</p>
+        </div>
+
+        <div class="grid grid-3" data-stagger="0.1">
+          <article class="card" data-accent="clay" data-reveal>
+            <div class="icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11h18"/><path d="M4 11a8 8 0 0 0 16 0"/><path d="M8.5 5c0 1-1 1.4-1 2.4M12 4.2c0 1-1 1.4-1 2.4M15.5 5c0 1-1 1.4-1 2.4"/></svg>
+            </div>
+            <h3>Nourish</h3>
+            <p>Warm, healthy meals and fresh groceries for families who need a little
+               extra &mdash; served with dignity, never with paperwork.</p>
+          </article>
+
+          <article class="card" data-accent="gold" data-reveal>
+            <div class="icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 6.5C10.4 5.1 7.9 4.6 4 5.1v13c3.9-.5 6.4 0 8 1.4 1.6-1.4 4.1-1.9 8-1.4v-13c-3.9-.5-6.4 0-8 1.4Z"/><path d="M12 6.5v13"/></svg>
+            </div>
+            <h3>Learn</h3>
+            <p>Free workshops, tutoring, and story hours that spark curiosity and
+               confidence in learners young and old.</p>
+          </article>
+
+          <article class="card" data-accent="sage" data-reveal>
+            <div class="icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3"/><path d="M3.5 20a5.5 5.5 0 0 1 11 0"/><path d="M16 5.2a3 3 0 0 1 0 5.8"/><path d="M17 14.4a5.5 5.5 0 0 1 3.5 5.6"/></svg>
+            </div>
+            <h3>Belong</h3>
+            <p>Gatherings and shared tables where neighbors become friends and everyone
+               has a place to call their own.</p>
+          </article>
+        </div>
       </div>
     </section>
 
-    <section class="section">
-      <h2>What we do together</h2>
-      <p class="lead">Everything we do grows from one simple belief: when people are
-         fed and inspired, whole communities flourish.</p>
-      <div class="card-grid">
-        <div class="card">
-          <div class="icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11h18"/><path d="M4 11a8 8 0 0 0 16 0"/><path d="M8.5 5c0 1-1 1.4-1 2.4M12 4.2c0 1-1 1.4-1 2.4M15.5 5c0 1-1 1.4-1 2.4"/></svg>
-          </div>
-          <h3>Nourish</h3>
-          <p>Warm, healthy meals and fresh groceries for families who need a
-             little extra &mdash; no questions, just kindness.</p>
+    <!-- ── The need, in numbers ─────────────────────────────── -->
+    <section class="strip strip--alt">
+      <div class="container">
+        <div class="section-head center" data-reveal>
+          <span class="eyebrow eyebrow--center">Why it matters</span>
+          <h2>The need is closer than you think</h2>
+          <p class="lead">Food insecurity isn't somewhere far away &mdash; it's on our
+             own block, in our own schools.</p>
         </div>
-        <div class="card">
-          <div class="icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 6.5C10.4 5.1 7.9 4.6 4 5.1v13c3.9-.5 6.4 0 8 1.4 1.6-1.4 4.1-1.9 8-1.4v-13c-3.9-.5-6.4 0-8 1.4Z"/><path d="M12 6.5v13"/></svg>
+
+        <div class="stats" data-stagger="0.08">
+          <div class="stat" data-accent="clay" data-reveal>
+            <span class="num" data-count="8.3" data-decimals="1" data-suffix="%">8.3%</span>
+            <span class="label">of Long Islanders faced food insecurity in 2023</span>
           </div>
-          <h3>Learn</h3>
-          <p>Free workshops, tutoring, and story hours that spark curiosity
-             and confidence in learners young and old.</p>
+          <div class="stat" data-accent="gold" data-reveal>
+            <span class="num" data-count="71500" data-suffix="+">71,500+</span>
+            <span class="label">children on Long Island face food insecurity</span>
+          </div>
+          <div class="stat" data-accent="sage" data-reveal>
+            <span class="num" data-count="2.2" data-decimals="1" data-suffix="M">2.2M</span>
+            <span class="label">New Yorkers experience food insecurity</span>
+          </div>
+          <div class="stat" data-accent="berry" data-reveal>
+            <span class="num" data-count="2.83" data-decimals="2" data-suffix="B">2.83B</span>
+            <span class="label">people worldwide can't afford a healthy diet</span>
+          </div>
         </div>
-        <div class="card">
-          <div class="icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3"/><path d="M3.5 20a5.5 5.5 0 0 1 11 0"/><path d="M16 5.2a3 3 0 0 1 0 5.8"/><path d="M17 14.4a5.5 5.5 0 0 1 3.5 5.6"/></svg>
+
+        <p class="lead" style="text-align:center; margin-top:2rem; font-size:0.92rem;" data-reveal>
+          <a class="link-arrow" href="mission.html#references">
+            See our sources
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg>
+          </a>
+        </p>
+      </div>
+    </section>
+
+    <!-- ── Mission preview ──────────────────────────────────── -->
+    <section class="strip">
+      <div class="container">
+        <div class="split" data-reveal>
+          <div class="art" role="img" aria-label="Illustration of a grocery bag with a heart">
+            <svg viewBox="0 0 120 120" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M32 52h56l-5 46a8 8 0 0 1-8 7H45a8 8 0 0 1-8-7L32 52Z"/><path d="M32 52l7-13h42l7 13"/><path d="M50 39v-6a10 10 0 0 1 20 0v6"/><path d="M60 94s-11-6.6-11-14.2a5.6 5.6 0 0 1 11-2 5.6 5.6 0 0 1 11 2C71 87.4 60 94 60 94Z"/></svg>
           </div>
-          <h3>Belong</h3>
-          <p>Gatherings and shared tables where neighbors become friends and
-             everyone has a place to call their own.</p>
+          <div>
+            <span class="eyebrow">Our mission</span>
+            <h2>Bridging the gap of inequality, one neighbor at a time</h2>
+            <p>Through community-led events and targeted fundraisers, we provide
+               nourishing meals and financial support to underserved and
+               underrepresented K&ndash;12 students and their families.</p>
+            <p>It's compassion turned into action, hunger turned into dignity, and
+               hope turned into lasting change.</p>
+            <div class="hero-actions" style="justify-content:flex-start; margin-top:1.6rem;">
+              <a class="btn btn-outline" href="mission.html">
+                Read our mission
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg>
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="section">
-      <div class="band">
-        <h2>Come be part of it</h2>
-        <p>Whether you have an hour, a skill, or just a warm smile to share,
-           there's a way for you to help. We'd love to meet you.</p>
-        <a class="btn btn-primary" href="contact.html">Say hello</a>
+    <!-- ── How to help ──────────────────────────────────────── -->
+    <section class="strip strip--alt">
+      <div class="container">
+        <div class="section-head center" data-reveal>
+          <span class="eyebrow eyebrow--center">Getting started</span>
+          <h2>Joining in is easy</h2>
+          <p class="lead">No experience needed &mdash; just a willingness to show up.</p>
+        </div>
+
+        <div class="steps" data-stagger="0.1">
+          <div class="step" data-reveal>
+            <h3>Say hello</h3>
+            <p>Send us a note about what you'd like to do. We reply to every message.</p>
+          </div>
+          <div class="step" data-reveal>
+            <h3>Find your fit</h3>
+            <p>Cook, tutor, drive, or lend a skill. We'll match you to something you'll enjoy.</p>
+          </div>
+          <div class="step" data-reveal>
+            <h3>Show up</h3>
+            <p>Come to a supper or a workshop. Bring a friend if you'd like the company.</p>
+          </div>
+          <div class="step" data-reveal>
+            <h3>Stay a while</h3>
+            <p>Most people come once and keep coming back. That's how this all started.</p>
+          </div>
+        </div>
       </div>
     </section>
+
+    <!-- ── Quote ────────────────────────────────────────────── -->
+    <section class="strip">
+      <div class="container mid">
+        <figure class="quote" data-reveal>
+          <blockquote>Nobody should have to choose between groceries and
+            everything else. A shared table is the simplest fix we know.</blockquote>
+          <figcaption>Catherine Liu &middot; Founder</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ── CTA ──────────────────────────────────────────────── -->
+    <section class="strip strip--tight">
+      <div class="container">
+        <div class="band" data-reveal>
+          <h2>Come be part of it</h2>
+          <p>Whether you have an hour, a skill, or just a warm smile to share, there's
+             a way for you to help. We'd love to meet you.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="contact.html">Say hello</a>
+            <a class="btn btn-ghost" href="partnership.html">Partner with us</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
   </main>
 
-  <footer>
-    <div class="footer-inner">
-      <div class="footer-brand">
-        <a class="logo" href="index.html">Nourish &amp; Knowledge</a>
-        <p>A friendly community nonprofit nourishing bodies and minds, one
-           neighbor at a time.</p>
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a class="brand" href="index.html">
+            <span class="brand-mark" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h18"/><path d="M4 12a8 8 0 0 0 16 0"/><path d="M12 8.5c0-3 2-5 5-5 0 3-2 5-5 5Z"/></svg>
+            </span>
+            Nourish <span class="brand-amp">&amp;</span> Knowledge
+          </a>
+          <p>A community nonprofit nourishing bodies and minds &mdash; one neighbor,
+             one meal, one lesson at a time.</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Explore</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="mission.html">Mission</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="events.html">Events</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Get involved</h4>
+          <ul>
+            <li><a href="contact.html">Volunteer</a></li>
+            <li><a href="partnership.html">Partner with us</a></li>
+            <li><a href="events.html">Attend an event</a></li>
+            <li><a href="contact.html">Contact us</a></li>
+          </ul>
+        </div>
       </div>
-      <nav class="footer-links" aria-label="Footer">
-        <a href="index.html">Home</a>
-        <a href="mission.html">Mission</a>
-        <a href="about.html">About</a>
-        <a href="events.html">Events</a>
-        <a href="partnership.html">Partnership</a>
-        <a href="contact.html">Contact</a>
-      </nav>
+
+      <div class="footer-bottom">
+        <span>&copy; 2026 Nourish &amp; Knowledge. All rights reserved.</span>
+        <span class="heart">
+          Made with
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 20.5s-7-4.5-9-8.7C1.3 8.5 3 5.5 6.2 5.5c2 0 3.2 1.2 4 2.2.8-1 2-2.2 4-2.2 3.2 0 4.9 3 3.2 6.3-2 4.2-9 8.7-9 8.7Z"/></svg>
+          by neighbors, for neighbors.
+        </span>
+      </div>
     </div>
-    <div class="copyright">&copy; 2026 Nourish &amp; Knowledge. All rights reserved.</div>
   </footer>
 
-  <script src="js/nav.js"></script>
+  <button class="to-top" type="button" aria-label="Back to top">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6"/></svg>
+  </button>
+
+  <script src="js/site.js"></script>
   <script type="module">
     import createGlobe from "./js/cobe.js";
 
     const canvas = document.getElementById("globe");
-    if (canvas) {
+    if (canvas && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
       let phi = 0;
       let width = 0;
       let pointerInteracting = null;
       let pointerInteractionMovement = 0;
       let r = 0;
       let lastTime = performance.now();
-      const SPIN_PER_MS = 0.00008; /* ~0.08 rad/sec, frame-rate independent */
+      const SPIN_PER_MS = 0.00007; /* frame-rate independent drift */
 
-      const onResize = () => {
-        width = canvas.offsetWidth;
-      };
+      const onResize = () => { width = canvas.offsetWidth; };
       window.addEventListener("resize", onResize);
       onResize();
 
-      const globe = createGlobe(canvas, {
+      createGlobe(canvas, {
         devicePixelRatio: 2,
         width: width * 2,
         height: width * 2,
         phi: 0,
         theta: 0.28,
         dark: 1,
-        diffuse: 1.2,
-        mapSamples: 16000,
-        mapBrightness: 6,
-        baseColor: [1, 1, 1],                 /* white continent dots */
-        markerColor: [0.788, 0.678, 0.655],   /* blush  #C9ADA7 */
-        glowColor: [0.36, 0.34, 0.48],        /* soft lavender rim glow */
+        diffuse: 1.6,
+        mapSamples: 18000,
+        mapBrightness: 9,
+        baseColor: [1, 0.95, 0.88],          /* warm cream continents */
+        markerColor: [0.96, 0.68, 0.22],     /* saffron marker */
+        glowColor: [0.55, 0.31, 0.22],       /* terracotta rim glow */
         markers: [
-          { location: [40.7128, -74.006], size: 0.05 }, /* New York only */
+          { location: [40.7128, -74.006], size: 0.05 }, /* New York */
         ],
         onRender: (state) => {
           const now = performance.now();
@@ -174,77 +378,7 @@
         if (e.touches[0]) updateMovement(e.touches[0].clientX);
       });
 
-      setTimeout(() => (canvas.style.opacity = "1"), 0);
-    }
-
-    /* ── Hero scroll choreography: globe lifts off, stars glisten in ── */
-    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const hero = document.querySelector(".hero");
-    const heroGlobe = document.querySelector(".hero-globe");
-    const heroContent = document.querySelector(".hero-content");
-    const starsEl = document.querySelector(".stars");
-
-    /* Build a twinkling starfield */
-    if (starsEl && !reduceMotion) {
-      const STAR_COUNT = 90;
-      const frag = document.createDocumentFragment();
-      for (let i = 0; i < STAR_COUNT; i++) {
-        const s = document.createElement("span");
-        s.className = "star";
-        const size = Math.random() * 2 + 1;
-        s.style.width = size + "px";
-        s.style.height = size + "px";
-        s.style.left = Math.random() * 100 + "%";
-        s.style.top = Math.random() * 92 + "%";
-        s.style.setProperty("--tw", (Math.random() * 3 + 2).toFixed(2) + "s");
-        s.style.setProperty("--td", (Math.random() * 4).toFixed(2) + "s");
-        frag.appendChild(s);
-      }
-      starsEl.appendChild(frag);
-    }
-
-    /* Let the hero entrance finish before scroll takes over its transform */
-    let heroAnimDone = false;
-    if (heroContent) {
-      heroContent.addEventListener("animationend", () => {
-        heroContent.style.animation = "none";
-        heroAnimDone = true;
-      });
-    }
-
-    if (hero && !reduceMotion) {
-      let ticking = false;
-      const applyScroll = () => {
-        ticking = false;
-        const y = window.scrollY || window.pageYOffset;
-        const h = hero.offsetHeight || 1;
-        const p = Math.min(Math.max(y / (h * 0.85), 0), 1); /* 0→1 across hero */
-
-        /* Globe rises faster than the page and lifts off the top, fading out */
-        if (heroGlobe) {
-          heroGlobe.style.transform =
-            "translateX(-50%) translateY(" + (-y * 0.55 - p * 160) + "px) scale(" + (1 + p * 0.14) + ")";
-          heroGlobe.style.opacity = String(Math.max(1 - p * 1.15, 0));
-        }
-        /* Stars glisten in as the globe departs, drifting up gently */
-        if (starsEl) {
-          starsEl.style.opacity = String(Math.min(p * 1.7, 1));
-          starsEl.style.transform = "translateY(" + (-y * 0.28) + "px)";
-        }
-        /* Headline drifts up and fades once the user starts scrolling */
-        if (heroContent && (y > 0 || heroAnimDone)) {
-          heroContent.style.animation = "none";
-          heroContent.style.transform = "translateY(" + (-y * 0.18) + "px)";
-          heroContent.style.opacity = String(Math.max(1 - p * 1.3, 0));
-        }
-      };
-      window.addEventListener("scroll", () => {
-        if (!ticking) {
-          ticking = true;
-          requestAnimationFrame(applyScroll);
-        }
-      }, { passive: true });
-      applyScroll();
+      requestAnimationFrame(() => { canvas.style.opacity = "1"; });
     }
   </script>
 </body>

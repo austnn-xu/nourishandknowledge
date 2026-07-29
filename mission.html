@@ -1,155 +1,294 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Our mission: bridging the gap of inequality through nourishing meals and support for underserved K–12 students and their families.">
+  <meta name="theme-color" content="#1d1411">
   <title>Mission &mdash; Nourish &amp; Knowledge</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..600&family=Plus+Jakarta+Sans:wght@400..800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%23d95f33'/%3E%3Cg fill='none' stroke='%23fff8ef' stroke-width='2.2' stroke-linecap='round'%3E%3Cpath d='M7 16h18'/%3E%3Cpath d='M8 16a8 8 0 0 0 16 0'/%3E%3Cpath d='M16 12c0-3 2-5 5-5 0 3-2 5-5 5Z'/%3E%3C/g%3E%3C/svg%3E">
+
+  <script>
+    try {
+      var t = localStorage.getItem('nk-theme');
+      if (t === 'dark' || (!t && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+    } catch (e) {}
+  </script>
 </head>
 <body>
 
-  <nav>
-    <a class="logo" href="index.html">Nourish <span>&amp;</span> Knowledge</a>
-    <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="mission.html">Mission</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="events.html">Events</a></li>
-      <li><a href="partnership.html">Partnership</a></li>
-      <li><a href="contact.html">Contact</a></li>
-    </ul>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="scroll-progress" aria-hidden="true"></div>
+
+  <nav class="site-nav" aria-label="Main">
+    <div class="container">
+      <a class="brand" href="index.html">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h18"/><path d="M4 12a8 8 0 0 0 16 0"/><path d="M12 8.5c0-3 2-5 5-5 0 3-2 5-5 5Z"/></svg>
+        </span>
+        Nourish <span class="brand-amp">&amp;</span> Knowledge
+      </a>
+
+      <div class="nav-panel" id="nav-panel">
+        <ul class="nav-menu">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="mission.html">Mission</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="events.html">Events</a></li>
+          <li><a href="partnership.html">Partnership</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <a class="btn btn-primary drawer-cta" href="contact.html">Get involved</a>
+      </div>
+
+      <div class="nav-actions">
+        <button class="icon-btn theme-toggle" type="button" data-theme-toggle aria-pressed="false" aria-label="Switch to dark theme">
+          <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8.2 8.2 0 0 1 9.5 4 8.5 8.5 0 1 0 20 14.5Z"/></svg>
+          <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2.2M12 19.3v2.2M4.2 4.2l1.6 1.6M18.2 18.2l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.2 19.8l1.6-1.6M18.2 5.8l1.6-1.6"/></svg>
+        </button>
+        <a class="btn btn-primary nav-cta" href="contact.html">Get involved</a>
+        <button class="icon-btn nav-toggle" type="button" aria-expanded="false" aria-controls="nav-panel" aria-label="Open menu">
+          <span class="bar" aria-hidden="true"></span>
+          <span class="bar" aria-hidden="true"></span>
+          <span class="bar" aria-hidden="true"></span>
+        </button>
+      </div>
+    </div>
   </nav>
 
-  <main>
-    <div class="page-head">
-      <h1>Mission Statement</h1>
-      <p>Bridging the gap of inequality &mdash; one meal, one family, one
-         neighbor at a time.</p>
-    </div>
+  <main id="main">
 
-    <section class="section">
-      <div class="mission-intro">
-        <div class="art" role="img" aria-label="A grocery bag with a heart">
-          <svg viewBox="0 0 120 120" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M32 52h56l-5 46a8 8 0 0 1-8 7H45a8 8 0 0 1-8-7L32 52Z"/><path d="M32 52l7-13h42l7 13"/><path d="M50 39v-6a10 10 0 0 1 20 0v6"/><path d="M60 94s-11-6.6-11-14.2a5.6 5.6 0 0 1 11-2 5.6 5.6 0 0 1 11 2C71 87.4 60 94 60 94Z"/></svg>
+    <header class="page-header">
+      <div class="container">
+        <span class="eyebrow eyebrow--center">Mission statement</span>
+        <h1>Bridging the gap of inequality</h1>
+        <p>One meal, one family, one neighbor at a time.</p>
+        <div class="header-links">
+          <a href="#mission">Our mission</a>
+          <a href="#numbers">The numbers</a>
+          <a href="#matters">Why it matters</a>
+          <a href="#references">References</a>
         </div>
-        <div>
-          <h2>Our Mission</h2>
-          <p>Nourish &amp; Knowledge is dedicated to bridging the gap of
-             inequality in our local community and beyond. Through community-led
-             events and targeted fundraisers, we provide nourishing meals and
-             financial support to underserved and underrepresented K&ndash;12
-             students and their families &mdash; transforming compassion into
-             action, hunger into dignity, and hope into lasting change.</p>
+      </div>
+    </header>
+
+    <!-- ── Mission ──────────────────────────────────────────── -->
+    <section class="strip" id="mission">
+      <div class="container">
+        <div class="split" data-reveal>
+          <div class="art" role="img" aria-label="Illustration of a grocery bag with a heart">
+            <svg viewBox="0 0 120 120" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M32 52h56l-5 46a8 8 0 0 1-8 7H45a8 8 0 0 1-8-7L32 52Z"/><path d="M32 52l7-13h42l7 13"/><path d="M50 39v-6a10 10 0 0 1 20 0v6"/><path d="M60 94s-11-6.6-11-14.2a5.6 5.6 0 0 1 11-2 5.6 5.6 0 0 1 11 2C71 87.4 60 94 60 94Z"/></svg>
+          </div>
+          <div>
+            <span class="eyebrow">What drives us</span>
+            <h2>Compassion, turned into action</h2>
+            <p>Nourish &amp; Knowledge is dedicated to bridging the gap of inequality in
+               our local community and beyond. Through community-led events and targeted
+               fundraisers, we provide nourishing meals and financial support to
+               underserved and underrepresented K&ndash;12 students and their families.</p>
+            <p>That means transforming compassion into action, hunger into dignity, and
+               hope into lasting change &mdash; not someday, but at this Friday's supper.</p>
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="section">
-      <h2>Why You Should Care</h2>
-      <p class="lead">Food insecurity is closer to home than most people
-         realize. Here's what the numbers tell us.</p>
-      <div class="card-grid">
-        <div class="card">
-          <div class="icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-6-5.2-6-10a6 6 0 0 1 12 0c0 4.8-6 10-6 10Z"/><circle cx="12" cy="11" r="2.4"/></svg>
-          </div>
-          <h3>Long Island, NY</h3>
-          <p class="stat"><strong>8.3%</strong> of Long Islanders (about 240,470
-             people) experienced food insecurity in 2023 &mdash; an increase from
-             7.7% the previous year.</p>
-          <p class="stat">Approximately <strong>71,500 children</strong> on Long
-             Island face food insecurity.</p>
+    <!-- ── Headline numbers ─────────────────────────────────── -->
+    <section class="strip strip--alt" id="numbers">
+      <div class="container">
+        <div class="section-head center" data-reveal>
+          <span class="eyebrow eyebrow--center">Why you should care</span>
+          <h2>Food insecurity is closer to home than most people realize</h2>
+          <p class="lead">Here's what the numbers tell us &mdash; from our own island
+             out to the rest of the world.</p>
         </div>
-        <div class="card">
-          <div class="icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21h18"/><path d="M6 21V8l5-3v16"/><path d="M11 21V10l7 3v8"/><path d="M8.3 10.5h.4M8.3 13.5h.4M8.3 16.5h.4M14 14.5h.4M14 17.5h.4"/></svg>
+
+        <div class="stats" data-stagger="0.08" style="margin-bottom: clamp(2rem, 4vw, 3rem);">
+          <div class="stat" data-accent="clay" data-reveal>
+            <span class="num" data-count="240470">240,470</span>
+            <span class="label">Long Islanders experienced food insecurity in 2023</span>
           </div>
-          <h3>New York State &amp; USA</h3>
-          <p class="stat">Over <strong>2.2 million</strong> New Yorkers
-             experience food insecurity.</p>
-          <p class="stat"><strong>13.5%</strong> of U.S. households (about 47
-             million people, including nearly 14 million children) were food
-             insecure in 2023 &mdash; the highest rate since 2014.</p>
-          <p class="stat"><strong>17.9%</strong> of households with children
-             faced food insecurity.</p>
-          <p class="stat"><strong>5.1%</strong> of U.S. households endure very
-             low food security, with disrupted eating patterns.</p>
+          <div class="stat" data-accent="gold" data-reveal>
+            <span class="num" data-count="71500">71,500</span>
+            <span class="label">Long Island children face food insecurity</span>
+          </div>
+          <div class="stat" data-accent="sage" data-reveal>
+            <span class="num" data-count="47" data-suffix="M">47M</span>
+            <span class="label">people in food-insecure U.S. households</span>
+          </div>
+          <div class="stat" data-accent="berry" data-reveal>
+            <span class="num" data-count="700" data-suffix="M">700M</span>
+            <span class="label">people face hunger every single day</span>
+          </div>
         </div>
-        <div class="card">
-          <div class="icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a14 14 0 0 1 0 18 14 14 0 0 1 0-18Z"/></svg>
-          </div>
-          <h3>Global Scale</h3>
-          <p class="stat">According to the UN, <strong>2.83 billion people</strong>
-             (35% of the global population) cannot afford a healthy diet.</p>
-          <p class="stat"><strong>700 million</strong> people face hunger daily.</p>
+
+        <div class="grid grid-3" data-stagger="0.1">
+          <article class="card" data-accent="clay" data-reveal>
+            <div class="icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-6-5.2-6-10a6 6 0 0 1 12 0c0 4.8-6 10-6 10Z"/><circle cx="12" cy="11" r="2.4"/></svg>
+            </div>
+            <h3>Long Island, NY</h3>
+            <ul class="facts">
+              <li><strong>8.3%</strong> of Long Islanders (about 240,470 people)
+                experienced food insecurity in 2023 &mdash; up from 7.7% the year before.</li>
+              <li>Approximately <strong>71,500 children</strong> on Long Island face
+                food insecurity.</li>
+            </ul>
+          </article>
+
+          <article class="card" data-accent="gold" data-reveal>
+            <div class="icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21h18"/><path d="M6 21V8l5-3v16"/><path d="M11 21V10l7 3v8"/><path d="M8.3 10.5h.4M8.3 13.5h.4M8.3 16.5h.4M14 14.5h.4M14 17.5h.4"/></svg>
+            </div>
+            <h3>New York &amp; the U.S.</h3>
+            <ul class="facts">
+              <li>Over <strong>2.2 million</strong> New Yorkers experience food insecurity.</li>
+              <li><strong>13.5%</strong> of U.S. households &mdash; about 47 million
+                people, including nearly 14 million children &mdash; were food insecure
+                in 2023, the highest rate since 2014.</li>
+              <li><strong>17.9%</strong> of households with children faced food insecurity.</li>
+              <li><strong>5.1%</strong> endure very low food security, with disrupted
+                eating patterns.</li>
+            </ul>
+          </article>
+
+          <article class="card" data-accent="sage" data-reveal>
+            <div class="icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a14 14 0 0 1 0 18 14 14 0 0 1 0-18Z"/></svg>
+            </div>
+            <h3>Global scale</h3>
+            <ul class="facts">
+              <li>According to the UN, <strong>2.83 billion people</strong> &mdash; 35%
+                of the global population &mdash; cannot afford a healthy diet.</li>
+              <li><strong>700 million</strong> people face hunger daily.</li>
+            </ul>
+          </article>
         </div>
       </div>
     </section>
 
-    <section class="section narrow prose">
-      <h2>Why This Matters</h2>
-      <p>Food insecurity jeopardizes physical health, educational outcomes, and
-         future economic stability. In affluent areas like Long Island &mdash;
-         where nearly 40% of struggling families make too much to qualify for
-         assistance &mdash; the needs are often overlooked.</p>
-      <p>Nourish &amp; Knowledge aims to address this crisis locally and
-         internationally &mdash; offering both immediate nourishment and building
-         long-term change.</p>
-    </section>
-
-    <section class="section narrow">
-      <h2>References</h2>
-      <ul class="references">
-        <li>Feeding America. (2023). <cite>Hunger in Suffolk and Nassau
-          Counties.</cite> Retrieved from
-          <a href="https://map.feedingamerica.org/" target="_blank" rel="noopener">https://map.feedingamerica.org/</a></li>
-        <li>Feeding America. (2024). <cite>The state of food insecurity in the
-          United States.</cite> Retrieved from
-          <a href="https://www.feedingamerica.org/research/map-the-meal-gap/overall-executive-summary" target="_blank" rel="noopener">https://www.feedingamerica.org/research/map-the-meal-gap/overall-executive-summary</a></li>
-        <li>Food and Agriculture Organization of the United Nations. (2023).
-          <cite>The State of Food Security and Nutrition in the World 2023.</cite>
-          FAO, IFAD, UNICEF, WFP, and WHO. Retrieved from
-          <a href="https://www.fao.org/publications/sofi/2023/en/" target="_blank" rel="noopener">https://www.fao.org/publications/sofi/2023/en/</a></li>
-        <li>Island Harvest. (2023). <cite>Facts about hunger on Long Island.</cite>
-          Retrieved from
-          <a href="https://www.islandharvest.org/learn-about-hunger/facts-about-hunger/" target="_blank" rel="noopener">https://www.islandharvest.org/learn-about-hunger/facts-about-hunger/</a></li>
-        <li>U.S. Department of Agriculture, Economic Research Service. (2024).
-          <cite>Household food security in the United States in 2023</cite>
-          (ERR-328). Retrieved from
-          <a href="https://www.ers.usda.gov/publications/pub-details/?pubid=107744" target="_blank" rel="noopener">https://www.ers.usda.gov/publications/pub-details/?pubid=107744</a></li>
-      </ul>
-    </section>
-
-    <section class="section">
-      <div class="band">
-        <h2>Turn compassion into action</h2>
-        <p>Every meal shared and every dollar raised helps a family in our
-           community. Join us and be part of the change.</p>
-        <a class="btn btn-primary" href="events.html">Get involved</a>
+    <!-- ── Why this matters ─────────────────────────────────── -->
+    <section class="strip" id="matters">
+      <div class="container narrow prose lede" data-reveal>
+        <span class="eyebrow">Why this matters</span>
+        <h2>Hunger doesn't stay in the kitchen</h2>
+        <p>Food insecurity jeopardizes physical health, educational outcomes, and
+           future economic stability. A child who comes to school hungry isn't only
+           missing a meal &mdash; they're missing the lesson, too.</p>
+        <p>In affluent areas like Long Island &mdash; where nearly 40% of struggling
+           families make too much to qualify for assistance &mdash; the needs are
+           often overlooked. Prosperity on paper hides a great deal of quiet
+           difficulty.</p>
+        <p>Nourish &amp; Knowledge aims to address this crisis locally and
+           internationally, offering both immediate nourishment and the kind of
+           steady support that builds long-term change.</p>
       </div>
     </section>
+
+    <!-- ── References ───────────────────────────────────────── -->
+    <section class="strip strip--alt" id="references">
+      <div class="container narrow">
+        <div class="section-head" data-reveal>
+          <span class="eyebrow">Sources</span>
+          <h2>References</h2>
+          <p class="lead">Every figure on this page comes from published research.</p>
+        </div>
+
+        <ul class="references" data-reveal>
+          <li>Feeding America. (2023). <cite>Hunger in Suffolk and Nassau Counties.</cite>
+            Retrieved from <a href="https://map.feedingamerica.org/" target="_blank" rel="noopener">map.feedingamerica.org</a></li>
+          <li>Feeding America. (2024). <cite>The state of food insecurity in the United
+            States.</cite> Retrieved from
+            <a href="https://www.feedingamerica.org/research/map-the-meal-gap/overall-executive-summary" target="_blank" rel="noopener">feedingamerica.org/research/map-the-meal-gap</a></li>
+          <li>Food and Agriculture Organization of the United Nations. (2023).
+            <cite>The State of Food Security and Nutrition in the World 2023.</cite>
+            FAO, IFAD, UNICEF, WFP, and WHO. Retrieved from
+            <a href="https://www.fao.org/publications/sofi/2023/en/" target="_blank" rel="noopener">fao.org/publications/sofi/2023</a></li>
+          <li>Island Harvest. (2023). <cite>Facts about hunger on Long Island.</cite>
+            Retrieved from
+            <a href="https://www.islandharvest.org/learn-about-hunger/facts-about-hunger/" target="_blank" rel="noopener">islandharvest.org/learn-about-hunger</a></li>
+          <li>U.S. Department of Agriculture, Economic Research Service. (2024).
+            <cite>Household food security in the United States in 2023</cite> (ERR-328).
+            Retrieved from
+            <a href="https://www.ers.usda.gov/publications/pub-details/?pubid=107744" target="_blank" rel="noopener">ers.usda.gov/publications</a></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ── CTA ──────────────────────────────────────────────── -->
+    <section class="strip strip--tight">
+      <div class="container">
+        <div class="band" data-reveal>
+          <h2>Turn compassion into action</h2>
+          <p>Every meal shared and every dollar raised helps a family in our community.
+             Join us and be part of the change.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="events.html">Get involved</a>
+            <a class="btn btn-ghost" href="contact.html">Ask us a question</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
   </main>
 
-  <footer>
-    <div class="footer-inner">
-      <div class="footer-brand">
-        <a class="logo" href="index.html">Nourish &amp; Knowledge</a>
-        <p>A friendly community nonprofit nourishing bodies and minds, one
-           neighbor at a time.</p>
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a class="brand" href="index.html">
+            <span class="brand-mark" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h18"/><path d="M4 12a8 8 0 0 0 16 0"/><path d="M12 8.5c0-3 2-5 5-5 0 3-2 5-5 5Z"/></svg>
+            </span>
+            Nourish <span class="brand-amp">&amp;</span> Knowledge
+          </a>
+          <p>A community nonprofit nourishing bodies and minds &mdash; one neighbor,
+             one meal, one lesson at a time.</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Explore</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="mission.html">Mission</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="events.html">Events</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Get involved</h4>
+          <ul>
+            <li><a href="contact.html">Volunteer</a></li>
+            <li><a href="partnership.html">Partner with us</a></li>
+            <li><a href="events.html">Attend an event</a></li>
+            <li><a href="contact.html">Contact us</a></li>
+          </ul>
+        </div>
       </div>
-      <nav class="footer-links" aria-label="Footer">
-        <a href="index.html">Home</a>
-        <a href="mission.html">Mission</a>
-        <a href="about.html">About</a>
-        <a href="events.html">Events</a>
-        <a href="partnership.html">Partnership</a>
-        <a href="contact.html">Contact</a>
-      </nav>
+
+      <div class="footer-bottom">
+        <span>&copy; 2026 Nourish &amp; Knowledge. All rights reserved.</span>
+        <span class="heart">
+          Made with
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 20.5s-7-4.5-9-8.7C1.3 8.5 3 5.5 6.2 5.5c2 0 3.2 1.2 4 2.2.8-1 2-2.2 4-2.2 3.2 0 4.9 3 3.2 6.3-2 4.2-9 8.7-9 8.7Z"/></svg>
+          by neighbors, for neighbors.
+        </span>
+      </div>
     </div>
-    <div class="copyright">&copy; 2026 Nourish &amp; Knowledge. All rights reserved.</div>
   </footer>
 
-  <script src="js/nav.js"></script>
+  <button class="to-top" type="button" aria-label="Back to top">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6"/></svg>
+  </button>
+
+  <script src="js/site.js"></script>
 </body>
 </html>

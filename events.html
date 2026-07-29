@@ -1,92 +1,326 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Community suppers, story hours, and cooking workshops — everyone is invited to a Nourish &amp; Knowledge gathering.">
+  <meta name="theme-color" content="#1d1411">
   <title>Events &mdash; Nourish &amp; Knowledge</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..600&family=Plus+Jakarta+Sans:wght@400..800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%23d95f33'/%3E%3Cg fill='none' stroke='%23fff8ef' stroke-width='2.2' stroke-linecap='round'%3E%3Cpath d='M7 16h18'/%3E%3Cpath d='M8 16a8 8 0 0 0 16 0'/%3E%3Cpath d='M16 12c0-3 2-5 5-5 0 3-2 5-5 5Z'/%3E%3C/g%3E%3C/svg%3E">
+
+  <script>
+    try {
+      var t = localStorage.getItem('nk-theme');
+      if (t === 'dark' || (!t && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+    } catch (e) {}
+  </script>
 </head>
 <body>
 
-  <nav>
-    <a class="logo" href="index.html">Nourish <span>&amp;</span> Knowledge</a>
-    <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="mission.html">Mission</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="events.html">Events</a></li>
-      <li><a href="partnership.html">Partnership</a></li>
-      <li><a href="contact.html">Contact</a></li>
-    </ul>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="scroll-progress" aria-hidden="true"></div>
+
+  <nav class="site-nav" aria-label="Main">
+    <div class="container">
+      <a class="brand" href="index.html">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h18"/><path d="M4 12a8 8 0 0 0 16 0"/><path d="M12 8.5c0-3 2-5 5-5 0 3-2 5-5 5Z"/></svg>
+        </span>
+        Nourish <span class="brand-amp">&amp;</span> Knowledge
+      </a>
+
+      <div class="nav-panel" id="nav-panel">
+        <ul class="nav-menu">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="mission.html">Mission</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="events.html">Events</a></li>
+          <li><a href="partnership.html">Partnership</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <a class="btn btn-primary drawer-cta" href="contact.html">Get involved</a>
+      </div>
+
+      <div class="nav-actions">
+        <button class="icon-btn theme-toggle" type="button" data-theme-toggle aria-pressed="false" aria-label="Switch to dark theme">
+          <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8.2 8.2 0 0 1 9.5 4 8.5 8.5 0 1 0 20 14.5Z"/></svg>
+          <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2.2M12 19.3v2.2M4.2 4.2l1.6 1.6M18.2 18.2l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.2 19.8l1.6-1.6M18.2 5.8l1.6-1.6"/></svg>
+        </button>
+        <a class="btn btn-primary nav-cta" href="contact.html">Get involved</a>
+        <button class="icon-btn nav-toggle" type="button" aria-expanded="false" aria-controls="nav-panel" aria-label="Open menu">
+          <span class="bar" aria-hidden="true"></span>
+          <span class="bar" aria-hidden="true"></span>
+          <span class="bar" aria-hidden="true"></span>
+        </button>
+      </div>
+    </div>
   </nav>
 
-  <main>
-    <div class="page-head">
-      <h1>Events</h1>
-      <p>There's always something warm and welcoming on the calendar. Come join us!</p>
-    </div>
+  <main id="main">
 
-    <section class="section">
-      <h2>What's coming up</h2>
-      <p class="lead">Everyone's invited &mdash; bring a friend, bring your
-         appetite, bring your curiosity.</p>
-      <div class="card-grid">
-        <div class="card">
-          <div class="icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11h18"/><path d="M4 11a8 8 0 0 0 16 0"/><path d="M8.5 5c0 1-1 1.4-1 2.4M12 4.2c0 1-1 1.4-1 2.4M15.5 5c0 1-1 1.4-1 2.4"/></svg>
-          </div>
-          <h3>Community Supper</h3>
-          <p>A free, home-cooked meal and good conversation. Every Friday
-             evening &mdash; no RSVP needed.</p>
+    <header class="page-header">
+      <div class="container">
+        <span class="eyebrow eyebrow--center">Events</span>
+        <h1>There's always a chair free</h1>
+        <p>Something warm and welcoming is always on the calendar. Bring a friend,
+           bring your appetite, bring your curiosity.</p>
+        <div class="header-links">
+          <a href="#regular">Regular gatherings</a>
+          <a href="#expect">What to expect</a>
+          <a href="#updates">Get updates</a>
         </div>
-        <div class="card">
-          <div class="icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 6.5C10.4 5.1 7.9 4.6 4 5.1v13c3.9-.5 6.4 0 8 1.4 1.6-1.4 4.1-1.9 8-1.4v-13c-3.9-.5-6.4 0-8 1.4Z"/><path d="M12 6.5v13"/></svg>
-          </div>
-          <h3>Story &amp; Snack Hour</h3>
-          <p>Read-alouds, crafts, and treats for little ones and their grown-ups.
-             Saturday mornings.</p>
+      </div>
+    </header>
+
+    <!-- ── Regular gatherings ───────────────────────────────── -->
+    <section class="strip" id="regular">
+      <div class="container">
+        <div class="section-head center" data-reveal>
+          <span class="eyebrow eyebrow--center">On the calendar</span>
+          <h2>Our regular gatherings</h2>
+          <p class="lead">Everyone's invited &mdash; these run on a rhythm, so you can
+             drop in whenever it suits you.</p>
         </div>
-        <div class="card">
-          <div class="icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.5 13.5a3.5 3.5 0 1 1 1.2-6.8 4 4 0 0 1 8.6 0 3.5 3.5 0 1 1 1.2 6.8Z"/><path d="M7 13.5V18h10v-4.5"/><path d="M8.5 18v-2M12 18v-2M15.5 18v-2"/></svg>
-          </div>
-          <h3>Cook &amp; Learn</h3>
-          <p>Hands-on cooking workshops where we make a meal and take the recipe
-             home. Monthly.</p>
+
+        <div class="grid grid-3" data-stagger="0.1">
+          <article class="card" data-accent="clay" data-reveal>
+            <div class="card-head">
+              <div class="icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11h18"/><path d="M4 11a8 8 0 0 0 16 0"/><path d="M8.5 5c0 1-1 1.4-1 2.4M12 4.2c0 1-1 1.4-1 2.4M15.5 5c0 1-1 1.4-1 2.4"/></svg>
+              </div>
+              <span class="chip">Weekly</span>
+            </div>
+            <h3>Community Supper</h3>
+            <p>A free, home-cooked meal and good conversation. Come hungry, leave full,
+               stay as long as you like.</p>
+            <div class="card-foot">
+              <span class="card-meta">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5.2l3.2 1.9"/></svg>
+                Friday evenings
+              </span>
+              <span class="card-meta">No RSVP needed</span>
+            </div>
+          </article>
+
+          <article class="card" data-accent="gold" data-reveal>
+            <div class="card-head">
+              <div class="icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 6.5C10.4 5.1 7.9 4.6 4 5.1v13c3.9-.5 6.4 0 8 1.4 1.6-1.4 4.1-1.9 8-1.4v-13c-3.9-.5-6.4 0-8 1.4Z"/><path d="M12 6.5v13"/></svg>
+              </div>
+              <span class="chip">Weekly</span>
+            </div>
+            <h3>Story &amp; Snack Hour</h3>
+            <p>Read-alouds, crafts, and treats for little ones and their grown-ups.
+               Wonderfully noisy, in the best way.</p>
+            <div class="card-foot">
+              <span class="card-meta">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5.2l3.2 1.9"/></svg>
+                Saturday mornings
+              </span>
+              <span class="card-meta">Ages 3&ndash;10</span>
+            </div>
+          </article>
+
+          <article class="card" data-accent="sage" data-reveal>
+            <div class="card-head">
+              <div class="icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.5 13.5a3.5 3.5 0 1 1 1.2-6.8 4 4 0 0 1 8.6 0 3.5 3.5 0 1 1 1.2 6.8Z"/><path d="M7 13.5V18h10v-4.5"/><path d="M8.5 18v-2M12 18v-2M15.5 18v-2"/></svg>
+              </div>
+              <span class="chip">Monthly</span>
+            </div>
+            <h3>Cook &amp; Learn</h3>
+            <p>Hands-on cooking workshops where we make a meal together and everyone
+               takes the recipe home.</p>
+            <div class="card-foot">
+              <span class="card-meta">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5.2l3.2 1.9"/></svg>
+                Once a month
+              </span>
+              <a class="link-arrow" href="contact.html">
+                Save a spot
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg>
+              </a>
+            </div>
+          </article>
         </div>
       </div>
     </section>
 
-    <section class="section">
-      <div class="band">
-        <h2>Want the latest?</h2>
-        <p>We'll be adding dates and details here soon. In the meantime, reach
-           out and we'll make sure you never miss a gathering.</p>
-        <a class="btn btn-primary" href="contact.html">Keep me posted</a>
+    <!-- ── What to expect ───────────────────────────────────── -->
+    <section class="strip strip--alt" id="expect">
+      <div class="container narrow">
+        <div class="section-head" data-reveal>
+          <span class="eyebrow">Before you come</span>
+          <h2>What to expect</h2>
+          <p class="lead">First time? Here's everything you might be wondering about.</p>
+        </div>
+
+        <div class="accordion" data-exclusive data-reveal>
+          <div class="acc-item">
+            <button class="acc-trigger" type="button" aria-expanded="false" aria-controls="ev-1" id="ev-1-btn">
+              Do I need to sign up or bring anything?
+              <span class="plus" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+              </span>
+            </button>
+            <div class="acc-panel" id="ev-1" role="region" aria-labelledby="ev-1-btn">
+              <div class="acc-panel-inner">
+                Not for our suppers or story hours &mdash; just show up. Cook &amp; Learn
+                workshops have limited space, so a quick note ahead of time helps us plan
+                ingredients. You never need to bring anything but yourself.
+              </div>
+            </div>
+          </div>
+
+          <div class="acc-item">
+            <button class="acc-trigger" type="button" aria-expanded="false" aria-controls="ev-2" id="ev-2-btn">
+              Is there a cost?
+              <span class="plus" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+              </span>
+            </button>
+            <div class="acc-panel" id="ev-2" role="region" aria-labelledby="ev-2-btn">
+              <div class="acc-panel-inner">
+                No. Everything we host is free, and there's no income check, no form, and
+                no questions asked. If you'd like to give something back later, wonderful
+                &mdash; but it's never expected.
+              </div>
+            </div>
+          </div>
+
+          <div class="acc-item">
+            <button class="acc-trigger" type="button" aria-expanded="false" aria-controls="ev-3" id="ev-3-btn">
+              Can I bring my kids?
+              <span class="plus" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+              </span>
+            </button>
+            <div class="acc-panel" id="ev-3" role="region" aria-labelledby="ev-3-btn">
+              <div class="acc-panel-inner">
+                Please do. Our tables are built for families, and Story &amp; Snack Hour
+                exists precisely so younger neighbors have something of their own.
+              </div>
+            </div>
+          </div>
+
+          <div class="acc-item">
+            <button class="acc-trigger" type="button" aria-expanded="false" aria-controls="ev-4" id="ev-4-btn">
+              What about dietary needs?
+              <span class="plus" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+              </span>
+            </button>
+            <div class="acc-panel" id="ev-4" role="region" aria-labelledby="ev-4-btn">
+              <div class="acc-panel-inner">
+                Tell us in advance and we'll do our best to accommodate allergies and
+                dietary restrictions. There's usually a vegetarian option on the table.
+              </div>
+            </div>
+          </div>
+
+          <div class="acc-item">
+            <button class="acc-trigger" type="button" aria-expanded="false" aria-controls="ev-5" id="ev-5-btn">
+              I'd rather help than eat &mdash; can I volunteer?
+              <span class="plus" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+              </span>
+            </button>
+            <div class="acc-panel" id="ev-5" role="region" aria-labelledby="ev-5-btn">
+              <div class="acc-panel-inner">
+                Absolutely &mdash; we always need hands for prep, serving, reading, and
+                clean-up. <a class="email-link" href="contact.html">Send us a note</a> and
+                we'll find you a spot that fits your schedule.
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
+
+    <!-- ── Updates ──────────────────────────────────────────── -->
+    <section class="strip strip--tight" id="updates">
+      <div class="container">
+        <div class="band" data-reveal>
+          <h2>Never miss a gathering</h2>
+          <p>Dates and details for upcoming events land here first. Leave your email and
+             we'll make sure you hear about them.</p>
+
+          <form class="subscribe" data-mail-form
+                data-mail-to="catherineqqliu15@gmail.com"
+                data-mail-subject="Please keep me posted about events"
+                data-mail-body="I'd love to hear about upcoming Nourish &amp; Knowledge events.">
+            <label class="sr-only" for="sub-email">Your email address</label>
+            <input id="sub-email" name="email" type="email" required placeholder="you@example.com" autocomplete="email">
+            <button class="btn btn-gold" type="submit">Keep me posted</button>
+          </form>
+
+          <p class="form-status">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+            Thanks! Your email app should be opening &mdash; just hit send and you're on the list.
+          </p>
+        </div>
+      </div>
+    </section>
+
   </main>
 
-  <footer>
-    <div class="footer-inner">
-      <div class="footer-brand">
-        <a class="logo" href="index.html">Nourish &amp; Knowledge</a>
-        <p>A friendly community nonprofit nourishing bodies and minds, one
-           neighbor at a time.</p>
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a class="brand" href="index.html">
+            <span class="brand-mark" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h18"/><path d="M4 12a8 8 0 0 0 16 0"/><path d="M12 8.5c0-3 2-5 5-5 0 3-2 5-5 5Z"/></svg>
+            </span>
+            Nourish <span class="brand-amp">&amp;</span> Knowledge
+          </a>
+          <p>A community nonprofit nourishing bodies and minds &mdash; one neighbor,
+             one meal, one lesson at a time.</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Explore</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="mission.html">Mission</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="events.html">Events</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Get involved</h4>
+          <ul>
+            <li><a href="contact.html">Volunteer</a></li>
+            <li><a href="partnership.html">Partner with us</a></li>
+            <li><a href="events.html">Attend an event</a></li>
+            <li><a href="contact.html">Contact us</a></li>
+          </ul>
+        </div>
       </div>
-      <nav class="footer-links" aria-label="Footer">
-        <a href="index.html">Home</a>
-        <a href="mission.html">Mission</a>
-        <a href="about.html">About</a>
-        <a href="events.html">Events</a>
-        <a href="partnership.html">Partnership</a>
-        <a href="contact.html">Contact</a>
-      </nav>
+
+      <div class="footer-bottom">
+        <span>&copy; 2026 Nourish &amp; Knowledge. All rights reserved.</span>
+        <span class="heart">
+          Made with
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 20.5s-7-4.5-9-8.7C1.3 8.5 3 5.5 6.2 5.5c2 0 3.2 1.2 4 2.2.8-1 2-2.2 4-2.2 3.2 0 4.9 3 3.2 6.3-2 4.2-9 8.7-9 8.7Z"/></svg>
+          by neighbors, for neighbors.
+        </span>
+      </div>
     </div>
-    <div class="copyright">&copy; 2026 Nourish &amp; Knowledge. All rights reserved.</div>
   </footer>
 
-  <script src="js/nav.js"></script>
+  <button class="to-top" type="button" aria-label="Back to top">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6"/></svg>
+  </button>
+
+  <script src="js/site.js"></script>
 </body>
 </html>
