@@ -54,9 +54,9 @@ h1, h2, h3 {
 
 /* ── Navbar ── */
 nav {
-  background: rgba(242, 233, 228, 0.85);
+  background: rgba(34, 34, 59, 0.92);
   backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba(154, 140, 152, 0.25);
+  border-bottom: 1px solid rgba(154, 140, 152, 0.35);
   padding: 0 2rem;
   display: flex;
   align-items: center;
@@ -69,7 +69,7 @@ nav {
 
 nav .logo {
   font-family: 'Fraunces', serif;
-  color: var(--indigo);
+  color: var(--cream);
   font-size: 1.35rem;
   font-weight: 600;
   padding: 1.1rem 0;
@@ -78,7 +78,7 @@ nav .logo {
 }
 
 nav .logo span {
-  color: var(--plum);
+  color: var(--blush);
 }
 
 nav ul {
@@ -101,7 +101,7 @@ nav ul li {
 }
 
 nav ul li a {
-  color: var(--mauve);
+  color: rgba(242, 233, 228, 0.82);
   font-weight: 600;
   font-size: 0.95rem;
   text-decoration: none;
@@ -112,13 +112,13 @@ nav ul li a {
 }
 
 nav ul li a:hover {
-  background: rgba(201, 173, 167, 0.35);
-  color: var(--indigo);
+  background: rgba(242, 233, 228, 0.14);
+  color: var(--cream);
 }
 
 nav ul li a.active {
-  background: var(--mauve);
-  color: var(--cream);
+  background: var(--cream);
+  color: var(--indigo);
 }
 
 /* ── Hero ── */
