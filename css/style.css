@@ -379,6 +379,78 @@ main {
   }
 }
 
+/* ── Meet the team ── */
+.team {
+  display: flex;
+  flex-direction: column;
+  gap: 3.5rem;
+}
+
+.team-member {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+.team-member:nth-child(even) .team-art {
+  order: 2;
+}
+
+.team-art {
+  aspect-ratio: 1 / 1;
+  border-radius: var(--radius-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--cream);
+  box-shadow: var(--shadow-soft);
+  background: linear-gradient(150deg, var(--blush), var(--plum));
+}
+
+.team-member:nth-child(2n) .team-art {
+  background: linear-gradient(150deg, var(--plum), var(--mauve));
+}
+
+.team-art svg {
+  width: 38%;
+  height: auto;
+}
+
+.team-bio .role {
+  display: inline-block;
+  font-weight: 700;
+  font-size: 0.75rem;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: var(--plum);
+  margin-bottom: 0.5rem;
+}
+
+.team-bio h3 {
+  font-size: 1.7rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+
+.team-bio p {
+  color: var(--ink-soft);
+  font-size: 1.02rem;
+}
+
+@media (max-width: 720px) {
+  .team-member {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+  .team-member:nth-child(even) .team-art {
+    order: 0;
+  }
+  .team-art {
+    max-width: 320px;
+  }
+}
+
 /* ── Stat cards ── */
 .stat {
   color: var(--ink-soft);
