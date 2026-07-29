@@ -23,14 +23,13 @@
   <main>
     <section class="hero">
       <div class="hero-content">
-        <span class="eyebrow">Welcome, friend</span>
         <h1>You can make<br>an impact.</h1>
       </div>
       <div class="hero-globe">
         <canvas id="globe" aria-hidden="true"></canvas>
       </div>
       <a class="scroll-cue" href="#welcome" aria-label="Scroll down">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 10l5 5 5-5"/></svg>
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 10l5 5 5-5"/></svg>
       </a>
     </section>
 
@@ -137,15 +136,7 @@
         markerColor: [0.133, 0.133, 0.231],   /* indigo #22223B */
         glowColor: [0.788, 0.678, 0.655],     /* blush  #C9ADA7 */
         markers: [
-          { location: [14.5995, 120.9842], size: 0.03 },
-          { location: [19.076, 72.8777], size: 0.06 },
-          { location: [23.8103, 90.4125], size: 0.04 },
-          { location: [30.0444, 31.2357], size: 0.05 },
-          { location: [39.9042, 116.4074], size: 0.06 },
-          { location: [-23.5505, -46.6333], size: 0.06 },
-          { location: [34.6937, 135.5022], size: 0.04 },
-          { location: [41.0082, 28.9784], size: 0.04 },
-          { location: [40.7128, -74.006], size: 0.045 }, /* New York */
+          { location: [40.7128, -74.006], size: 0.05 }, /* New York only */
         ],
         onRender: (state) => {
           if (!pointerInteracting) phi += 0.0025;

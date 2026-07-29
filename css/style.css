@@ -145,21 +145,24 @@ nav ul li a.active {
 }
 
 .hero h1 {
-  font-size: clamp(3.2rem, 11vw, 8rem);
+  font-size: clamp(3.4rem, 12vw, 8.5rem);
   font-weight: 600;
   line-height: 1.02;
   letter-spacing: -0.5px;
   max-width: none;
-  margin: 1rem 0 0;
+  margin: 0;
+  text-shadow:
+    0 0 24px rgba(242, 233, 228, 0.95),
+    0 0 48px rgba(242, 233, 228, 0.85);
 }
 
 /* ── Spinning globe ── */
 .hero-globe {
   position: absolute;
   left: 50%;
-  top: clamp(13rem, 29vh, 23rem);
+  top: clamp(9rem, 21vh, 17rem);
   transform: translateX(-50%);
-  width: min(1180px, 172vw);
+  width: min(1500px, 205vw);
   aspect-ratio: 1 / 1;
   z-index: 1;
 }
@@ -226,8 +229,8 @@ nav ul li a.active {
 
 @media (max-width: 600px) {
   .hero-globe {
-    top: clamp(11rem, 30vh, 18rem);
-    width: 150vw;
+    top: clamp(8rem, 22vh, 14rem);
+    width: 180vw;
   }
 }
 
