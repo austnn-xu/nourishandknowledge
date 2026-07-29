@@ -264,8 +264,13 @@ main {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.5rem;
+  color: var(--cream);
   margin-bottom: 1.1rem;
+}
+
+.icon svg {
+  width: 26px;
+  height: 26px;
 }
 
 .card h3 {
@@ -325,8 +330,13 @@ main {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 4rem;
+  color: var(--cream);
   box-shadow: var(--shadow-soft);
+}
+
+.mission-intro .art svg {
+  width: 46%;
+  height: auto;
 }
 
 .mission-intro h2 {
