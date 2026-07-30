@@ -1,31 +1,44 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Partnership &middot; Nourish &amp; Knowledge</title>
-  <meta name="description" content="Ways local businesses, schools, and organizations can work with Nourish &amp; Knowledge.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Partner with Nourish and Knowledge. Local businesses, schools, and community organizations working together to feed and teach neighbors.">
+  <meta name="theme-color" content="#1d1411">
+  <title>Partnership | Nourish &amp; Knowledge</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..600&family=Plus+Jakarta+Sans:wght@400..800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%23d95f33'/%3E%3Cg fill='none' stroke='%23fff8ef' stroke-width='2.2' stroke-linecap='round'%3E%3Cpath d='M7 16h18'/%3E%3Cpath d='M8 16a8 8 0 0 0 16 0'/%3E%3Cpath d='M16 12c0-3 2-5 5-5 0 3-2 5-5 5Z'/%3E%3C/g%3E%3C/svg%3E">
+
+  <script>
+    // Set before first paint so the page does not flash the wrong theme.
+    try {
+      var t = localStorage.getItem('nk-theme');
+      if (t === 'dark' || (!t && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+    } catch (e) {}
+  </script>
 </head>
 <body>
 
   <a class="skip-link" href="#main">Skip to content</a>
+  <div class="scroll-progress" aria-hidden="true"></div>
 
-  <header class="site-head">
-    <div class="head-inner">
-      <a class="logo" href="index.html">
-        <span class="logo-mark" aria-hidden="true">
-          <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M4 16a12 12 0 0 0 24 0Z"/>
-            <path d="M2 16h28"/>
-            <path d="M11 11c2-2-2-4 0-6M16 10c2-2-2-4 0-6M21 11c2-2-2-4 0-6"/>
-          </svg>
+  <nav class="site-nav" aria-label="Main">
+    <div class="container">
+      <a class="brand" href="index.html">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h18"/><path d="M4 12a8 8 0 0 0 16 0"/><path d="M12 8.5c0-3 2-5 5-5 0 3-2 5-5 5Z"/></svg>
         </span>
-        <span class="logo-text">Nourish <em>&amp;</em> Knowledge</span>
+        Nourish <span class="brand-amp">&amp;</span> Knowledge
       </a>
-      <nav class="site-nav" id="primary-nav" aria-label="Primary">
-        <ul>
+
+      <div class="nav-panel" id="nav-panel">
+        <ul class="nav-menu">
           <li><a href="index.html">Home</a></li>
           <li><a href="mission.html">Mission</a></li>
           <li><a href="about.html">About</a></li>
@@ -33,200 +46,243 @@
           <li><a href="partnership.html">Partnership</a></li>
           <li><a href="contact.html">Contact</a></li>
         </ul>
-      </nav>
-      <button class="nav-toggle" type="button" aria-label="Toggle menu" aria-expanded="false" aria-controls="primary-nav">
-        <span></span><span></span><span></span>
-      </button>
+        <a class="btn btn-primary drawer-cta" href="contact.html">Get involved</a>
+      </div>
+
+      <div class="nav-actions">
+        <button class="icon-btn theme-toggle" type="button" data-theme-toggle aria-pressed="false" aria-label="Switch to dark theme">
+          <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8.2 8.2 0 0 1 9.5 4 8.5 8.5 0 1 0 20 14.5Z"/></svg>
+          <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2.2M12 19.3v2.2M4.2 4.2l1.6 1.6M18.2 18.2l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.2 19.8l1.6-1.6M18.2 5.8l1.6-1.6"/></svg>
+        </button>
+        <a class="btn btn-primary nav-cta" href="contact.html">Get involved</a>
+        <button class="icon-btn nav-toggle" type="button" aria-expanded="false" aria-controls="nav-panel" aria-label="Open menu">
+          <span class="bar" aria-hidden="true"></span>
+          <span class="bar" aria-hidden="true"></span>
+          <span class="bar" aria-hidden="true"></span>
+        </button>
+      </div>
     </div>
-    <span class="progress" aria-hidden="true"></span>
-  </header>
+  </nav>
 
   <main id="main">
 
-    <div class="page-head">
-      <p class="eyebrow">Partnership</p>
-      <h1>Better with other people at the table</h1>
-      <p>Ingredients, space, expertise, and reach. Partners supply the things we
-        cannot cook up on our own.</p>
-      <div class="page-head-art" aria-hidden="true">
-        <svg viewBox="0 0 120 120" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-          <g class="slow-spin">
-            <circle cx="60" cy="60" r="52" stroke-dasharray="2 10"/>
-          </g>
-          <circle cx="44" cy="60" r="26"/>
-          <circle cx="76" cy="60" r="26"/>
-          <circle cx="44" cy="60" r="9"/>
-          <circle cx="76" cy="60" r="9"/>
-        </svg>
-      </div>
-    </div>
-
-    <section class="section tight">
-      <div class="split">
-        <div class="split-art" aria-hidden="true">
-          <svg viewBox="0 0 120 120" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M22 44l7-20h62l7 20"/>
-            <path d="M25 44v52h70V44"/>
-            <path d="M22 44c0 6 5 10 11 10s11-4 11-10c0 6 5 10 11 10s11-4 11-10c0 6 5 10 11 10s11-4 11-10c0 6 5 10 11 10"/>
-            <path d="M48 96V72h24v24"/>
-          </svg>
+    <header class="page-header">
+      <div class="container">
+        <h1>Partnership</h1>
+        <p>Wonderful things happen when we team up. Let's grow something good together.</p>
+        <div class="header-links">
+          <a href="#ways">Ways to partner</a>
+          <a href="#how">How it works</a>
+          <a href="#faq">Questions</a>
         </div>
-        <div>
-          <p class="eyebrow">Why it works</p>
-          <h2 class="mask">One kitchen, many hands</h2>
-          <p>A restaurant with surplus produce, a school with a free gymnasium on
-            Saturdays, a company with forty people looking for something useful
-            to do. Each one turns into meals faster than a fundraiser does.</p>
-          <p>We keep partnerships small, specific, and easy to say yes to. Tell
-            us what you have and we will tell you exactly where it lands.</p>
+      </div>
+    </header>
+
+    <section class="strip" id="ways">
+      <div class="container">
+        <div class="section-head center" data-reveal>
+          <span class="eyebrow eyebrow--center">Ways to work together</span>
+          <h2>There's a place for you here</h2>
+          <p class="lead">Whether you're a local business, a school, or a fellow
+             organization, partnership starts with a conversation.</p>
+        </div>
+
+        <div class="grid grid-3" data-stagger="0.1">
+          <article class="card" data-accent="clay" data-reveal>
+            <div class="icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9l1.3-4h13.4L20 9"/><path d="M4.5 9v10h15V9"/><path d="M4 9c0 1.2 1 2 2.2 2S8.4 10.2 8.4 9c0 1.2 1 2 2.2 2S12.8 10.2 12.8 9c0 1.2 1 2 2.2 2S17.2 10.2 17.2 9c0 1.2 1 2 2.2 2S20 10.2 20 9"/><path d="M9.5 19v-4.5h5V19"/></svg>
+            </div>
+            <h3>Local Businesses</h3>
+            <p>Share ingredients, space, or a helping hand and become an everyday hero
+               for your neighbors.</p>
+          </article>
+
+          <article class="card" data-accent="sage" data-reveal>
+            <div class="icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4 2.5 8.5 12 13l9.5-4.5L12 4Z"/><path d="M6.5 10.8V15c0 1.4 2.5 2.8 5.5 2.8s5.5-1.4 5.5-2.8v-4.2"/><path d="M21.5 8.5V14"/></svg>
+            </div>
+            <h3>Schools &amp; Groups</h3>
+            <p>Bring learning and nourishment to more families through programs we build
+               side by side.</p>
+          </article>
+
+          <article class="card" data-accent="berry" data-reveal>
+            <div class="icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3.5l2.6 5.3 5.8.9-4.2 4.1 1 5.8-5.2-2.8-5.2 2.8 1-5.8L3.6 9.7l5.8-.9L12 3.5Z"/></svg>
+            </div>
+            <h3>Community Partners</h3>
+            <p>Join forces on events and outreach so our shared care reaches even further.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="strip strip--alt" id="how">
+      <div class="container">
+        <div class="section-head center" data-reveal>
+          <span class="eyebrow eyebrow--center">How it works</span>
+          <h2>From first hello to first event</h2>
+        </div>
+
+        <div class="steps" data-stagger="0.1">
+          <div class="step" data-reveal>
+            <h3>Reach out</h3>
+            <p>Tell us who you are and what you'd like to offer. A paragraph is plenty.</p>
+          </div>
+          <div class="step" data-reveal>
+            <h3>Talk it through</h3>
+            <p>We'll find a time to chat about what's realistic for your team and ours.</p>
+          </div>
+          <div class="step" data-reveal>
+            <h3>Make a plan</h3>
+            <p>Together we shape something concrete: a date, a program, a pledge.</p>
+          </div>
+          <div class="step" data-reveal>
+            <h3>See the impact</h3>
+            <p>We share how it went, who it reached, and what we'd like to do next.</p>
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="section">
-      <div class="section-head">
-        <div>
-          <p class="eyebrow">Ways in</p>
-          <h2 class="mask">How we can work together</h2>
+    <section class="strip">
+      <div class="container">
+        <div class="split reverse" data-reveal>
+          <div class="art art--sage" role="img" aria-label="Illustration of a star held between two hands">
+            <svg viewBox="0 0 120 120" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M60 24l7.6 15.4 17 2.5-12.3 12 2.9 17-15.2-8-15.2 8 2.9-17-12.3-12 17-2.5L60 24Z"/><path d="M24 92c6-9 15-13 24-13M96 92c-6-9-15-13-24-13"/></svg>
+          </div>
+          <div>
+            <span class="eyebrow">Why partner with us</span>
+            <h2>Small organization, short distance to impact</h2>
+            <p>We're volunteer-run and local, which means there's very little between
+               what you give and the family who receives it. No layers, no long approval
+               chains, just neighbors getting something done.</p>
+            <div class="hero-actions" style="justify-content:flex-start; margin-top:1.6rem;">
+              <a class="btn btn-primary" href="contact.html">Start a conversation</a>
+            </div>
+          </div>
         </div>
-        <p class="lead">Three routes, all of them open. Most partners start with
-          one and grow into another.</p>
-      </div>
-
-      <div class="offer">
-        <article class="offer-row">
-          <span class="offer-num">01</span>
-          <div>
-            <h3>Local businesses</h3>
-            <span class="offer-when">Ingredients, space, hands</span>
-          </div>
-          <p>Share surplus stock, lend a kitchen or a room for an evening, or
-            send a team for a shift. Small contributions, repeated, feed more
-            people than one large cheque.</p>
-          <div class="offer-art" aria-hidden="true">
-            <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M8 22l4-12h40l4 12"/>
-              <path d="M10 22v32h44V22"/>
-              <path d="M8 22c0 3.5 3 6 6.5 6s6.5-2.5 6.5-6c0 3.5 3 6 6.5 6s6.5-2.5 6.5-6c0 3.5 3 6 6.5 6s6.5-2.5 6.5-6c0 3.5 3 6 6.5 6"/>
-              <path d="M25 54V40h14v14"/>
-            </svg>
-          </div>
-        </article>
-
-        <article class="offer-row">
-          <span class="offer-num">02</span>
-          <div>
-            <h3>Schools &amp; groups</h3>
-            <span class="offer-when">Programs and referrals</span>
-          </div>
-          <p>Bring learning and food to more families through programs we design
-            side by side, and point students toward support before a hard month
-            becomes a hard year.</p>
-          <div class="offer-art" aria-hidden="true">
-            <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M32 10 6 22l26 12 26-12Z"/>
-              <path d="M17 29v12c0 4 7 8 15 8s15-4 15-8V29"/>
-              <path d="M58 22v16"/>
-            </svg>
-          </div>
-        </article>
-
-        <article class="offer-row">
-          <span class="offer-num">03</span>
-          <div>
-            <h3>Community partners</h3>
-            <span class="offer-when">Shared events</span>
-          </div>
-          <p>Run outreach and events together so the same effort reaches further.
-            Two organizations at one table beats two half-full rooms.</p>
-          <div class="offer-art" aria-hidden="true">
-            <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="24" cy="32" r="20"/>
-              <circle cx="40" cy="32" r="20"/>
-              <circle cx="24" cy="32" r="7"/>
-              <circle cx="40" cy="32" r="7"/>
-            </svg>
-          </div>
-        </article>
       </div>
     </section>
 
-    <div class="stitch" aria-hidden="true">
-      <i></i>
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/></svg>
-      <i></i>
-    </div>
+    <section class="strip strip--alt" id="faq">
+      <div class="container narrow">
+        <div class="section-head" data-reveal>
+          <span class="eyebrow">Questions</span>
+          <h2>Good things to know</h2>
+        </div>
 
-    <section class="section">
-      <div class="statement plate-field">
-        <p class="eyebrow">The arrangement</p>
-        <blockquote>Tell us what you have. We will tell you what it
-          <em>feeds</em>.</blockquote>
-        <cite>How every partnership starts</cite>
+        <div class="accordion" data-exclusive data-reveal>
+          <div class="acc-item">
+            <button class="acc-trigger" type="button" aria-expanded="false" aria-controls="pt-1" id="pt-1-btn">
+              How big does a partner need to be?
+              <span class="plus" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+              </span>
+            </button>
+            <div class="acc-panel" id="pt-1" role="region" aria-labelledby="pt-1-btn">
+              <div class="acc-panel-inner">
+                Any size at all. A single bakery donating end-of-day bread makes a real
+                difference, and so does a district-wide school program. We shape the
+                partnership around what you can comfortably give.
+              </div>
+            </div>
+          </div>
+
+          <div class="acc-item">
+            <button class="acc-trigger" type="button" aria-expanded="false" aria-controls="pt-2" id="pt-2-btn">
+              What kinds of contributions are most useful?
+              <span class="plus" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+              </span>
+            </button>
+            <div class="acc-panel" id="pt-2" role="region" aria-labelledby="pt-2-btn">
+              <div class="acc-panel-inner">
+                Food and ingredients, a space to gather, transport, volunteer hours from
+                your team, or funding for a specific program. Skills count too, including
+                tutoring, translation, bookkeeping, and design.
+              </div>
+            </div>
+          </div>
+
+          <div class="acc-item">
+            <button class="acc-trigger" type="button" aria-expanded="false" aria-controls="pt-3" id="pt-3-btn">
+              How do we get started?
+              <span class="plus" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+              </span>
+            </button>
+            <div class="acc-panel" id="pt-3" role="region" aria-labelledby="pt-3-btn">
+              <div class="acc-panel-inner">
+                <a class="email-link" href="contact.html">Send us a note</a> with a little
+                about your organization and what you have in mind, and we'll take it from
+                there.
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
-    <section class="section">
-      <div class="band plate-field">
-        <div class="band-art left" aria-hidden="true">
-          <svg viewBox="0 0 120 120" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="60" cy="60" r="46"/>
-            <circle cx="60" cy="60" r="30"/>
-            <path d="M14 60h92"/>
-          </svg>
-        </div>
-        <div class="band-art right" aria-hidden="true">
-          <svg viewBox="0 0 120 120" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M36 12v40M24 12v22c0 6 6 10 12 10M48 12v22c0 6-6 10-12 10M36 52v56"/>
-            <path d="M84 108V60M84 60c-8 0-12-6-12-18S78 12 84 12s12 18 12 30-4 18-12 18Z"/>
-          </svg>
-        </div>
-        <h2 class="mask">Start a conversation</h2>
-        <p>Send a short note about your organization. We will come back with a
-          concrete idea, not a brochure.</p>
-        <div class="actions">
-          <a class="btn btn-primary" href="contact.html">
-            Partner with us
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-          </a>
-          <a class="btn btn-secondary" href="mission.html">Read our mission</a>
+    <section class="strip strip--tight">
+      <div class="container">
+        <div class="band" data-reveal>
+          <h2>Let's start a conversation</h2>
+          <p>We love meeting kindred spirits. Tell us a little about you, and we'll find
+             the perfect way to team up.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="contact.html">Partner with us</a>
+            <a class="btn btn-ghost" href="mission.html">Read our mission</a>
+          </div>
         </div>
       </div>
     </section>
 
   </main>
 
-  <footer>
-    <div class="footer-inner">
-      <div class="footer-brand">
-        <a class="logo" href="index.html">
-          <span class="logo-mark" aria-hidden="true">
-            <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M4 16a12 12 0 0 0 24 0Z"/>
-              <path d="M2 16h28"/>
-              <path d="M11 11c2-2-2-4 0-6M16 10c2-2-2-4 0-6M21 11c2-2-2-4 0-6"/>
-            </svg>
-          </span>
-          <span class="logo-text">Nourish <em>&amp;</em> Knowledge</span>
-        </a>
-        <p>A community nonprofit feeding neighbors and funding the things that
-          help students keep going.</p>
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a class="brand" href="index.html">
+            <span class="brand-mark" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h18"/><path d="M4 12a8 8 0 0 0 16 0"/><path d="M12 8.5c0-3 2-5 5-5 0 3-2 5-5 5Z"/></svg>
+            </span>
+            Nourish <span class="brand-amp">&amp;</span> Knowledge
+          </a>
+          <p>A community nonprofit nourishing bodies and minds, one neighbor at a time.</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Explore</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="mission.html">Mission</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="events.html">Events</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Get involved</h4>
+          <ul>
+            <li><a href="contact.html">Volunteer</a></li>
+            <li><a href="partnership.html">Partner with us</a></li>
+            <li><a href="events.html">Attend an event</a></li>
+            <li><a href="contact.html">Contact us</a></li>
+          </ul>
+        </div>
       </div>
-      <nav class="footer-links" aria-label="Footer">
-        <a href="index.html">Home</a>
-        <a href="mission.html">Mission</a>
-        <a href="about.html">About</a>
-        <a href="events.html">Events</a>
-        <a href="partnership.html">Partnership</a>
-        <a href="contact.html">Contact</a>
-      </nav>
-    </div>
-    <div class="footer-rule"></div>
-    <div class="copyright">
-      <span>&copy; 2026 Nourish &amp; Knowledge</span>
-      <span>Long Island, New York</span>
+
+      <div class="footer-bottom">
+        &copy; 2026 Nourish &amp; Knowledge. All rights reserved.
+      </div>
     </div>
   </footer>
+
+  <button class="to-top" type="button" aria-label="Back to top">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6"/></svg>
+  </button>
 
   <script src="js/site.js"></script>
 </body>
