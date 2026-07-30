@@ -1,418 +1,380 @@
+/* Nourish & Knowledge — site behaviour.
+   Nav, reveal-on-scroll, impact counter, rails, pledge card, mailto forms. */
+
 (function () {
   'use strict';
 
-  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
   document.documentElement.classList.remove('no-js');
 
-  function initTheme() {
-    var toggles = document.querySelectorAll('[data-theme-toggle]');
-    if (!toggles.length) return;
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var $ = function (sel, root) { return (root || document).querySelector(sel); };
+  var $$ = function (sel, root) {
+    return Array.prototype.slice.call((root || document).querySelectorAll(sel));
+  };
 
-    function current() {
-      return document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
-    }
-
-    function sync() {
-      var isDark = current() === 'dark';
-      toggles.forEach(function (btn) {
-        btn.setAttribute('aria-pressed', String(isDark));
-        btn.setAttribute('aria-label', isDark ? 'Switch to light theme' : 'Switch to dark theme');
-        btn.setAttribute('title', isDark ? 'Light theme' : 'Dark theme');
-      });
-    }
-
-    toggles.forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        var next = current() === 'dark' ? 'light' : 'dark';
-        document.documentElement.setAttribute('data-theme', next);
-        try {
-          localStorage.setItem('nk-theme', next);
-        } catch (e) {
-          // Private mode: the theme applies, it just will not persist.
-        }
-        sync();
-      });
-    });
-
-    sync();
-  }
+  /* Navigation ---------------------------------------------------------- */
 
   function initNav() {
-    var nav = document.querySelector('.site-nav');
-    if (!nav) return;
+    var nav = $('.site-nav');
+    var toggle = $('.nav-toggle');
+    var panel = $('#nav-panel');
 
-    var toggle = nav.querySelector('.nav-toggle');
-    var panel = nav.querySelector('.nav-panel');
-    var desktop = window.matchMedia('(min-width: 901px)');
+    if (nav) {
+      var onScroll = function () {
+        nav.classList.toggle('is-stuck', window.scrollY > 12);
+      };
+      onScroll();
+      window.addEventListener('scroll', onScroll, { passive: true });
+    }
 
-    var here = window.location.pathname.split('/').pop() || 'index.html';
-    nav.querySelectorAll('.nav-menu a').forEach(function (link) {
-      if (link.getAttribute('href') === here) {
-        link.setAttribute('aria-current', 'page');
+    if (!toggle || !panel) return;
+
+    var setOpen = function (open) {
+      toggle.setAttribute('aria-expanded', String(open));
+      toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      panel.classList.toggle('is-open', open);
+    };
+
+    toggle.addEventListener('click', function () {
+      setOpen(toggle.getAttribute('aria-expanded') !== 'true');
+    });
+
+    // Close after choosing a destination, and on Escape.
+    panel.addEventListener('click', function (e) {
+      if (e.target.closest('a')) setOpen(false);
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') {
+        setOpen(false);
+        toggle.focus();
       }
     });
 
-    var solid = false;
-    function onScroll() {
-      var shouldBeSolid = window.scrollY > 28;
-      if (shouldBeSolid !== solid) {
-        solid = shouldBeSolid;
-        nav.classList.toggle('is-solid', solid);
-      }
-    }
-
-    function closeMenu() {
-      if (!toggle || !panel) return;
-      toggle.setAttribute('aria-expanded', 'false');
-      panel.classList.remove('open');
-      document.body.classList.remove('nav-open');
-    }
-
-    if (toggle && panel) {
-      toggle.addEventListener('click', function () {
-        var open = toggle.getAttribute('aria-expanded') === 'true';
-        toggle.setAttribute('aria-expanded', String(!open));
-        panel.classList.toggle('open', !open);
-        document.body.classList.toggle('nav-open', !open);
-        // The open drawer sits on an opaque panel, so keep the bar opaque too.
-        if (!open) nav.classList.add('is-solid');
-        else onScroll();
-      });
-
-      panel.querySelectorAll('a').forEach(function (link) {
-        link.addEventListener('click', closeMenu);
-      });
-
-      document.addEventListener('keydown', function (e) {
-        if (e.key === 'Escape') closeMenu();
-      });
-
-      // Resizing past the breakpoint would otherwise strand an open drawer.
-      desktop.addEventListener('change', function (e) {
-        if (e.matches) closeMenu();
-      });
-    }
-
-    window.addEventListener('scroll', onScroll, { passive: true });
-    onScroll();
+    // Above 900px the drawer becomes the desktop nav; clear any open state.
+    var wide = window.matchMedia('(min-width: 901px)');
+    var onChange = function (e) { if (e.matches) setOpen(false); };
+    if (wide.addEventListener) wide.addEventListener('change', onChange);
+    else if (wide.addListener) wide.addListener(onChange);
   }
 
-  function initProgress() {
-    var bar = document.querySelector('.scroll-progress');
+  /* Mark the current page in the nav ------------------------------------ */
+
+  function initCurrent() {
+    var here = location.pathname.split('/').pop() || 'index.html';
+    $$('.nav-menu a').forEach(function (a) {
+      if (a.getAttribute('href') === here) a.setAttribute('aria-current', 'page');
+    });
+  }
+
+  /* Scroll progress ------------------------------------------------------ */
+
+  function initScrollProgress() {
+    var bar = $('.scroll-progress');
     if (!bar) return;
 
-    var ticking = false;
-    function update() {
-      ticking = false;
-      var doc = document.documentElement;
-      var max = doc.scrollHeight - window.innerHeight;
-      var p = max > 0 ? Math.min(window.scrollY / max, 1) : 0;
-      bar.style.scale = p + ' 1';
-    }
+    var tick = function () {
+      var max = document.documentElement.scrollHeight - window.innerHeight;
+      bar.style.scale = (max > 0 ? window.scrollY / max : 0) + ' 1';
+    };
 
-    window.addEventListener('scroll', function () {
-      if (!ticking) {
-        ticking = true;
-        requestAnimationFrame(update);
-      }
-    }, { passive: true });
-
-    window.addEventListener('resize', update, { passive: true });
-    update();
+    tick();
+    window.addEventListener('scroll', tick, { passive: true });
+    window.addEventListener('resize', tick);
   }
 
-  function initToTop() {
-    var btn = document.querySelector('.to-top');
-    if (!btn) return;
-
-    var ticking = false;
-    function update() {
-      ticking = false;
-      btn.classList.toggle('show', window.scrollY > 640);
-    }
-
-    window.addEventListener('scroll', function () {
-      if (!ticking) {
-        ticking = true;
-        requestAnimationFrame(update);
-      }
-    }, { passive: true });
-
-    btn.addEventListener('click', function () {
-      window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
-    });
-
-    update();
-  }
+  /* Reveal on scroll ----------------------------------------------------- */
 
   function initReveal() {
-    var targets = document.querySelectorAll('[data-reveal]');
-    if (!targets.length) return;
+    var items = $$('[data-reveal]');
+    if (!items.length) return;
 
     if (reduceMotion || !('IntersectionObserver' in window)) {
-      targets.forEach(function (el) { el.classList.add('in'); });
+      items.forEach(function (el) { el.classList.add('is-in'); });
       return;
     }
 
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('in');
-          io.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
-
-    targets.forEach(function (el) { io.observe(el); });
-
-    document.querySelectorAll('[data-stagger]').forEach(function (group) {
+    // Stagger children of a shared container so groups cascade in.
+    $$('[data-stagger]').forEach(function (group) {
       var step = parseFloat(group.getAttribute('data-stagger')) || 0.08;
-      Array.prototype.forEach.call(group.children, function (child, i) {
-        if (child.hasAttribute('data-reveal')) {
-          child.style.transitionDelay = (i * step) + 's';
-        }
+      $$('[data-reveal]', group).forEach(function (el, i) {
+        el.style.setProperty('--d', (i * step).toFixed(2) + 's');
       });
     });
-  }
-
-  function initCounters() {
-    var counters = document.querySelectorAll('[data-count]');
-    if (!counters.length) return;
-
-    function render(el, value) {
-      var decimals = parseInt(el.getAttribute('data-decimals') || '0', 10);
-      var text = decimals > 0
-        ? value.toFixed(decimals)
-        : Math.round(value).toLocaleString('en-US');
-      el.textContent = (el.getAttribute('data-prefix') || '') + text + (el.getAttribute('data-suffix') || '');
-    }
-
-    function run(el) {
-      var target = parseFloat(el.getAttribute('data-count'));
-      if (isNaN(target)) return;
-
-      if (reduceMotion) {
-        render(el, target);
-        return;
-      }
-
-      var duration = 1500;
-      var start = null;
-
-      function frame(now) {
-        if (start === null) start = now;
-        var t = Math.min((now - start) / duration, 1);
-        var eased = 1 - Math.pow(1 - t, 3);
-        render(el, target * eased);
-        if (t < 1) requestAnimationFrame(frame);
-      }
-
-      requestAnimationFrame(frame);
-    }
-
-    if (!('IntersectionObserver' in window)) {
-      counters.forEach(run);
-      return;
-    }
 
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          run(entry.target);
-          io.unobserve(entry.target);
+        // A fast scroll can deliver the record after the element has already
+        // left the viewport, so also accept anything now above the fold —
+        // otherwise those elements stay invisible forever.
+        if (!entry.isIntersecting && entry.boundingClientRect.top > 0) return;
+        entry.target.classList.add('is-in');
+        io.unobserve(entry.target);
+      });
+    }, { rootMargin: '0px 0px -12% 0px', threshold: 0.08 });
+
+    items.forEach(function (el) { io.observe(el); });
+
+    // Safety net for scrolls fast enough to outrun the observer entirely.
+    var pending = items.slice();
+    var queued = false;
+
+    var sweep = function () {
+      queued = false;
+      pending = pending.filter(function (el) {
+        if (el.classList.contains('is-in')) return false;
+        if (el.getBoundingClientRect().top > window.innerHeight * 0.92) return true;
+        el.classList.add('is-in');
+        io.unobserve(el);
+        return false;
+      });
+      if (!pending.length) window.removeEventListener('scroll', onScroll);
+    };
+
+    var onScroll = function () {
+      if (queued) return;
+      queued = true;
+      requestAnimationFrame(sweep);
+    };
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+  }
+
+  /* Impact counter ------------------------------------------------------- */
+
+  function formatValue(decimals, prefix, suffix, value) {
+    var n = decimals > 0
+      ? value.toFixed(decimals)
+      : Math.round(value).toLocaleString('en-US');
+    return prefix + n + suffix;
+  }
+
+  function countUp(el) {
+    var target = parseFloat(el.getAttribute('data-count'));
+    if (isNaN(target)) return;
+
+    var decimals = parseInt(el.getAttribute('data-decimals'), 10) || 0;
+    var prefix = el.getAttribute('data-prefix') || '';
+    var suffix = el.getAttribute('data-suffix') || '';
+
+    if (reduceMotion) {
+      el.textContent = formatValue(decimals, prefix, suffix, target);
+      return;
+    }
+
+    var duration = 1500;
+    var start = null;
+
+    var frame = function (now) {
+      if (start === null) start = now;
+      var p = Math.min((now - start) / duration, 1);
+      var eased = 1 - Math.pow(1 - p, 3);
+      el.textContent = formatValue(decimals, prefix, suffix, target * eased);
+      if (p < 1) requestAnimationFrame(frame);
+    };
+
+    requestAnimationFrame(frame);
+  }
+
+  function initImpact() {
+    var figure = $('.impact-figure');
+    if (!figure) return;
+
+    var items = $$('.impact-item', figure);
+    var dots = $$('.impact-dots button');
+    if (!items.length) return;
+
+    var index = 0;
+    var timer = null;
+    var counted = [];
+
+    var show = function (next) {
+      index = (next + items.length) % items.length;
+
+      items.forEach(function (el, i) {
+        el.classList.toggle('is-active', i === index);
+        el.setAttribute('aria-hidden', String(i !== index));
+      });
+      dots.forEach(function (d, i) {
+        d.classList.toggle('is-active', i === index);
+        d.setAttribute('aria-selected', String(i === index));
+      });
+
+      // Run each odometer only the first time its panel is shown.
+      if (!counted[index]) {
+        counted[index] = true;
+        var num = $('.impact-num', items[index]);
+        if (num) countUp(num);
+      }
+    };
+
+    var start = function () {
+      if (reduceMotion || timer || items.length < 2) return;
+      timer = setInterval(function () { show(index + 1); }, 3400);
+    };
+    var stop = function () {
+      if (timer) { clearInterval(timer); timer = null; }
+    };
+
+    dots.forEach(function (dot, i) {
+      dot.addEventListener('click', function () {
+        stop();
+        show(i);
+        start();
+      });
+    });
+
+    figure.addEventListener('mouseenter', stop);
+    figure.addEventListener('mouseleave', start);
+    figure.addEventListener('focusin', stop);
+    figure.addEventListener('focusout', start);
+
+    show(0);
+
+    // Hold the rotation until the section is actually on screen.
+    if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) start();
+          else stop();
+        });
+      }, { threshold: 0.25 });
+      io.observe(figure);
+    } else {
+      start();
+    }
+  }
+
+  /* Horizontal rails ----------------------------------------------------- */
+
+  function initRails() {
+    $$('[data-rail]').forEach(function (wrap) {
+      var rail = $('.rail', wrap);
+      var prev = $('[data-rail-prev]', wrap);
+      var next = $('[data-rail-next]', wrap);
+      if (!rail) return;
+
+      var step = function () {
+        var first = rail.firstElementChild;
+        if (!first) return rail.clientWidth * 0.8;
+        var gap = parseFloat(getComputedStyle(rail).columnGap) || 0;
+        return first.getBoundingClientRect().width + gap;
+      };
+
+      var sync = function () {
+        var max = rail.scrollWidth - rail.clientWidth - 1;
+        if (prev) prev.disabled = rail.scrollLeft <= 0;
+        if (next) next.disabled = rail.scrollLeft >= max;
+      };
+
+      var go = function (dir) {
+        rail.scrollBy({
+          left: dir * step(),
+          behavior: reduceMotion ? 'auto' : 'smooth'
+        });
+      };
+
+      if (prev) prev.addEventListener('click', function () { go(-1); });
+      if (next) next.addEventListener('click', function () { go(1); });
+
+      rail.addEventListener('scroll', sync, { passive: true });
+      window.addEventListener('resize', sync);
+      sync();
+    });
+  }
+
+  /* Pledge card ---------------------------------------------------------- */
+
+  function initPledge() {
+    var card = $('.pledge');
+    if (!card) return;
+
+    var toggle = $('.switch', card);
+    var amount = $('#pledge-amount', card);
+    var chips = $$('.chip', card);
+    var labels = $$('.switch-label', card);
+
+    if (toggle) {
+      toggle.addEventListener('click', function () {
+        var on = toggle.getAttribute('aria-checked') === 'true';
+        toggle.setAttribute('aria-checked', String(!on));
+        // labels[0] is the one-off option, labels[1] is monthly.
+        if (labels.length === 2) {
+          labels[0].classList.toggle('on', on);
+          labels[1].classList.toggle('on', !on);
         }
       });
-    }, { threshold: 0.5 });
+    }
 
-    // Not zeroing the text up front: the markup holds the real figure, so
-    // anything never scrolled into view still reads correctly.
-    counters.forEach(function (el) {
-      io.observe(el);
+    chips.forEach(function (chip) {
+      chip.addEventListener('click', function () {
+        chips.forEach(function (c) { c.classList.remove('is-active'); });
+        chip.classList.add('is-active');
+        if (amount) amount.value = chip.getAttribute('data-amount') || '';
+      });
     });
+
+    // Typing a custom figure clears any preset that no longer matches.
+    if (amount) {
+      amount.addEventListener('input', function () {
+        chips.forEach(function (c) {
+          c.classList.toggle('is-active', c.getAttribute('data-amount') === amount.value);
+        });
+      });
+    }
   }
 
-  function initAccordions() {
-    document.querySelectorAll('.accordion').forEach(function (acc) {
-      var triggers = acc.querySelectorAll('.acc-trigger');
-      var exclusive = acc.hasAttribute('data-exclusive');
+  /* Mailto forms --------------------------------------------------------- */
+  /* There is no backend. Each form composes a message and hands it to the
+     visitor's own mail client; the status line says so plainly. */
 
-      function close(trigger) {
-        var panel = document.getElementById(trigger.getAttribute('aria-controls'));
-        if (!panel) return;
-        // Pin the measured height first so the transition has a start value.
-        panel.style.height = panel.scrollHeight + 'px';
-        requestAnimationFrame(function () {
-          panel.style.height = '0px';
+  function initMailForms() {
+    $$('form[data-mailto]').forEach(function (form) {
+      var status = $('.form-status', form);
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        if (!form.reportValidity()) return;
+
+        var to = form.getAttribute('data-mailto');
+        var data = new FormData(form);
+        var subject = form.getAttribute('data-subject') || 'Website enquiry';
+        var lines = [];
+
+        data.forEach(function (value, key) {
+          if (key === '_subject') return;
+          var text = String(value).trim();
+          if (text) lines.push(key + ': ' + text);
         });
-        trigger.setAttribute('aria-expanded', 'false');
-      }
 
-      function open(trigger) {
-        var panel = document.getElementById(trigger.getAttribute('aria-controls'));
-        if (!panel) return;
-        panel.style.height = panel.scrollHeight + 'px';
-        trigger.setAttribute('aria-expanded', 'true');
-        // Release to auto once settled, or reflowing text gets clipped.
-        panel.addEventListener('transitionend', function done(e) {
-          if (e.propertyName !== 'height') return;
-          panel.removeEventListener('transitionend', done);
-          if (trigger.getAttribute('aria-expanded') === 'true') {
-            panel.style.height = 'auto';
-          }
-        });
-      }
+        var chosen = data.get('_subject');
+        if (chosen) subject = String(chosen);
 
-      triggers.forEach(function (trigger) {
-        trigger.addEventListener('click', function () {
-          var isOpen = trigger.getAttribute('aria-expanded') === 'true';
+        window.location.href = 'mailto:' + to +
+          '?subject=' + encodeURIComponent(subject) +
+          '&body=' + encodeURIComponent(lines.join('\n'));
 
-          if (exclusive && !isOpen) {
-            triggers.forEach(function (other) {
-              if (other !== trigger && other.getAttribute('aria-expanded') === 'true') {
-                close(other);
-              }
-            });
-          }
-
-          if (isOpen) close(trigger);
-          else open(trigger);
-        });
+        if (status) status.hidden = false;
       });
     });
   }
 
-  function initForms() {
-    document.querySelectorAll('[data-mail-form]').forEach(initForm);
-  }
+  /* Boot ----------------------------------------------------------------- */
 
-  // There is no backend, so a valid submission hands off to the visitor's
-  // own mail client with the fields pre-filled.
-  function initForm(form) {
-    var status = form.querySelector('.form-status');
-    var to = form.getAttribute('data-mail-to') || '';
-
-    function fieldOf(input) {
-      return input.closest('.field');
-    }
-
-    function validate(input) {
-      var field = fieldOf(input);
-      if (!field) return true;
-      var ok = input.checkValidity();
-      field.classList.toggle('invalid', !ok);
-      var error = field.querySelector('.error');
-      if (error) error.textContent = ok ? '' : (input.validationMessage || 'Please check this field.');
-      return ok;
-    }
-
-    form.querySelectorAll('input, textarea, select').forEach(function (input) {
-      input.addEventListener('blur', function () { validate(input); });
-      input.addEventListener('input', function () {
-        if (fieldOf(input) && fieldOf(input).classList.contains('invalid')) validate(input);
-      });
-    });
-
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-
-      var inputs = Array.prototype.slice.call(form.querySelectorAll('input, textarea, select'));
-      var firstBad = null;
-
-      inputs.forEach(function (input) {
-        if (!validate(input) && !firstBad) firstBad = input;
-      });
-
-      if (firstBad) {
-        firstBad.focus();
-        firstBad.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'center' });
-        return;
-      }
-
-      var data = new FormData(form);
-      var name = (data.get('name') || '').toString().trim();
-      var email = (data.get('email') || '').toString().trim();
-      var topic = (data.get('topic') || '').toString().trim();
-      var message = (data.get('message') || '').toString().trim();
-
-      var subject = form.getAttribute('data-mail-subject') ||
-        (topic ? topic + ', message from ' + name : 'Message from ' + name);
-
-      // The two forms carry different fields, so build the body from
-      // whichever ones are actually present.
-      var lines = [message || form.getAttribute('data-mail-body') || ''];
-      lines.push('');
-      if (name) lines.push(name);
-      if (email) lines.push(email);
-
-      window.location.href = 'mailto:' + to +
-        '?subject=' + encodeURIComponent(subject) +
-        '&body=' + encodeURIComponent(lines.join('\n'));
-
-      if (status) {
-        status.classList.add('show');
-        status.setAttribute('role', 'status');
-      }
-
-      form.reset();
-    });
-  }
-
-  function initHero() {
-    var hero = document.querySelector('.hero');
-    if (!hero || reduceMotion) return;
-
-    var globe = hero.querySelector('.hero-globe');
-    var content = hero.querySelector('.hero-content');
-    var cue = hero.querySelector('.scroll-cue');
-
-    var ticking = false;
-    function apply() {
-      ticking = false;
-      var y = window.scrollY;
-      var h = hero.offsetHeight || 1;
-      var p = Math.min(Math.max(y / (h * 0.85), 0), 1);
-
-      if (globe) {
-        // Keep the CSS base offset or the globe jumps on first scroll.
-        globe.style.transform =
-          'translate(-50%, 62%) translateY(' + (-y * 0.3 - p * 70) + 'px) scale(' + (1 + p * 0.1) + ')';
-        globe.style.opacity = String(Math.max(1 - p * 1.25, 0));
-      }
-      if (content) {
-        content.style.transform = 'translateY(' + (-y * 0.14) + 'px)';
-        content.style.opacity = String(Math.max(1 - p * 1.4, 0));
-      }
-      if (cue) {
-        cue.style.opacity = String(Math.max(1 - p * 3, 0));
-      }
-    }
-
-    window.addEventListener('scroll', function () {
-      if (!ticking) {
-        ticking = true;
-        requestAnimationFrame(apply);
-      }
-    }, { passive: true });
-
-    apply();
-  }
-
-  function boot() {
-    initTheme();
+  function init() {
     initNav();
-    initProgress();
-    initToTop();
+    initCurrent();
+    initScrollProgress();
     initReveal();
-    initCounters();
-    initAccordions();
-    initForms();
-    initHero();
+    initImpact();
+    initRails();
+    initPledge();
+    initMailForms();
   }
 
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', boot);
+    document.addEventListener('DOMContentLoaded', init);
   } else {
-    boot();
+    init();
   }
 })();
