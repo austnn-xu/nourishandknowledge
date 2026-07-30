@@ -1,0 +1,38 @@
+name: Deploy to GitHub Pages
+
+# Publishing is a side effect of merging to main — there is no second step.
+# GitHub Pages is configured to serve the gh-pages branch, so this job just
+# mirrors main onto it. If Pages is ever switched to the "GitHub Actions"
+# source, replace this job with actions/deploy-pages.
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch: # lets you re-deploy by hand from the Actions tab
+
+concurrency:
+  group: pages-deploy
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # A shallow clone cannot be pushed to another branch.
+          fetch-depth: 0
+
+      - name: Mirror main onto gh-pages
+        run: git push --force origin HEAD:gh-pages
+
+      - name: Summary
+        run: |
+          {
+            echo "Deployed \`${GITHUB_SHA::7}\` to \`gh-pages\`."
+            echo ""
+            echo "Live in a minute or two — hard-refresh to skip the CSS cache."
+          } >> "$GITHUB_STEP_SUMMARY"
