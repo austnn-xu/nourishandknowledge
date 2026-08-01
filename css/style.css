@@ -1424,6 +1424,79 @@ details.qa .qa-body { padding: 0 1.4rem 1.3rem; color: var(--ink-soft); font-siz
 }
 .form-status[hidden] { display: none; }
 
+/* Mail fallbacks --------------------------------------------------------- */
+/* Shown whenever a mailto: may not have been handled, so there is always a
+   way to reach us that does not depend on a local mail client. */
+
+.mail-alt {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .45rem;
+  margin-top: .8rem;
+}
+
+.mail-alt-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: .45rem .9rem;
+  border: 1.5px solid currentColor;
+  border-radius: 999px;
+  background: transparent;
+  color: inherit;
+  font-size: .78rem;
+  font-weight: 700;
+  letter-spacing: .04em;
+  text-decoration: none;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background .25s var(--ease), color .25s var(--ease);
+}
+
+.mail-alt-btn:hover {
+  background: var(--green-ink);
+  border-color: var(--green-ink);
+  color: var(--paper);
+}
+
+.mail-toast {
+  position: fixed;
+  left: 50%;
+  bottom: clamp(1rem, 4vw, 2rem);
+  translate: -50% 0;
+  z-index: 300;
+  width: min(25rem, calc(100vw - 2rem));
+  padding: 1.15rem 1.25rem;
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  background: var(--paper);
+  box-shadow: var(--shadow-lg);
+  color: var(--green-ink);
+}
+
+.mail-toast p {
+  margin: 0 2rem 0 0;
+  color: var(--ink-soft);
+  font-size: .88rem;
+}
+
+.mail-toast-close {
+  position: absolute;
+  top: .55rem;
+  right: .7rem;
+  width: 1.9rem;
+  height: 1.9rem;
+  display: grid;
+  place-items: center;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--ink-mute);
+  font-size: 1.35rem;
+  line-height: 1;
+  cursor: pointer;
+}
+.mail-toast-close:hover { background: var(--line-soft); color: var(--ink); }
+
 .inline-form { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 1.6rem; }
 .inline-form input {
   flex: 1 1 15rem;

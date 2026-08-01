@@ -324,9 +324,80 @@
     }
   }
 
-  /* Mailto forms --------------------------------------------------------- */
-  /* There is no backend. Each form composes a message and hands it to the
-     visitor's own mail client; the status line says so plainly. */
+  /* Mail ----------------------------------------------------------------- */
+  /* There is no backend, so every route out of this site is a mailto:. That
+     only works when the visitor's browser has a mail client registered, and
+     on plenty of machines (Chrome with no handler set, a borrowed laptop, a
+     locked-down school account) it silently does nothing at all. So we always
+     offer webmail compose links and a copy button alongside it. */
+
+  var MAIL_WAIT = 1500;
+
+  function composeUrls(to, subject, body) {
+    var e = encodeURIComponent;
+    return {
+      mailto: 'mailto:' + to + '?subject=' + e(subject) + '&body=' + e(body),
+      gmail: 'https://mail.google.com/mail/u/0/?fs=1&tf=cm&to=' + e(to) +
+        '&su=' + e(subject) + '&body=' + e(body),
+      outlook: 'https://outlook.live.com/mail/0/deeplink/compose?to=' + e(to) +
+        '&subject=' + e(subject) + '&body=' + e(body)
+    };
+  }
+
+  /* Clipboard API needs a secure context; fall back to a scratch textarea. */
+  function copyText(text) {
+    if (navigator.clipboard && window.isSecureContext) {
+      return navigator.clipboard.writeText(text);
+    }
+    return new Promise(function (resolve, reject) {
+      var pad = document.createElement('textarea');
+      pad.value = text;
+      pad.setAttribute('readonly', '');
+      pad.style.cssText = 'position:fixed;top:0;left:0;opacity:0';
+      document.body.appendChild(pad);
+      pad.select();
+      var done = false;
+      try { done = document.execCommand('copy'); } catch (err) { done = false; }
+      document.body.removeChild(pad);
+      if (done) resolve(); else reject(new Error('copy failed'));
+    });
+  }
+
+  function altLink(label, href) {
+    var a = document.createElement('a');
+    a.className = 'mail-alt-btn';
+    a.href = href;
+    a.target = '_blank';
+    a.rel = 'noopener';
+    a.textContent = label;
+    return a;
+  }
+
+  function copyButton(label, text) {
+    var btn = document.createElement('button');
+    btn.className = 'mail-alt-btn';
+    btn.type = 'button';
+    btn.textContent = label;
+    btn.addEventListener('click', function () {
+      copyText(text).then(function () {
+        btn.textContent = 'Copied';
+      }, function () {
+        btn.textContent = 'Press Ctrl+C';
+      });
+      window.setTimeout(function () { btn.textContent = label; }, 2400);
+    });
+    return btn;
+  }
+
+  /* The row of "send it another way" actions shown under a submitted form. */
+  function altActions(urls, transcript) {
+    var row = document.createElement('div');
+    row.className = 'mail-alt';
+    row.appendChild(altLink('Open in Gmail', urls.gmail));
+    row.appendChild(altLink('Open in Outlook', urls.outlook));
+    row.appendChild(copyButton('Copy message', transcript));
+    return row;
+  }
 
   function initMailForms() {
     $$('form[data-mailto]').forEach(function (form) {
@@ -350,12 +421,87 @@
         var chosen = data.get('_subject');
         if (chosen) subject = String(chosen);
 
-        window.location.href = 'mailto:' + to +
-          '?subject=' + encodeURIComponent(subject) +
-          '&body=' + encodeURIComponent(lines.join('\n'));
+        var body = lines.join('\n');
+        var urls = composeUrls(to, subject, body);
+        var transcript = 'To: ' + to + '\nSubject: ' + subject + '\n\n' + body;
 
-        if (status) status.hidden = false;
+        /* Show the alternatives first: if the mailto does take over, the
+           visitor comes back to a page that already has them waiting. */
+        if (status) {
+          var stale = $('.mail-alt', status);
+          if (stale) stale.parentNode.removeChild(stale);
+          status.appendChild(altActions(urls, transcript));
+          status.hidden = false;
+        }
+
+        window.location.href = urls.mailto;
       });
+    });
+  }
+
+  /* Plain mailto: links (nav envelope, footer rows, the contact tile). We let
+     the browser try first. If focus never leaves the page, nothing handled it,
+     so offer the same alternatives in a dismissible card. */
+
+  function initMailLinks() {
+    var card = null;
+
+    function dismiss() {
+      if (!card) return;
+      card.parentNode.removeChild(card);
+      card = null;
+    }
+
+    function offer(to) {
+      dismiss();
+      var urls = composeUrls(to, 'Hello from the website', '');
+
+      card = document.createElement('div');
+      card.className = 'mail-toast';
+      card.setAttribute('role', 'dialog');
+      card.setAttribute('aria-label', 'Other ways to email us');
+
+      var close = document.createElement('button');
+      close.className = 'mail-toast-close';
+      close.type = 'button';
+      close.setAttribute('aria-label', 'Close');
+      close.innerHTML = '&times;';
+      close.addEventListener('click', dismiss);
+
+      var text = document.createElement('p');
+      text.textContent = 'No mail app opened on this device. You can write to us ' +
+        'in the browser instead, or copy the address.';
+
+      var row = document.createElement('div');
+      row.className = 'mail-alt';
+      row.appendChild(altLink('Open in Gmail', urls.gmail));
+      row.appendChild(altLink('Open in Outlook', urls.outlook));
+      row.appendChild(copyButton('Copy address', to));
+
+      card.appendChild(close);
+      card.appendChild(text);
+      card.appendChild(row);
+      document.body.appendChild(card);
+      close.focus();
+    }
+
+    document.addEventListener('click', function (e) {
+      var link = e.target && e.target.closest && e.target.closest('a[href^="mailto:"]');
+      if (!link) return;
+
+      var to = link.getAttribute('href').slice(7).split('?')[0];
+      if (!to) return;
+
+      window.setTimeout(function () {
+        /* A mail client that opened steals focus, so a still-focused page
+           means the click went nowhere. */
+        if (document.hidden || !document.hasFocus()) return;
+        offer(to);
+      }, MAIL_WAIT);
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') dismiss();
     });
   }
 
@@ -370,6 +516,7 @@
     initRails();
     initPledge();
     initMailForms();
+    initMailLinks();
   }
 
   if (document.readyState === 'loading') {
