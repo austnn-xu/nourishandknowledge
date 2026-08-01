@@ -184,12 +184,14 @@
     var dots = $$('.impact-dots button');
     if (!items.length) return;
 
-    var index = 0;
-    var timer = null;
+    var track = $('.impact-track');
+    var index = -1;
     var counted = [];
 
     var show = function (next) {
-      index = (next + items.length) % items.length;
+      next = Math.max(0, Math.min(next, items.length - 1));
+      if (next === index) return;
+      index = next;
 
       items.forEach(function (el, i) {
         el.classList.toggle('is-active', i === index);
@@ -208,41 +210,47 @@
       }
     };
 
-    var start = function () {
-      if (reduceMotion || timer || items.length < 2) return;
-      timer = setInterval(function () { show(index + 1); }, 3400);
-    };
-    var stop = function () {
-      if (timer) { clearInterval(timer); timer = null; }
+    show(0);
+    if (!track) return;
+
+    // Keeps the track length honest if a statistic is ever added or removed.
+    track.style.setProperty('--steps', items.length);
+
+    // How far the page scrolls while the stage is pinned.
+    var runway = function () {
+      return Math.max(track.offsetHeight - window.innerHeight, 1);
     };
 
+    var queued = false;
+
+    var update = function () {
+      queued = false;
+      var progress = -track.getBoundingClientRect().top / runway();
+      var clamped = Math.min(Math.max(progress, 0), 0.999999);
+      show(Math.floor(clamped * items.length));
+      track.classList.toggle('is-final', index === items.length - 1);
+    };
+
+    var onScroll = function () {
+      if (queued) return;
+      queued = true;
+      requestAnimationFrame(update);
+    };
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    update();
+
+    // Dots stay usable: each one scrolls to the middle of its slice of track.
     dots.forEach(function (dot, i) {
       dot.addEventListener('click', function () {
-        stop();
-        show(i);
-        start();
+        var top = track.getBoundingClientRect().top + window.scrollY;
+        window.scrollTo({
+          top: top + ((i + 0.5) / items.length) * runway(),
+          behavior: reduceMotion ? 'auto' : 'smooth'
+        });
       });
     });
-
-    figure.addEventListener('mouseenter', stop);
-    figure.addEventListener('mouseleave', start);
-    figure.addEventListener('focusin', stop);
-    figure.addEventListener('focusout', start);
-
-    show(0);
-
-    // Hold the rotation until the section is actually on screen.
-    if ('IntersectionObserver' in window) {
-      var io = new IntersectionObserver(function (entries) {
-        entries.forEach(function (e) {
-          if (e.isIntersecting) start();
-          else stop();
-        });
-      }, { threshold: 0.25 });
-      io.observe(figure);
-    } else {
-      start();
-    }
   }
 
   /* Horizontal rails ----------------------------------------------------- */

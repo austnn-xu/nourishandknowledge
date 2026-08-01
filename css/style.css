@@ -398,7 +398,6 @@ p:last-child { margin-bottom: 0; }
   text-transform: uppercase;
   margin-bottom: 1.1rem;
 }
-.eyebrow--plain { background: rgba(35, 35, 31, .06); color: var(--ink-soft); }
 
 /* Section scaffolding ---------------------------------------------------- */
 
@@ -707,15 +706,38 @@ p:last-child { margin-bottom: 0; }
 
 /* Impact counter --------------------------------------------------------- */
 
+/* The section pins to the viewport and each screen of scroll swaps the
+   statistic, so the reader sets the pace. `overflow: clip` rather than
+   `hidden`: hidden would make this a scroll container and the sticky stage
+   inside would never stick. */
+
 .impact {
   position: relative;
   background: var(--sand);
-  overflow: hidden;
+  overflow: clip;
+  padding-block: 0;
+}
+
+.impact-track {
+  --steps: 4;
+  --step-scroll: 68vh;
+  position: relative;
+  height: calc(100vh + (var(--steps) - 1) * var(--step-scroll));
+}
+
+.impact-stage {
+  position: sticky;
+  top: 0;
+  min-height: 100vh;
+  min-height: 100svh;
+  display: grid;
+  align-content: center;
+  padding-block: calc(var(--nav-h) + clamp(1.5rem, 4vw, 3rem)) clamp(2.5rem, 6vw, 4.5rem);
 }
 
 .impact-figure {
   position: relative;
-  min-height: clamp(9.5rem, 18vw, 15rem);
+  min-height: clamp(11rem, 22vw, 17rem);
   margin-top: clamp(1.5rem, 4vw, 3rem);
 }
 
@@ -785,6 +807,61 @@ p:last-child { margin-bottom: 0; }
 }
 .impact-dots button:hover::before { background: rgba(35, 35, 31, .38); }
 .impact-dots button.is-active::before { background: var(--green-deep); width: 26px; }
+
+.impact-foot {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .9rem;
+  margin: clamp(1.5rem, 3vw, 2.25rem) 0 0;
+  text-align: center;
+}
+
+/* The cue only makes sense while there is still track left to scroll. */
+.impact-cue {
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  transition: opacity .4s var(--ease);
+}
+.impact-cue svg {
+  width: 15px;
+  height: 15px;
+  animation: cue-nudge 1.9s var(--ease) infinite;
+}
+.impact-track.is-final .impact-cue { opacity: 0; }
+
+@keyframes cue-nudge {
+  0%, 100% { translate: 0 -2px; }
+  50%      { translate: 0 3px; }
+}
+
+/* Without JS the panels never get switched, so show them as a plain list
+   rather than a tall empty pinned section. */
+.no-js .impact-track { height: auto; }
+.no-js .impact-stage { position: static; min-height: 0; }
+.no-js .impact-figure {
+  min-height: 0;
+  display: grid;
+  gap: clamp(2rem, 5vw, 3.5rem);
+}
+.no-js .impact-item {
+  position: static;
+  opacity: 1;
+  translate: none;
+  pointer-events: auto;
+}
+.no-js .impact-dots,
+.no-js .impact-cue { display: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .impact-cue svg { animation: none; }
+}
 
 /* Split ------------------------------------------------------------------ */
 

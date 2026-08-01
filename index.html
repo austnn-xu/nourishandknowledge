@@ -108,40 +108,49 @@
 
     <section class="strip impact">
       <div class="arc arc--top arc--paper" aria-hidden="true"></div>
-      <div class="container">
-        <div class="section-head center" data-reveal>
-          <span class="eyebrow eyebrow--plain">Why it matters</span>
+      <div class="impact-track">
+       <div class="impact-stage">
+        <div class="container">
+        <div class="section-head center">
           <h2>The need is closer<br>than you think</h2>
         </div>
 
-        <div class="impact-figure" role="tablist" aria-label="Food insecurity statistics">
-            <div class="impact-item" role="tabpanel" aria-hidden="true">
+        <div class="impact-figure">
+            <div class="impact-item" id="impact-panel-1" role="tabpanel"
+                 aria-labelledby="impact-tab-1" aria-hidden="true">
               <span class="impact-num" data-count="8.3" data-decimals="1"
                     data-prefix="" data-suffix="%">0</span>
               <span class="impact-label">of Long Islanders faced food insecurity in 2023</span>
             </div>
-            <div class="impact-item" role="tabpanel" aria-hidden="true">
+            <div class="impact-item" id="impact-panel-2" role="tabpanel"
+                 aria-labelledby="impact-tab-2" aria-hidden="true">
               <span class="impact-num" data-count="71500" data-decimals="0"
                     data-prefix="" data-suffix="">0</span>
               <span class="impact-label">children on Long Island face food insecurity</span>
             </div>
-            <div class="impact-item" role="tabpanel" aria-hidden="true">
+            <div class="impact-item" id="impact-panel-3" role="tabpanel"
+                 aria-labelledby="impact-tab-3" aria-hidden="true">
               <span class="impact-num" data-count="2.2" data-decimals="1"
                     data-prefix="" data-suffix="M">0</span>
               <span class="impact-label">New Yorkers experience food insecurity</span>
             </div>
-            <div class="impact-item" role="tabpanel" aria-hidden="true">
+            <div class="impact-item" id="impact-panel-4" role="tabpanel"
+                 aria-labelledby="impact-tab-4" aria-hidden="true">
               <span class="impact-num" data-count="2.83" data-decimals="2"
                     data-prefix="" data-suffix="B">0</span>
               <span class="impact-label">people worldwide cannot afford a healthy diet</span>
             </div>
         </div>
-        <div class="impact-dots"><button type="button" role="tab" aria-selected="false" aria-label="Statistic 1"></button><button type="button" role="tab" aria-selected="false" aria-label="Statistic 2"></button><button type="button" role="tab" aria-selected="false" aria-label="Statistic 3"></button><button type="button" role="tab" aria-selected="false" aria-label="Statistic 4"></button></div>
+        <div class="impact-dots" role="tablist" aria-label="Food insecurity statistics"><button id="impact-tab-1" type="button" role="tab" aria-controls="impact-panel-1" aria-selected="false" aria-label="Statistic 1"></button><button id="impact-tab-2" type="button" role="tab" aria-controls="impact-panel-2" aria-selected="false" aria-label="Statistic 2"></button><button id="impact-tab-3" type="button" role="tab" aria-controls="impact-panel-3" aria-selected="false" aria-label="Statistic 3"></button><button id="impact-tab-4" type="button" role="tab" aria-controls="impact-panel-4" aria-selected="false" aria-label="Statistic 4"></button></div>
 
-        <p class="lead" style="text-align:center;margin-top:2rem" data-reveal>
+        <p class="impact-foot">
+          <span class="impact-cue" aria-hidden="true">Keep scrolling
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v13"/><path d="M6.5 12.5L12 18l5.5-5.5"/></svg></span>
           <a class="link-arrow" href="mission.html#references">See our sources
             <span class="circle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8.5 7H17v8.5"/></svg></span></a>
         </p>
+        </div>
+       </div>
       </div>
       <div class="arc arc--bottom arc--cream" aria-hidden="true"></div>
     </section>
@@ -258,7 +267,6 @@
       <div class="container">
         <div class="rail-head">
           <div class="section-head" data-reveal>
-            <span class="eyebrow eyebrow--plain">On the calendar</span>
             <h2>What&rsquo;s coming up</h2>
           </div>
           <div class="rail-nav" data-reveal>
