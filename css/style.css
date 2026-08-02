@@ -715,8 +715,12 @@ p:last-child { margin-bottom: 0; }
   position: relative;
   background: var(--sand);
   overflow: clip;
-  padding-block: 0;
 }
+
+/* Only a pinned section drops its padding: the stage supplies its own. A
+   plain .impact section keeps the normal .strip rhythm, so markup without a
+   track still sits clear of the arcs. */
+.impact:has(.impact-track) { padding-block: 0; }
 
 .impact-track {
   --steps: 4;

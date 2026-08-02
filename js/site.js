@@ -177,14 +177,20 @@
   }
 
   function initImpact() {
-    var figure = $('.impact-figure');
+    $$('.impact').forEach(setUpImpact);
+  }
+
+  /* Set up one statistics section. Scoped to its own section so a page can
+     carry more than one, and so a section without a track still works. */
+  function setUpImpact(section) {
+    var figure = $('.impact-figure', section);
     if (!figure) return;
 
     var items = $$('.impact-item', figure);
-    var dots = $$('.impact-dots button');
+    var dots = $$('.impact-dots button', section);
     if (!items.length) return;
 
-    var track = $('.impact-track');
+    var track = $('.impact-track', section);
     var index = -1;
     var counted = [];
 
