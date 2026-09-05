@@ -137,21 +137,6 @@ body {
   overflow-x: hidden;
 }
 
-/* A fixed wash of the secondary clay colours. It sits behind every section,
-   so the translucent strips pick up a different hue down the page instead of
-   reading as one flat peach. */
-body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-  pointer-events: none;
-  background:
-    radial-gradient(58vw 58vw at 10% -8%, rgb(223 247 229 / .85), transparent 62%),
-    radial-gradient(52vw 52vw at 94% 6%, rgb(244 227 196 / .60), transparent 60%),
-    radial-gradient(64vw 64vw at 80% 98%, rgb(57 218 104 / .16), transparent 62%),
-    radial-gradient(50vw 50vw at 4% 84%, rgb(247 233 207 / .70), transparent 60%);
-}
 
 img,
 svg,
@@ -501,9 +486,9 @@ p:last-child { margin-bottom: 0; }
   position: relative;
   padding-block: clamp(4.5rem, 10vw, 8.5rem);
 }
-.strip--sand { background: rgb(247 233 207 / .78); }
-.strip--soft { background: rgb(250 241 227 / .72); }
-.strip--paper { background: rgb(255 255 255 / .82); }
+.strip--sand { background: var(--sand); }
+.strip--soft { background: var(--sand-soft); }
+.strip--paper { background: var(--paper); }
 .strip--tight { padding-block: clamp(3rem, 6vw, 5rem); }
 
 .section-head { max-width: 46rem; }
@@ -531,9 +516,10 @@ p:last-child { margin-bottom: 0; }
 }
 .arc--top { top: -1px; border-radius: 0 0 50% 50%; }
 .arc--bottom { bottom: -1px; border-radius: 50% 50% 0 0; }
-.arc--cream { background: rgb(251 247 240 / .85); }
-.arc--sand { background: rgb(247 233 207 / .78); }
-.arc--paper { background: rgb(255 255 255 / .82); }
+.arc--cream { background: var(--cream); }
+.arc--sand { background: var(--sand); }
+.arc--soft { background: var(--sand-soft); }
+.arc--paper { background: var(--paper); }
 
 /* Hero ------------------------------------------------------------------- */
 
@@ -544,7 +530,7 @@ p:last-child { margin-bottom: 0; }
   min-height: 100vh;
   min-height: 100svh;
   padding-top: calc(var(--nav-h) + clamp(2rem, 5vw, 4rem));
-  background: radial-gradient(120% 90% at 50% 0%, rgb(255 255 255 / .9) 0%, rgb(250 241 227 / .55) 46%, rgb(244 227 196 / .6) 100%);
+  background: radial-gradient(120% 90% at 50% 0%, var(--paper) 0%, var(--sand-soft) 48%, var(--sand) 100%);
   overflow: hidden;
 }
 
@@ -840,7 +826,7 @@ img.ph { width: 100%; height: 100%; object-fit: cover; display: block; }
 
 .impact {
   position: relative;
-  background: rgb(247 233 207 / .62);
+  background: var(--sand);
   overflow: clip;
 }
 
@@ -1027,7 +1013,7 @@ img.ph { width: 100%; height: 100%; object-fit: cover; display: block; }
 
 .pledge-wrap {
   position: relative;
-  background: linear-gradient(180deg, rgb(250 241 227 / .55), rgb(247 233 207 / .7));
+  background: linear-gradient(180deg, var(--sand-soft), var(--sand));
   overflow: hidden;
 }
 
@@ -1357,7 +1343,7 @@ img.ph { width: 100%; height: 100%; object-fit: cover; display: block; }
 
 .action {
   position: relative;
-  background: rgb(247 233 207 / .62);
+  background: var(--sand);
   overflow: hidden;
   text-align: center;
 }
@@ -1396,7 +1382,7 @@ img.ph { width: 100%; height: 100%; object-fit: cover; display: block; }
 
 .site-footer {
   position: relative;
-  background: rgb(247 233 207 / .78);
+  background: var(--sand);
   padding-block: clamp(3.5rem, 7vw, 6rem) 2rem;
 }
 
@@ -1502,7 +1488,7 @@ img.ph { width: 100%; height: 100%; object-fit: cover; display: block; }
   position: relative;
   padding-top: calc(var(--nav-h) + clamp(3rem, 8vw, 6rem));
   padding-bottom: clamp(3rem, 7vw, 5.5rem);
-  background: radial-gradient(120% 90% at 50% 0%, rgb(255 255 255 / .85) 0%, rgb(247 233 207 / .68) 70%);
+  background: radial-gradient(120% 90% at 50% 0%, var(--paper) 0%, var(--sand) 72%);
   text-align: center;
   overflow: hidden;
 }
