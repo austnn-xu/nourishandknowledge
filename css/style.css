@@ -28,9 +28,9 @@
 
 :root {
   /* Surfaces: cream ground, sand bands, white clay on top */
-  --sand-deep: #F4E3C4;
-  --sand: #F7E9CF;
-  --sand-soft: #FAF1E3;
+  --sand-deep: #F6E9D3;
+  --sand: #F9F0DF;
+  --sand-soft: #FCF6EC;
   --cream: #FBF7F0;
   --paper: #FFFFFF;
 
@@ -60,9 +60,9 @@
   --slate: #4F4C45;
   --slate-soft: #5C594F;
 
-  --t-warm: 182 160 122;
-  --t-accent: 52 158 96;
-  --t-deep: 28 108 60;
+  --t-warm: 198 180 148;
+  --t-accent: 78 176 118;
+  --t-deep: 52 130 84;
   --t-slate: 42 40 34;
   --tint: var(--t-warm);
 
@@ -74,27 +74,27 @@
      bottom: that pairing is what makes a surface read as moulded clay
      rather than a card with a shadow. */
   --clay:
-    0 3px 5px rgb(var(--tint) / .05),
-    0 14px 24px -14px rgb(var(--tint) / .16),
-    0 34px 52px -26px rgb(var(--tint) / .24),
-    inset 0 -18px 28px -16px rgb(var(--tint) / .24),
-    inset 0 20px 28px -16px rgb(255 255 255 / 1);
+    0 2px 4px rgb(var(--tint) / .035),
+    0 10px 20px -14px rgb(var(--tint) / .10),
+    0 26px 44px -28px rgb(var(--tint) / .15),
+    inset 0 -14px 24px -18px rgb(var(--tint) / .13),
+    inset 0 18px 26px -16px rgb(255 255 255 / 1);
   --clay-hi:
-    0 4px 7px rgb(var(--tint) / .07),
-    0 22px 34px -16px rgb(var(--tint) / .19),
-    0 54px 76px -32px rgb(var(--tint) / .28),
-    inset 0 -22px 34px -16px rgb(var(--tint) / .27),
-    inset 0 24px 32px -16px rgb(255 255 255 / 1);
+    0 3px 6px rgb(var(--tint) / .05),
+    0 18px 30px -18px rgb(var(--tint) / .13),
+    0 44px 66px -34px rgb(var(--tint) / .19),
+    inset 0 -18px 30px -18px rgb(var(--tint) / .16),
+    inset 0 22px 30px -16px rgb(255 255 255 / 1);
   --clay-in:
-    0 1px 2px rgb(var(--tint) / .05),
-    inset 0 14px 24px -10px rgb(var(--tint) / .22),
-    inset 0 -12px 20px -10px rgb(255 255 255 / .9);
+    0 1px 2px rgb(var(--tint) / .03),
+    inset 0 12px 22px -12px rgb(var(--tint) / .15),
+    inset 0 -10px 18px -10px rgb(255 255 255 / .95);
   /* A smaller puff for pills and circles that the full formula would drown */
   --clay-sm:
-    0 7px 14px -9px rgb(var(--tint) / .28),
-    0 14px 24px -16px rgb(var(--tint) / .20),
-    inset 0 -9px 14px -7px rgb(var(--tint) / .30),
-    inset 0 9px 13px -7px rgb(255 255 255 / .92);
+    0 5px 11px -8px rgb(var(--tint) / .18),
+    0 11px 20px -16px rgb(var(--tint) / .13),
+    inset 0 -7px 12px -8px rgb(var(--tint) / .18),
+    inset 0 8px 12px -7px rgb(255 255 255 / .95);
 
   --shadow-sm: var(--clay-sm);
   --shadow-md: var(--clay);
@@ -493,7 +493,9 @@ p:last-child { margin-bottom: 0; }
 }
 .strip--sand { background: var(--sand); }
 .strip--soft { background: var(--sand-soft); }
-.strip--paper { background: var(--paper); }
+/* A whisper of warmth, so white surfaces still separate from the band
+   now that the shadow under them is this light. */
+.strip--paper { background: #FDFAF5; }
 .strip--tight { padding-block: clamp(3rem, 6vw, 5rem); }
 
 .section-head { max-width: 46rem; }
