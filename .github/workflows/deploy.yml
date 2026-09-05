@@ -4,6 +4,11 @@ name: Deploy to GitHub Pages
 # GitHub Pages is configured to serve the gh-pages branch, so this job just
 # mirrors main onto it. If Pages is ever switched to the "GitHub Actions"
 # source, replace this job with actions/deploy-pages.
+#
+# The mirror is a force push, so gh-pages keeps nothing of its own: anything
+# the published site needs has to live in main. That includes CNAME, which
+# carries the custom domain — a CNAME committed only to gh-pages is wiped on
+# the next deploy and the domain stops resolving.
 
 on:
   push:
