@@ -27,81 +27,84 @@
 /* Tokens ----------------------------------------------------------------- */
 
 :root {
-  /* Surfaces, warm clay ground through the raised clay itself */
-  --sand-deep: #FFDCC0;
-  --sand: #FFE8D4;
-  --sand-soft: #FFF6EC;
-  --cream: #FFF3E7;
-  --paper: #FFFDFA;
+  /* Surfaces: cream ground, sand bands, white clay on top */
+  --sand-deep: #F4E3C4;
+  --sand: #F7E9CF;
+  --sand-soft: #FAF1E3;
+  --cream: #FBF7F0;
+  --paper: #FFFFFF;
 
   /* Ink */
-  --ink: #34223F;
-  --ink-soft: #6D5A79;
-  --ink-mute: #9C8AA8;
+  --ink: #23231F;
+  --ink-soft: #5F5D55;
+  /* Darkened from #8C8980: it carries small meta text (dates, sources,
+     captions) and only reached 3.5:1 on white. */
+  --ink-mute: #6B6860;
 
-  /* Accent */
-  --accent: #FF7A3C;
-  --accent-deep: #E85D1F;
-  --accent-ink: #C24A12;
-  --accent-soft: #FFE4D3;
-  --on-accent: #FFFDFA;
+  /* Accent: the original green */
+  --accent: #39DA68;
+  --accent-deep: #23B44F;
+  --accent-ink: #0F7A34;
+  --accent-soft: #DFF7E5;
+  --on-accent: #063014;
 
-  /* Secondary clay colours, for icons and blobs */
-  --mint: #2FCB92;
-  --grape: #7C6BF5;
-  --marigold: #FFC24B;
-  --berry: #FF5D8F;
+  /* The blob family. Green, deep green, pale mint and cream, so icons and
+     numbers still vary without leaving the green-and-cream palette. */
+  --blob-1: var(--accent);       --blob-1-fg: var(--on-accent);   --blob-1-t: 20 120 60;
+  --blob-2: var(--accent-ink);   --blob-2-fg: #FFFFFF;            --blob-2-t: 8 70 34;
+  --blob-3: var(--accent-soft);  --blob-3-fg: var(--accent-ink);  --blob-3-t: 60 150 100;
+  --blob-4: var(--sand-deep);    --blob-4-fg: var(--ink);         --blob-4-t: 150 118 62;
 
   /* Shadow tints as raw "R G B" triples, mixed into the clay formula */
-  --t-warm: 186 116 68;
-  --t-accent: 214 76 20;
-  --t-mint: 18 140 96;
-  --t-grape: 78 58 200;
-  --t-marigold: 200 132 10;
-  --t-berry: 210 50 100;
+  --t-warm: 152 130 92;
+  --t-accent: 20 120 60;
+  --t-deep: 8 70 34;
   --tint: var(--t-warm);
 
-  --line: rgba(52, 34, 63, .10);
-  --line-soft: rgba(52, 34, 63, .06);
+  --line: rgba(35, 35, 31, .10);
+  --line-soft: rgba(35, 35, 31, .06);
 
-  /* The clay shadow. One formula, tinted per element through --tint: a wide
-     soft drop below, a bright inset highlight on top, a coloured inset
-     underneath. Together they read as a puffy solid rather than a flat card. */
+  /* The clay shadow, pushed hard. A wide soft drop underneath, a thick
+     white inset light across the top, and a deep tinted inset along the
+     bottom: that pairing is what makes a surface read as moulded clay
+     rather than a card with a shadow. */
   --clay:
-    0 2px 3px rgb(var(--tint) / .06),
-    0 8px 14px -8px rgb(var(--tint) / .22),
-    0 24px 38px -20px rgb(var(--tint) / .34),
-    inset 0 -12px 20px -10px rgb(var(--tint) / .22),
-    inset 0 12px 18px -10px rgb(255 255 255 / .9);
+    0 4px 6px rgb(var(--tint) / .09),
+    0 16px 26px -12px rgb(var(--tint) / .30),
+    0 38px 58px -24px rgb(var(--tint) / .44),
+    inset 0 -20px 30px -16px rgb(var(--tint) / .34),
+    inset 0 20px 28px -16px rgb(255 255 255 / 1);
   --clay-hi:
-    0 3px 5px rgb(var(--tint) / .08),
-    0 16px 24px -10px rgb(var(--tint) / .26),
-    0 40px 60px -26px rgb(var(--tint) / .4),
-    inset 0 -14px 24px -10px rgb(var(--tint) / .24),
-    inset 0 14px 20px -10px rgb(255 255 255 / .95);
+    0 6px 10px rgb(var(--tint) / .12),
+    0 26px 40px -14px rgb(var(--tint) / .34),
+    0 62px 86px -30px rgb(var(--tint) / .50),
+    inset 0 -24px 36px -16px rgb(var(--tint) / .38),
+    inset 0 24px 32px -16px rgb(255 255 255 / 1);
   --clay-in:
-    0 1px 2px rgb(var(--tint) / .08),
-    inset 0 10px 18px -6px rgb(var(--tint) / .34),
-    inset 0 -8px 14px -8px rgb(255 255 255 / .7);
-  /* A small puff, for pills and circles that would drown in the full formula */
+    0 1px 2px rgb(var(--tint) / .10),
+    inset 0 16px 26px -8px rgb(var(--tint) / .44),
+    inset 0 -12px 20px -10px rgb(255 255 255 / .85);
+  /* A smaller puff for pills and circles that the full formula would drown */
   --clay-sm:
-    0 6px 12px -8px rgb(var(--tint) / .4),
-    inset 0 -6px 10px -6px rgb(var(--tint) / .3),
-    inset 0 6px 9px -6px rgb(255 255 255 / .7);
+    0 8px 16px -8px rgb(var(--tint) / .48),
+    0 16px 26px -14px rgb(var(--tint) / .34),
+    inset 0 -9px 14px -7px rgb(var(--tint) / .42),
+    inset 0 9px 13px -7px rgb(255 255 255 / .92);
 
   --shadow-sm: var(--clay-sm);
   --shadow-md: var(--clay);
   --shadow-lg: var(--clay-hi);
 
-  --r-sm: 14px;
-  --r-md: 22px;
-  --r-lg: 30px;
-  --r-xl: 44px;
+  /* Fat radii: clay has no sharp corners */
+  --r-sm: 18px;
+  --r-md: 28px;
+  --r-lg: 40px;
+  --r-xl: 56px;
   --blob: 58% 42% 47% 53% / 46% 51% 49% 54%;
 
   --gutter: clamp(1.15rem, 4vw, 2.5rem);
   --measure: 1240px;
-  --nav-h: 84px;
+  --nav-h: 92px;
 
   --ease: cubic-bezier(.22, 1, .36, 1);
   --ease-clay: cubic-bezier(.34, 1.56, .5, 1);
@@ -144,10 +147,10 @@ body::before {
   z-index: -1;
   pointer-events: none;
   background:
-    radial-gradient(58vw 58vw at 10% -8%, rgb(255 194 75 / .30), transparent 62%),
-    radial-gradient(52vw 52vw at 94% 6%, rgb(124 107 245 / .18), transparent 60%),
-    radial-gradient(64vw 64vw at 80% 98%, rgb(47 203 146 / .20), transparent 62%),
-    radial-gradient(50vw 50vw at 4% 84%, rgb(255 93 143 / .16), transparent 60%);
+    radial-gradient(58vw 58vw at 10% -8%, rgb(223 247 229 / .85), transparent 62%),
+    radial-gradient(52vw 52vw at 94% 6%, rgb(244 227 196 / .60), transparent 60%),
+    radial-gradient(64vw 64vw at 80% 98%, rgb(57 218 104 / .16), transparent 62%),
+    radial-gradient(50vw 50vw at 4% 84%, rgb(247 233 207 / .70), transparent 60%);
 }
 
 img,
@@ -181,7 +184,7 @@ p:last-child { margin-bottom: 0; }
 ::selection { background: var(--accent); color: var(--on-accent); }
 
 :focus-visible {
-  outline: 3px solid var(--grape);
+  outline: 3px solid var(--accent-ink);
   outline-offset: 4px;
   border-radius: 10px;
 }
@@ -192,9 +195,9 @@ p:last-child { margin-bottom: 0; }
   top: .6rem;
   translate: -50% -160%;
   z-index: 200;
-  --tint: var(--t-grape);
-  background: var(--grape);
-  color: var(--on-accent);
+  --tint: var(--t-deep);
+  background: var(--accent-ink);
+  color: #FFFFFF;
   padding: .75rem 1.3rem;
   border-radius: 999px;
   box-shadow: var(--clay-sm);
@@ -232,7 +235,7 @@ p:last-child { margin-bottom: 0; }
   width: 100%;
   transform-origin: 0 50%;
   scale: 0 1;
-  background: linear-gradient(90deg, var(--accent), var(--marigold), var(--mint));
+  background: linear-gradient(90deg, var(--accent-ink), var(--accent), var(--accent-soft));
   z-index: 120;
   pointer-events: none;
 }
@@ -289,9 +292,9 @@ p:last-child { margin-bottom: 0; }
 
 .brand-mark {
   --tint: var(--t-accent);
-  width: 38px;
-  height: 38px;
-  padding: 7px;
+  width: 46px;
+  height: 46px;
+  padding: 9px;
   display: grid;
   place-items: center;
   flex: none;
@@ -365,7 +368,7 @@ p:last-child { margin-bottom: 0; }
   align-items: center;
   justify-content: center;
   gap: .55rem;
-  padding: .92rem 1.7rem;
+  padding: 1.15rem 2.1rem;
   border: 0;
   border-radius: 999px;
   background: var(--btn-bg);
@@ -394,7 +397,7 @@ p:last-child { margin-bottom: 0; }
 .btn-primary { --btn-bg: var(--accent); --btn-fg: var(--on-accent); --tint: var(--t-accent); }
 .btn-primary:hover { background: #FF8A52; }
 
-.btn-dark { --btn-bg: var(--grape); --btn-fg: var(--on-accent); --tint: var(--t-grape); }
+.btn-dark { --btn-bg: var(--accent-ink); --btn-fg: #FFFFFF; --tint: var(--t-deep); }
 .btn-dark:hover { background: #8A7BF7; }
 
 .btn-soft { --btn-bg: var(--accent-soft); --btn-fg: var(--accent-ink); }
@@ -418,8 +421,8 @@ p:last-child { margin-bottom: 0; }
 }
 
 .link-arrow .circle {
-  width: 36px;
-  height: 36px;
+  width: 42px;
+  height: 42px;
   flex: none;
   display: grid;
   place-items: center;
@@ -440,8 +443,8 @@ p:last-child { margin-bottom: 0; }
 }
 
 .icon-btn {
-  width: 44px;
-  height: 44px;
+  width: 50px;
+  height: 50px;
   display: grid;
   place-items: center;
   padding: 0;
@@ -480,7 +483,7 @@ p:last-child { margin-bottom: 0; }
 
 .eyebrow {
   display: inline-block;
-  padding: .45rem .95rem;
+  padding: .55rem 1.15rem;
   border-radius: 999px;
   background: var(--paper);
   color: var(--accent-ink);
@@ -498,9 +501,9 @@ p:last-child { margin-bottom: 0; }
   position: relative;
   padding-block: clamp(4.5rem, 10vw, 8.5rem);
 }
-.strip--sand { background: rgb(255 232 212 / .72); }
-.strip--soft { background: rgb(255 246 236 / .66); }
-.strip--paper { background: rgb(255 253 250 / .78); }
+.strip--sand { background: rgb(247 233 207 / .78); }
+.strip--soft { background: rgb(250 241 227 / .72); }
+.strip--paper { background: rgb(255 255 255 / .82); }
 .strip--tight { padding-block: clamp(3rem, 6vw, 5rem); }
 
 .section-head { max-width: 46rem; }
@@ -528,9 +531,9 @@ p:last-child { margin-bottom: 0; }
 }
 .arc--top { top: -1px; border-radius: 0 0 50% 50%; }
 .arc--bottom { bottom: -1px; border-radius: 50% 50% 0 0; }
-.arc--cream { background: rgb(255 243 231 / .8); }
-.arc--sand { background: rgb(255 232 212 / .72); }
-.arc--paper { background: rgb(255 253 250 / .78); }
+.arc--cream { background: rgb(251 247 240 / .85); }
+.arc--sand { background: rgb(247 233 207 / .78); }
+.arc--paper { background: rgb(255 255 255 / .82); }
 
 /* Hero ------------------------------------------------------------------- */
 
@@ -541,7 +544,7 @@ p:last-child { margin-bottom: 0; }
   min-height: 100vh;
   min-height: 100svh;
   padding-top: calc(var(--nav-h) + clamp(2rem, 5vw, 4rem));
-  background: radial-gradient(120% 90% at 50% 0%, rgb(255 253 250 / .85) 0%, rgb(255 240 225 / .5) 46%, rgb(255 220 192 / .55) 100%);
+  background: radial-gradient(120% 90% at 50% 0%, rgb(255 255 255 / .9) 0%, rgb(250 241 227 / .55) 46%, rgb(244 227 196 / .6) 100%);
   overflow: hidden;
 }
 
@@ -709,8 +712,8 @@ p:last-child { margin-bottom: 0; }
   display: block;
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg, #FFE0C8 0%, #FFCFAE 100%);
-  color: rgba(52, 34, 63, .34);
+  background: linear-gradient(135deg, #EFE3C9 0%, #E4D3B0 100%);
+  color: rgba(35, 35, 31, .34);
   overflow: hidden;
 }
 /* A real photograph dropped into any slot fills it the same way. */
@@ -727,14 +730,14 @@ img.ph { width: 100%; height: 100%; object-fit: cover; display: block; }
 }
 /* The headline slot is a focal point, so it carries more contrast. */
 .hero-pill .ph {
-  background: linear-gradient(135deg, #FFD3B4 0%, #FFB98E 100%);
-  color: rgba(52, 34, 63, .44);
+  background: linear-gradient(135deg, #CDEDD6 0%, #AEDDBC 100%);
+  color: rgba(35, 35, 31, .44);
 }
 
-.ph--sage { background: linear-gradient(135deg, #D8F6E8 0%, #B7EDD5 100%); }
-.ph--clay { background: linear-gradient(135deg, #FFE2CE 0%, #FFCBAE 100%); }
-.ph--mint { background: linear-gradient(135deg, #E3E0FF 0%, #CBC5FF 100%); }
-.ph--stone { background: linear-gradient(135deg, #FFE7C2 0%, #FFD79B 100%); }
+.ph--sage { background: linear-gradient(135deg, #DDEFDD 0%, #C9E6CE 100%); }
+.ph--clay { background: linear-gradient(135deg, #F6EEDC 0%, #EBDCBE 100%); }
+.ph--mint { background: linear-gradient(135deg, #DFF7E5 0%, #BFEFCF 100%); }
+.ph--stone { background: linear-gradient(135deg, #ECE7DD 0%, #DED7C9 100%); }
 
 /* Cards ------------------------------------------------------------------ */
 
@@ -749,7 +752,7 @@ img.ph { width: 100%; height: 100%; object-fit: cover; display: block; }
   position: relative;
   display: flex;
   flex-direction: column;
-  padding: 1.8rem;
+  padding: 2.2rem;
   border-radius: var(--r-xl);
   background: var(--paper);
   box-shadow: var(--clay);
@@ -764,20 +767,20 @@ img.ph { width: 100%; height: 100%; object-fit: cover; display: block; }
 
 /* Each icon is its own little clay blob, cycling through the palette. */
 .card .icon {
-  --tint: var(--t-accent);
-  width: 58px; height: 58px;
+  --tint: var(--blob-1-t);
+  width: 74px; height: 74px;
   display: grid; place-items: center;
   border-radius: var(--blob);
-  background: var(--accent);
-  color: var(--on-accent);
+  background: var(--blob-1);
+  color: var(--blob-1-fg);
   box-shadow: var(--clay-sm);
   margin-bottom: auto;
   transition: transform .5s var(--ease-clay), border-radius .6s var(--ease);
 }
-.card .icon svg { width: 24px; height: 24px; }
-.card:nth-child(2) .icon { --tint: var(--t-mint); background: var(--mint); }
-.card:nth-child(3) .icon { --tint: var(--t-grape); background: var(--grape); }
-.card:nth-child(4) .icon { --tint: var(--t-berry); background: var(--berry); }
+.card .icon svg { width: 31px; height: 31px; }
+.card:nth-child(2) .icon { --tint: var(--blob-2-t); background: var(--blob-2); color: var(--blob-2-fg); }
+.card:nth-child(3) .icon { --tint: var(--blob-3-t); background: var(--blob-3); color: var(--blob-3-fg); }
+.card:nth-child(4) .icon { --tint: var(--blob-4-t); background: var(--blob-4); color: var(--blob-4-fg); }
 .card:hover .icon {
   transform: rotate(-9deg) scale(1.07);
   border-radius: 42% 58% 61% 39% / 58% 41% 59% 42%;
@@ -837,7 +840,7 @@ img.ph { width: 100%; height: 100%; object-fit: cover; display: block; }
 
 .impact {
   position: relative;
-  background: rgb(255 232 212 / .6);
+  background: rgb(247 233 207 / .62);
   overflow: clip;
 }
 
@@ -1024,7 +1027,7 @@ img.ph { width: 100%; height: 100%; object-fit: cover; display: block; }
 
 .pledge-wrap {
   position: relative;
-  background: linear-gradient(180deg, rgb(255 246 236 / .5), rgb(255 232 212 / .66));
+  background: linear-gradient(180deg, rgb(250 241 227 / .55), rgb(247 233 207 / .7));
   overflow: hidden;
 }
 
@@ -1225,7 +1228,7 @@ img.ph { width: 100%; height: 100%; object-fit: cover; display: block; }
 
 .step {
   position: relative;
-  padding: 1.7rem 1.5rem;
+  padding: 2rem 1.8rem;
   border-radius: var(--r-xl);
   background: var(--paper);
   box-shadow: var(--clay);
@@ -1237,24 +1240,24 @@ img.ph { width: 100%; height: 100%; object-fit: cover; display: block; }
 .step::before {
   counter-increment: step;
   content: counter(step, decimal-leading-zero);
-  --tint: var(--t-accent);
+  --tint: var(--blob-1-t);
   display: grid;
   place-items: center;
-  width: 46px; height: 46px;
+  width: 58px; height: 58px;
   font-family: var(--font-display);
   font-size: .95rem;
   font-weight: 600;
   letter-spacing: .02em;
-  color: var(--on-accent);
-  background: var(--accent);
+  color: var(--blob-1-fg);
+  background: var(--blob-1);
   border-radius: var(--blob);
   box-shadow: var(--clay-sm);
-  margin-bottom: 1rem;
+  margin-bottom: 1.1rem;
   transition: transform .5s var(--ease-clay), border-radius .6s var(--ease);
 }
-.step:nth-child(2)::before { --tint: var(--t-mint); background: var(--mint); }
-.step:nth-child(3)::before { --tint: var(--t-grape); background: var(--grape); }
-.step:nth-child(4)::before { --tint: var(--t-berry); background: var(--berry); }
+.step:nth-child(2)::before { --tint: var(--blob-2-t); background: var(--blob-2); color: var(--blob-2-fg); }
+.step:nth-child(3)::before { --tint: var(--blob-3-t); background: var(--blob-3); color: var(--blob-3-fg); }
+.step:nth-child(4)::before { --tint: var(--blob-4-t); background: var(--blob-4); color: var(--blob-4-fg); }
 .step:hover::before {
   transform: rotate(-9deg) scale(1.07);
   border-radius: 42% 58% 61% 39% / 58% 41% 59% 42%;
@@ -1354,7 +1357,7 @@ img.ph { width: 100%; height: 100%; object-fit: cover; display: block; }
 
 .action {
   position: relative;
-  background: rgb(255 232 212 / .6);
+  background: rgb(247 233 207 / .62);
   overflow: hidden;
   text-align: center;
 }
@@ -1393,7 +1396,7 @@ img.ph { width: 100%; height: 100%; object-fit: cover; display: block; }
 
 .site-footer {
   position: relative;
-  background: rgb(255 232 212 / .72);
+  background: rgb(247 233 207 / .78);
   padding-block: clamp(3.5rem, 7vw, 6rem) 2rem;
 }
 
@@ -1499,7 +1502,7 @@ img.ph { width: 100%; height: 100%; object-fit: cover; display: block; }
   position: relative;
   padding-top: calc(var(--nav-h) + clamp(3rem, 8vw, 6rem));
   padding-bottom: clamp(3rem, 7vw, 5.5rem);
-  background: radial-gradient(120% 90% at 50% 0%, rgb(255 253 250 / .8) 0%, rgb(255 232 212 / .62) 70%);
+  background: radial-gradient(120% 90% at 50% 0%, rgb(255 255 255 / .85) 0%, rgb(247 233 207 / .68) 70%);
   text-align: center;
   overflow: hidden;
 }
@@ -1610,23 +1613,23 @@ details.qa .qa-body { padding: 0 1.4rem 1.3rem; color: var(--ink-soft); font-siz
 .member-avatar {
   display: grid;
   place-items: center;
-  width: 72px; height: 72px;
-  --tint: var(--t-accent);
+  width: 88px; height: 88px;
+  --tint: var(--blob-1-t);
   border-radius: var(--blob);
   overflow: hidden;
   margin-bottom: 1.1rem;
-  background: var(--accent);
-  color: var(--on-accent);
+  background: var(--blob-1);
+  color: var(--blob-1-fg);
   font-family: var(--font-display);
-  font-size: 1.5rem;
+  font-size: 1.75rem;
   font-weight: 600;
   letter-spacing: -.02em;
   box-shadow: var(--clay-sm);
   transition: transform .5s var(--ease-clay), border-radius .6s var(--ease);
 }
-.member:nth-child(2) .member-avatar { --tint: var(--t-mint); background: var(--mint); }
-.member:nth-child(3) .member-avatar { --tint: var(--t-grape); background: var(--grape); }
-.member:nth-child(4) .member-avatar { --tint: var(--t-berry); background: var(--berry); }
+.member:nth-child(2) .member-avatar { --tint: var(--blob-2-t); background: var(--blob-2); color: var(--blob-2-fg); }
+.member:nth-child(3) .member-avatar { --tint: var(--blob-3-t); background: var(--blob-3); color: var(--blob-3-fg); }
+.member:nth-child(4) .member-avatar { --tint: var(--blob-4-t); background: var(--blob-4); color: var(--blob-4-fg); }
 .member:hover .member-avatar {
   transform: rotate(-8deg) scale(1.06);
   border-radius: 42% 58% 61% 39% / 58% 41% 59% 42%;
@@ -1841,24 +1844,24 @@ details.qa .qa-body { padding: 0 1.4rem 1.3rem; color: var(--ink-soft); font-siz
 }
 .tile:hover { transform: translateY(-6px); box-shadow: var(--clay-hi); }
 .tile .icon {
-  --tint: var(--t-accent);
-  width: 54px; height: 54px;
+  --tint: var(--blob-1-t);
+  width: 68px; height: 68px;
   display: grid; place-items: center;
   border-radius: var(--blob);
-  background: var(--accent);
-  color: var(--on-accent);
+  background: var(--blob-1);
+  color: var(--blob-1-fg);
   box-shadow: var(--clay-sm);
   margin-bottom: .7rem;
   transition: transform .5s var(--ease-clay), border-radius .6s var(--ease);
 }
-.tile:nth-child(2) .icon { --tint: var(--t-mint); background: var(--mint); }
-.tile:nth-child(3) .icon { --tint: var(--t-grape); background: var(--grape); }
-.tile:nth-child(4) .icon { --tint: var(--t-berry); background: var(--berry); }
+.tile:nth-child(2) .icon { --tint: var(--blob-2-t); background: var(--blob-2); color: var(--blob-2-fg); }
+.tile:nth-child(3) .icon { --tint: var(--blob-3-t); background: var(--blob-3); color: var(--blob-3-fg); }
+.tile:nth-child(4) .icon { --tint: var(--blob-4-t); background: var(--blob-4); color: var(--blob-4-fg); }
 .tile:hover .icon {
   transform: rotate(-9deg) scale(1.07);
   border-radius: 42% 58% 61% 39% / 58% 41% 59% 42%;
 }
-.tile .icon svg { width: 22px; height: 22px; }
+.tile .icon svg { width: 28px; height: 28px; }
 .tile p { font-size: .9rem; color: var(--ink-soft); }
 .tile .val { font-weight: 600; font-size: .92rem; word-break: break-word; }
 
@@ -1882,7 +1885,7 @@ details.qa .qa-body { padding: 0 1.4rem 1.3rem; color: var(--ink-soft); font-siz
   width: 30rem; height: 30rem;
   right: -10rem; bottom: -16rem;
   border-radius: var(--blob);
-  background: rgba(255, 194, 75, .35);
+  background: rgba(255, 255, 255, .28);
   pointer-events: none;
 }
 .band > * { position: relative; z-index: 1; }
